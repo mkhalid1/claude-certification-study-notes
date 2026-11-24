@@ -64,4 +64,6 @@ For when the exam is booked and close.
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [How scoring works](scoring.md) | Next: [Exam-day checklist](exam-day-checklist.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->

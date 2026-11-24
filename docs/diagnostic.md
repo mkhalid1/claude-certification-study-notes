@@ -32,7 +32,7 @@ Then weight your plan by the exam blueprint. A gap in a 20% domain costs about t
 
 ## Option 2: a free timed diagnostic
 
-PrepClubs has a free timed 25-question diagnostic for each exam, with a percent-correct breakdown by domain:
+PrepClubs has a free timed 25-question diagnostic for each exam, with a percent-correct breakdown by domain. As of November 2026 the Associate, Developer and Architect, Professional diagnostics report against the pre-December domain names, so use them for pacing and overall readiness, and use the in-repo diagnostic above for the December 7 domains:
 
 - [Associate, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate)
 - [Developer, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer)
@@ -46,6 +46,8 @@ Anthropic's FAQ says the practice exam on its previous platform was retired in t
 ## Next step
 
 With your weak domains listed, pick a [study plan](study-plans.md): 7 days if you have a week, 2 days if your exam is close.
+
+---
 
 ---
 

@@ -63,4 +63,6 @@ Open the notes for your exam above, or start with the [diagnostic](diagnostic.md
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Home](../README.md) | Next: [Find your weak domains first](diagnostic.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->

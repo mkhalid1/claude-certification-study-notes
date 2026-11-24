@@ -59,4 +59,6 @@ The four official exam guides (linked from the [Partner Academy certifications p
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 7: Developer Productivity and Operational Enablement](architect-professional/07-developer-productivity-and-operational-enablement.md) | Next: [Study plans: 7 days and 2 days](study-plans.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->

@@ -94,4 +94,6 @@ When you have worked through the domain pages, test yourself under real timing w
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 8: Tools and MCP](../developer/08-tools-and-mcp.md) | Next: [Domain 1: Agentic Architecture & Orchestration](01-agentic-architecture-and-orchestration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
