@@ -133,7 +133,7 @@ D. Remove `check_compliance` as a separate tool and ask the model to judge compl
 
 A developer writes a custom agent loop on the Messages API for a documentation assistant. The loop is `while True:` and it sends the next request after every response, appending tool results when there are any. Traces show that after Claude gives a complete final answer, the loop keeps sending requests, and in some runs it alternates between the same two searches for hundreds of turns until the job is killed. The developer wants the loop to end correctly and never run away again. Choose two.
 
-A. Exit the loop when `stop_reason` is anything other than `tool_use`, such as `end_turn`, and return the final answer.
+A. Continue the loop while `stop_reason` is `tool_use`, and return the final answer when it is `end_turn`, handling other stop reasons such as `max_tokens` explicitly.
 
 B. Raise `max_tokens` so that Claude can fit its whole answer and all its searches into a single response.
 

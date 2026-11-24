@@ -70,7 +70,7 @@ A. Remove the breakpoint from the system prompt and put a single breakpoint on t
 
 B. Shorten the system prompt by half so that each request carries fewer tokens.
 
-C. Add a rolling breakpoint on the latest turn (or use automatic caching), so each request reuses the conversation prefix cached by the previous request.
+C. Add a rolling cache breakpoint on the latest turn, so each request reuses the conversation prefix cached by the previous request.
 
 D. Switch to a smaller model tier, since the conversation history is billed at the same rate whichever tier reads it.
 
@@ -110,7 +110,7 @@ D. Remove prompt caching, since it cannot work for prompts that include time inf
 
 ### Item 3
 
-An email client adds an inline "suggest a reply" feature. Suggestions must appear within about a second at the 95th percentile, traffic is millions of requests a day, and each request is short and simple. A regression eval on 1,000 real emails shows that the smallest current model tier, at low effort, meets the product's quality bar. Larger tiers score slightly higher but miss the latency target. Choose two.
+An email client adds an inline "suggest a reply" feature. Suggestions must appear within about a second at the 95th percentile, traffic is millions of requests a day, and each request is short and simple. A regression eval on 1,000 real emails shows that the smallest current model tier, with extended thinking off, meets the product's quality bar. Larger tiers score slightly higher but miss the latency target. Choose two.
 
 A. Use the most capable tier at maximum effort, because the higher quality score justifies the extra cost and time.
 
@@ -118,14 +118,14 @@ B. Choose the smallest tier that passes the eval, since it meets the quality bar
 
 C. Send the suggestions through the Message Batches API to reduce cost on the high volume.
 
-D. Set a low effort level for this route, because the eval showed quality holds there and it keeps responses fast and cheap.
+D. Keep extended thinking off for this route, because the eval showed quality holds without it and it keeps responses fast and cheap.
 
 E. Turn on the longest available reasoning for every suggestion so that the replies are as considered as possible.
 
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: B and D.** The binding constraint is latency, and the eval shows the smallest tier at low effort meets the quality bar. Choosing that tier and that effort meets every requirement at the lowest cost. The choice is justified by measurement, not by preference.
+**Answer: B and D.** The binding constraint is latency, and the eval shows the smallest tier without extended thinking meets the quality bar. Choosing that tier and that setting meets every requirement at the lowest cost. The choice is justified by measurement, not by preference.
 
 - **A** is wrong because the larger tiers miss the latency target, which is binding.
 - **C** is wrong because batch results can take hours, and these users need a suggestion in about a second.

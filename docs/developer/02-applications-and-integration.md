@@ -88,7 +88,7 @@ D. Switch the service to the Message Batches API so that failed requests are ret
 
 ### Item 2
 
-A retail analytics team classifies about 40,000 product reviews every night into sentiment and topic labels. Nobody looks at the results until the morning stand-up, about ten hours after the job starts. The current script sends realtime requests from a single worker and regularly hits rate limits, and finance has asked the team to cut the cost of the job. The prompt and model are already producing good labels. What should the team change?
+A retail analytics team classifies about 40,000 product reviews every night into sentiment and topic labels. Nobody looks at the results until the morning stand-up, the next business day. The current script sends realtime requests from a single worker and regularly hits rate limits, and finance has asked the team to cut the cost of the job. The prompt and model are already producing good labels. What should the team change?
 
 A. Submit the reviews through the Message Batches API, keyed by a `custom_id` per review, and collect the results when the batch ends.
 
