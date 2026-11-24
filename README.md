@@ -28,7 +28,8 @@ All four are closed book, proctored by Pearson VUE (online or at a test center),
 
 ## Sources
 
-- [Anthropic Partner Academy: Claude certifications](https://anthropic.skilljar.com/)
+- [Anthropic Partner Academy: Claude certifications](https://anthropic-partners.skilljar.com/page/partner-certifications)
+- [Anthropic Partner Academy: certification FAQ](https://anthropic-partners.skilljar.com/page/faq-certifications)
 - Each exam's official exam guide (linked from the Partner Academy)
 
 Corrections welcome: open an issue or a pull request.
