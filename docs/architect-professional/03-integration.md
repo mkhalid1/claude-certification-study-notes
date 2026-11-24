@@ -9,7 +9,7 @@ Weight: 21% of scored items, about 13 items.
 This is the heaviest domain. It tests whether you can connect Claude to real systems safely, quickly and reliably. The guide lists eight skills:
 
 - **Least-privilege tools.** Review an agent's or subagent's tool set and decide which connections to remove, scope down, or replace with a more context-efficient access pattern.
-- **Authentication and authorisation.** Find credential exposure and privilege escalation risks in an integration design and name the mitigation for each.
+- **Authentication and authorization.** Find credential exposure and privilege escalation risks in an integration design and name the mitigation for each.
 - **The binding performance constraint.** When accuracy or latency is the dominant constraint, choose the change (retrieval depth, model tier, caching, call pattern) that relieves it at the least cost to the other.
 - **Instrumentation gaps.** Explain why a failure in a scaled agentic system went unnoticed, and choose the monitoring that would have caught it.
 - **Retrieval architecture.** Choose between a pre-built RAG pipeline, agentic search with tools, and full-corpus context based on the corpus, the query pattern and the latency and cost limits. When indexing, specify the contextual-retrieval and fallback configuration.
@@ -32,7 +32,7 @@ Distractors are usually real techniques applied to the wrong problem. Idempotenc
 3. For performance items, find which constraint has slack. The right change spends that slack to fix the binding one.
 4. For retrieval items, profile the corpus: size relative to the context window, how often it changes, whether queries need exact terms, and query volume.
 5. For connection items, ask who else needs this capability, whether state must carry across turns, and how many calls happen per request.
-6. For reliability items, read the trace carefully. Note whether the failing call has side effects, whether retries are synchronised, and whether errors come from your limits or a dependency.
+6. For reliability items, read the trace carefully. Note whether the failing call has side effects, whether retries are synchronized, and whether errors come from your limits or a dependency.
 7. Reject any option that relies on a prompt instruction where code or configuration could enforce the control.
 
 ## Traps that cost points
@@ -42,7 +42,7 @@ Distractors are usually real techniques applied to the wrong problem. Idempotenc
 - **Using one shared admin identity for all users.** It turns any user into an admin through the agent. Delegate each user's own scoped permissions.
 - **Making the model bigger when retrieval missed the passage.** No model can answer from text it never received. Fix retrieval depth or quality first.
 - **Monitoring only errors and latency.** Silent failures return success codes. Watch content signals such as empty-result rates and sampled output quality.
-- **Retrying immediately on rate-limit errors.** Synchronised instant retries create waves. Honour retry hints, back off with jitter and smooth demand.
+- **Retrying immediately on rate-limit errors.** Synchronized instant retries create waves. Honor retry hints, back off with jitter and smooth demand.
 - **Adding idempotency where nothing is side-effecting.** Idempotency protects repeated writes. It does nothing for read-only throughput problems.
 - **Defaulting to a RAG pipeline for every corpus.** A small, stable corpus that fits in context with caching often beats an index on accuracy and simplicity.
 
@@ -67,7 +67,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 | Direct API or CLI | Fewest moving parts for a single consumer with tight latency. |
 | Agent-to-agent handoff | Transfers a stateful task to another agent that owns its own tools and policies. |
 | Progressive discovery | Load tool or Skill details only when needed. Saves context when capabilities are many and each task uses few. |
-| Rate-limit handling | Honour retry hints, exponential backoff with jitter, client-side throttling. |
+| Rate-limit handling | Honor retry hints, exponential backoff with jitter, client-side throttling. |
 | Idempotency | Makes retried side-effecting calls safe by deduplicating repeats. |
 
 ## Practice items
@@ -76,9 +76,9 @@ These 10 items are original, written for these notes. They are not taken from An
 
 ### Item 1
 
-A software company deploys a subagent whose only job is to summarise open support tickets in one queue for a daily digest. It is connected to a ticketing MCP server that exposes read, update and delete tools for every queue, an email tool, and a database tool that runs arbitrary SQL against the support database. A security review asks for a least-privilege configuration. Which change best meets the requirement?
+A software company deploys a subagent whose only job is to summarize open support tickets in one queue for a daily digest. It is connected to a ticketing MCP server that exposes read, update and delete tools for every queue, an email tool, and a database tool that runs arbitrary SQL against the support database. A security review asks for a least-privilege configuration. Which change best meets the requirement?
 
-- A. Keep all tools and add a system prompt instruction that the subagent must only read tickets.
+- A. Keep all tools and add a system prompt instruction that the subagent must only read tickets and log every tool call for review.
 - B. Keep all tools and add a human approval step before any delete call.
 - C. Replace the SQL tool with the ticketing system's admin API, which has fewer endpoints.
 - D. Give the subagent a read-only ticket tool scoped to its one queue and remove the update, delete, email and SQL tools.
@@ -98,7 +98,7 @@ A software company deploys a subagent whose only job is to summarise open suppor
 
 A multi-tenant SaaS product adds an agent that answers questions about each customer's CRM records. To make it work quickly, the team put one CRM API key with full admin scope into the system prompt and gave the agent a generic HTTP tool to call the CRM. Every tenant's users talk to the same agent configuration. Which mitigation addresses both the credential exposure and the privilege escalation risk?
 
-- A. Rotate the admin key every week and store the previous key in a vault.
+- A. Rotate the admin key every week, store previous keys in a vault, and alert on any use of a retired key to limit the damage from a leak.
 - B. Move credentials into the tool layer where the model cannot see them, and call the CRM with each user's delegated token scoped to their tenant and role.
 - C. Encrypt the system prompt at rest in the application database.
 - D. Add an instruction telling the model never to reveal the API key or access other tenants.
@@ -120,8 +120,8 @@ An engineering knowledge assistant must reach 90% answer accuracy before launch.
 
 - A. Switch to a smaller model tier to reduce latency further.
 - B. Add prompt caching to the system prompt.
-- C. Retrieve the top fifteen passages and apply a reranker before sending the best ones to the model.
-- D. Move to the largest model tier so it can infer answers when the passage is missing.
+- C. Retrieve the top fifteen passages and apply a reranker before sending the best five to the model.
+- D. Move to the largest model tier so it can infer answers when the passage is missing, accepting the higher cost per answer.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -157,7 +157,7 @@ A retailer runs about 300 concurrent agent sessions that handle order questions.
 
 ### Item 5
 
-A professional services firm wants an assistant for its internal policy handbook. The handbook is about 80,000 tokens, changes once a quarter, and receives about 200 questions a day. Many questions need information from several sections at once, such as travel rules combined with expense limits. The team wants the highest accuracy with the least infrastructure to maintain. Which retrieval approach fits best?
+A professional services firm wants an assistant for its internal policy handbook. The handbook is about 80,000 tokens, changes once a quarter, and receives about 200 questions a day. Many questions need information from several sections at once, such as travel rules combined with expense limits. Staff expect answers within a few seconds, and the team wants the highest accuracy with the least infrastructure to maintain. Which retrieval approach fits best?
 
 - A. Send the full handbook in context on each request, with prompt caching on the handbook.
 - B. Build a chunked vector index with a retrieval pipeline and send the top five chunks.
@@ -179,9 +179,9 @@ A professional services firm wants an assistant for its internal policy handbook
 
 An industrial equipment maker builds a support assistant over two million pages of product manuals. Technicians search with exact part numbers and error codes, such as "E-4471 on model XR-9". Pure embedding retrieval often misses these exact strings, and retrieved chunks frequently lose track of which product and section they came from. The answer must be grounded in a manual or clearly say none was found. Which configuration fits best?
 
-- A. Switch to a larger embedding model and keep the current chunks.
+- A. Switch to a larger, more recent embedding model, re-embed the existing chunks, and raise the number of chunks retrieved per query from five to twenty.
 - B. Load the full corpus into context so nothing is missed.
-- C. Index whole manuals as single chunks so product context is never lost.
+- C. Index whole manuals as single chunks so product and section context is never lost, and let the model find the relevant page inside each manual.
 - D. Prepend a short product and section context to each chunk before indexing, combine keyword and semantic search with reranking, and return a clear "not found" when nothing passes a relevance threshold.
 
 <details>
@@ -197,12 +197,12 @@ An industrial equipment maker builds a support assistant over two million pages 
 
 ### Item 7
 
-A large enterprise wants Claude to work with its internal incident-management system. Engineers use Claude Code, analysts use the Claude desktop app, and two teams are building custom agents, and all of them need the same set of incident tools. Security wants one place to define those tools, enforce authentication and audit usage, rather than each team writing its own client code. Which connection mechanism do these constraints favour?
+A large enterprise wants Claude to work with its internal incident-management system. Engineers use Claude Code, analysts use the Claude desktop app, and two teams are building custom agents, and all of them need the same set of incident tools. Security wants one place to define those tools, enforce authentication and audit usage, rather than each team writing its own client code. Which connection mechanism do these constraints favor?
 
 - A. A direct API integration written separately inside each team's agent.
 - B. A dedicated incident agent that every other agent hands conversations off to.
 - C. An MCP server that exposes the incident tools to every Claude client with one definition, one auth path and central audit.
-- D. A generic web-request tool that lets each model call the incident system's REST endpoints.
+- D. A generic web-request tool that lets each Claude client call the incident system's REST endpoints with its own credentials.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -217,10 +217,10 @@ A large enterprise wants Claude to work with its internal incident-management sy
 
 ### Item 8
 
-A document-processing service calls Claude from 40 worker processes. Throughput data from a peak hour shows bursts of rate-limit errors every few seconds. Traces show that each worker retries a failed request immediately, so all workers retry at the same moment, and the next burst follows straight away. The requests are read-only summarisation calls with no side effects. Which two controls best address this pattern? (Choose two.)
+A document-processing service calls Claude from 40 worker processes. Throughput data from a peak hour shows bursts of rate-limit errors every few seconds. Traces show that each worker retries a failed request immediately, so all workers retry at the same moment, and the next burst follows straight away. The requests are read-only summarization calls with no side effects. Which two controls best address this pattern? (Choose two.)
 
-- A. Attach an idempotency key to every summarisation request.
-- B. Honour the retry hint returned with rate-limit errors and use exponential backoff with random jitter.
+- A. Attach an idempotency key to every summarization request.
+- B. Honor the retry hint returned with rate-limit errors and use exponential backoff with random jitter.
 - C. Raise the maximum number of immediate retries from three to twenty.
 - D. Add client-side throttling, such as a shared queue that keeps the request rate under the account's limit.
 - E. Move every request to the largest model tier.
@@ -228,7 +228,7 @@ A document-processing service calls Claude from 40 worker processes. Throughput 
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: B and D.** The pattern is synchronised instant retries against a rate limit. Backoff with jitter spreads retries out and respects the server's hint (B), and client-side throttling keeps demand under the limit in the first place (D).
+**Answer: B and D.** The pattern is synchronized instant retries against a rate limit. Backoff with jitter spreads retries out and respects the server's hint (B), and client-side throttling keeps demand under the limit in the first place (D).
 
 - **A** is wrong because the calls are read-only, so duplicates cause no harm and idempotency addresses nothing here.
 - **C** is wrong because more immediate retries make each burst larger.
@@ -240,7 +240,7 @@ A document-processing service calls Claude from 40 worker processes. Throughput 
 
 An internal platform agent can act on any of about 300 internal API operations. Loading every tool definition into context up front uses about 90,000 tokens, and evaluations show the agent sometimes picks a similar-sounding wrong tool. A typical task uses three to five operations, but which ones vary widely, so none can be removed. Users accept a short delay while the agent looks up tools. Which strategy fits best?
 
-- A. Load all 300 definitions up front and cache them to reduce cost.
+- A. Load all 300 definitions up front in a cached prefix, so the cost of carrying them on every call stays low, which also keeps every tool one step away.
 - B. Use progressive discovery: give the agent a way to search for tools and load only the definitions a task needs.
 - C. Create one subagent per operation, each with a single tool.
 - D. Permanently remove all operations outside the ten most used.
@@ -261,7 +261,7 @@ An internal platform agent can act on any of about 300 internal API operations. 
 A telecom's sales agent chats with customers about plans. When a customer raises a billing dispute, the conversation must move to the billing team's agent, which owns refund tools, its own policies and its own audit trail. The dispute usually takes several more turns with the customer, and the customer should not have to repeat what they already said. The billing team will not let other agents hold its refund tools. Which mechanism fits these constraints?
 
 - A. An agent-to-agent handoff that transfers the conversation and its context to the billing agent, which continues with the customer.
-- B. Expose the billing agent's refund tools to the sales agent through an MCP server.
+- B. Expose the billing agent's refund tools to the sales agent through an MCP server, so one agent can finish the whole conversation, while the billing team keeps ownership of the server.
 - C. Have the sales agent call the billing system's refund API directly.
 - D. End the chat and ask the customer to start a new conversation with billing.
 

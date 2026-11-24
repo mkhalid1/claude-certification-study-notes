@@ -46,4 +46,6 @@ Terms you will meet in the exam guides, on the exams and in these notes. Product
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [FAQ](faq.md) | Next: [Sources](sources.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->

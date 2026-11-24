@@ -282,4 +282,6 @@ E. Read the setup file, then Write the full updated file content.
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 1: Agentic Architecture & Orchestration](01-agentic-architecture-and-orchestration.md) | Next: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

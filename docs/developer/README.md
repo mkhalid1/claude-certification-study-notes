@@ -21,7 +21,7 @@ Free study notes for the Claude Certified Developer, Foundations exam, written a
 
 ## Which version you will sit
 
-CCDV-F changes on December 7, 2026. The date you sit the exam decides which version you get: through December 6 you take the original form, and from December 7 onward you take the revised one. The revised version has more items, a scored and unscored split, and a very different weighting. Applications and Integration drops from about a third of the exam to a fifth, while Claude Code, evaluation, and prompt engineering all grow.
+CCDV-F changes on December 7, 2026. The date you sit the exam decides which version you get: through December 6 you take the original form, and from December 7 onward you take the revised one. The revised version has more items (70, of which 60 are scored) and a very different weighting. Applications and Integration drops from about a third of the exam to a fifth, while Claude Code, evaluation, and prompt engineering all grow.
 
 | | Through December 6, 2026 | December 7, 2026 or later |
 |---|---|---|
@@ -55,7 +55,7 @@ Item counts are approximate: weight multiplied by the 60 scored items, rounded. 
 
 ## How the questions work
 
-- **Format.** Every item is a scenario-based multiple-choice question. The item tells you how many responses to select, so read that instruction before you look at the options. Most items want one answer; some want two.
+- **Format.** Every item is a scenario-based multiple-choice question. The item tells you how many responses to select, so read that instruction before you look at the options.
 - **Scenario style.** Expect a short production situation: a trace, an error output, a config file, a usage report, or a design with a stated constraint. Your job is to find the defect or the best design choice. The guide's sample items all share the same shape: three options that treat a symptom or add risk, and one that fixes the cause.
 - **Unscored items.** 10 of the 70 items are being trialled for future forms. They are mixed in with the scored items and are not marked, so treat every item as if it counts.
 - **Scaled score.** Results are reported as pass or fail with a scaled score from 100 to 1,000. The cut score is 720. It is a scaled score set through a standard-setting study, so do not read it as "72% correct". The exam is criterion-referenced: you are measured against a fixed standard, not against other candidates.

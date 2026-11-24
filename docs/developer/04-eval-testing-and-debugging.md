@@ -49,7 +49,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 | Behavioural check | A targeted test of one behaviour, for example "says not found when the answer is missing" or "asks for the order id". |
 | Defensible metric | Measures the stated goal directly: field-level accuracy for extraction, per-class precision and recall for rare classes, schema validity for parsers. |
 | Hallucination | A confident claim not supported by the input. Check first whether the needed data reached the model at all. |
-| Refusal | Declining a legitimate request. Often caused by over-broad prompt rules. Check `stop_reason` for `refusal`. |
+| Refusal | Declining a legitimate request. A decline caused by your own over-broad prompt rule usually arrives as ordinary text. A decline by Anthropic's safety classifiers arrives with `stop_reason: "refusal"`. Check for both. |
 | Under-acting | The model describes or promises an action but does not call the tool. Fix tool descriptions and instructions about when to act. |
 | Context loss | An earlier fact or constraint is missing from what the model sees. Often caused by truncation in the integration. |
 | Format drift | Output gradually stops matching the expected shape. Fix with schema-constrained output and validation, not more parsing hacks. |
@@ -195,7 +195,7 @@ D. Under-acting: make the tool description and instructions say clearly when to 
 
 - **A** is wrong because no stock numbers were invented. The model never got that far.
 - **B** is wrong because nothing in the trace shows missing history.
-- **C** is wrong because the model did not decline. It promised to help and did not act.
+- **C** is wrong because the model agreed to help, so this is a failure to act, which is a different failure mode.
 
 </details>
 
@@ -264,7 +264,7 @@ D. Remove the system prompt entirely so that no instruction can cause a refusal.
 
 **Answer: C.** The refusals started with a prompt change, so the cause is the over-broad instruction, not the model. A precise scope lets the app answer what the business wants and still decline what it should not. Regression cases on both sides keep the boundary in place.
 
-- **A** is wrong because the model did not change. The instruction did.
+- **A** is wrong because the refusals began with the prompt edit while the model stayed the same, so changing the tier targets the wrong cause.
 - **B** is wrong because retries keep paying for refusals and do not change the instruction causing them.
 - **D** is wrong because removing all instructions throws away the scope the app needs.
 
@@ -289,7 +289,7 @@ D. In the retrieval layer: add more hotels with step-free access to the hotel da
 
 - **B** is wrong because an instruction to remember cannot recover a message the app removed.
 - **C** is wrong because the app trims history itself, so a bigger window would receive the same trimmed request.
-- **D** is wrong because the database was not the problem. The model did not know the constraint existed.
+- **D** is wrong because suitable hotels already existed in the data. The model was never told about the constraint.
 
 </details>
 

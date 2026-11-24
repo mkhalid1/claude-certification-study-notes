@@ -274,4 +274,6 @@ A department head asks Claude to produce next year's internal headcount plan by 
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Exam overview: Associate, Foundations](README.md) | Next: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

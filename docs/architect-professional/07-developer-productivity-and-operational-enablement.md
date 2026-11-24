@@ -6,9 +6,9 @@ Weight: 8% of scored items, about 5 items.
 
 ## What this domain measures
 
-This domain tests whether you can take Claude Code and the Claude Agent SDK from one team's success to safe, organisation-wide use. The guide lists three skills:
+This domain tests whether you can take Claude Code and the Claude Agent SDK from one team's success to safe, organization-wide use. The guide lists three skills:
 
-- **Packaging and distribution.** Decide how to package a Claude Code workflow proven on one team for the whole organisation: what goes in the plugin (skills, hooks, subagents, commands, MCP configuration), how it is distributed through a marketplace, what managed settings enforce, and which controls are central versus left to teams, so the workflow stays safe when it runs unattended.
+- **Packaging and distribution.** Decide how to package a Claude Code workflow proven on one team for the whole organization: what goes in the plugin (skills, hooks, subagents, commands, MCP configuration), how it is distributed through a marketplace, what managed settings enforce, and which controls are central versus left to teams, so the workflow stays safe when it runs unattended.
 - **Agent SDK and Claude Code configuration.** Configure permission modes (default, acceptEdits, plan, auto, dontAsk, bypassPermissions), hooks, subagent definitions, and headless or CI operation so a team workflow stays within its safety and automation guardrails.
 - **Accountability for AI-generated code.** Review how a team handles review and ownership of AI-assisted code, and identify the control that keeps a human accountable.
 
@@ -18,7 +18,7 @@ In practice, this is where adoption succeeds or stalls. Teams want speed, securi
 
 Stems describe a team's workflow, a rollout goal, or an incident in an automated pipeline. Some list the parts of a workflow (a skill, a hook, a subagent, an MCP server) and ask how to distribute them. Others describe what an unattended job must and must not do, and ask which permission mode and settings fit. Accountability items describe a review process that has gone wrong and ask which control restores human ownership.
 
-Wrong options usually rely on instructions where configuration can enforce, give automation more permission than the task needs, or treat labelling and extra tests as a substitute for a named human owner.
+Wrong options usually rely on instructions where configuration can enforce, give automation more permission than the task needs, or treat labeling and extra tests as a substitute for a named human owner.
 
 ## A method for these questions
 
@@ -37,7 +37,7 @@ Wrong options usually rely on instructions where configuration can enforce, give
 - **Putting must-always rules in CLAUDE.md.** Instructions guide the model but are not guaranteed. Hooks and permission rules enforce.
 - **Shipping security controls in a plugin that teams can switch off.** If a control must hold for everyone, enforce it through managed settings.
 - **Copying workflow files between repositories.** Copies drift, and fixes never reach everyone. Distribute one versioned plugin.
-- **Labelling AI-generated code instead of assigning an owner.** A label says where code came from. It does not make anyone accountable for it.
+- **Labeling AI-generated code instead of assigning an owner.** A label says where code came from. It does not make anyone accountable for it.
 - **Letting an AI reviewer replace human approval.** A second agent can help reviewers, but a person must own the decision to merge.
 
 ## Timing
@@ -50,11 +50,11 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 |---|---|
 | Plugin | Bundles skills, slash commands, subagents, hooks and MCP configuration into one installable, versioned unit. |
 | Marketplace | Where plugins are published and installed from. One source, so updates reach every team. |
-| Managed settings | Organisation-level settings that users and projects cannot override. Use them for controls that must hold everywhere. |
+| Managed settings | Organization-level settings that users and projects cannot override. Use them for controls that must hold everywhere. |
 | Central versus team | Enforce security rules and blocked actions centrally. Leave team-specific skills and commands to teams. |
 | default mode | Asks for permission when a tool is first needed. Needs a person present. |
 | acceptEdits mode | Accepts file edits automatically, while other actions, such as running scripts, still follow permission rules. |
-| plan mode | Analyse and propose a plan without making changes. |
+| plan mode | Analyze and propose a plan without making changes. |
 | dontAsk mode | Runs only what is pre-approved by permission rules and declines the rest instead of asking. |
 | bypassPermissions mode | Skips permission checks entirely. Only for fully isolated, disposable environments. |
 | Hooks | Run at defined points such as before or after a tool call. Can block an action or run a step every time. |
@@ -70,10 +70,10 @@ These 10 items are original, written for these notes. They are not taken from An
 
 A platform team has built a Claude Code workflow for reviewing database changes. It includes a skill describing the company's migration standards, a slash command that starts a review, a review subagent with a limited tool list, a hook that blocks direct edits to applied migration files, and MCP configuration for the issue tracker. Thirty other teams want to adopt it, and the platform team will keep improving it. Which distribution approach fits best?
 
-- A. Publish a wiki page with each file's contents so teams can copy what they need.
+- A. Publish a wiki page with each file's contents so teams can copy what they need, with a changelog for each update.
 - B. Email a zip archive of the files to each team lead after every update.
 - C. Paste the standards and instructions into every repository's CLAUDE.md file.
-- D. Package the components as a plugin and publish it through the organisation's internal marketplace.
+- D. Package the components as a plugin and publish it through the organization's internal marketplace.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -90,7 +90,7 @@ A platform team has built a Claude Code workflow for reviewing database changes.
 
 A company is rolling out Claude Code to every engineering team. Security requires two things for all users, which no team may switch off: Claude Code must never read files matching the company's secret file patterns, and bypassPermissions mode must not be available. Teams want to keep adding their own skills and commands. Where should the security requirements be enforced?
 
-- A. In a security plugin that teams are asked to keep enabled.
+- A. In a security plugin published through the internal marketplace, which every team is asked to install and keep enabled at all times.
 - B. In each repository's project settings, added by each team during onboarding.
 - C. In managed settings deployed by IT, with deny rules for the secret patterns and bypass mode disabled, while teams remain free to add their own skills and commands.
 - D. In the onboarding guide, with a reminder in each team's CLAUDE.md file.
@@ -111,7 +111,7 @@ A company is rolling out Claude Code to every engineering team. Security require
 A team runs headless Claude Code in CI to fix lint errors on pull requests. No person watches the job. It must be able to edit files and run the project's lint and test commands, and every other action must be declined immediately rather than waiting for an approval that will never come. Which configuration fits?
 
 - A. dontAsk mode with permission rules that pre-approve file edits and the specific lint and test commands.
-- B. bypassPermissions mode, so the job is never blocked.
+- B. bypassPermissions mode, so the job is never blocked waiting for an approval.
 - C. default mode, so each new action is approved before it runs.
 - D. plan mode, so the job proposes fixes without risk.
 
@@ -154,7 +154,7 @@ An engineering group requires two things of every Claude Code session. Every fil
 - A. Rewrite the CLAUDE.md rules in stronger language and move them to the top of the file.
 - B. Add a pre-tool-use hook that checks proposed writes for credential patterns and blocks matches, and a post-tool-use hook that runs the formatter after every write.
 - C. Ask code reviewers to check formatting and look for credentials in every pull request.
-- D. Create a formatting subagent that the main agent can call when it decides formatting is needed.
+- D. Create a formatting and secrets-check subagent that the main agent can call whenever it judges a file needs formatting or review, guided by a stricter system prompt.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -174,7 +174,7 @@ A team wants a security-review subagent inside its Claude Code workflow. The sub
 - A. Define the subagent with a tool list limited to reading, searching and the static analysis command.
 - B. Give the subagent all tools and state in its prompt that it must never edit files.
 - C. Skip the subagent and run the review inside the main agent's session to save setup time.
-- D. Give the subagent all tools and add a hook that logs any edits it makes for later review.
+- D. Give the subagent all tools and add a hook that logs any edits it makes for later review, so any unwanted change can be reverted.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -194,7 +194,7 @@ A product team lets an unattended agent open pull requests for small bug fixes, 
 - A. Add more automated tests to the CI pipeline.
 - B. Label every agent-created pull request as AI-generated.
 - C. Require approval from a named human reviewer, who becomes accountable for the change, before any agent-created pull request can merge.
-- D. Add a second agent that reviews the first agent's pull requests before merge.
+- D. Add a second agent that reviews the first agent's pull requests in detail and blocks any merge it cannot explain, using a larger model than the first agent.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -209,7 +209,7 @@ A product team lets an unattended agent open pull requests for small bug fixes, 
 
 ### Item 8
 
-An engineering organisation has adopted Claude Code widely. Engineers now open pull requests of several thousand lines generated in one session, and reviewers admit they approve them after skimming. The CTO wants a review process in which a human clearly owns every AI-assisted change. Which two controls best achieve that? (Choose two.)
+An engineering organization has adopted Claude Code widely. Engineers now open pull requests of several thousand lines generated in one session, and reviewers admit they approve them after skimming. The CTO wants a review process in which a human clearly owns every AI-assisted change. Which two controls best achieve that? (Choose two.)
 
 - A. Make the engineer who directs the change its accountable author, and limit change size so each diff can be reviewed in full.
 - B. Credit Claude as the commit author so it is clear who wrote the code.
@@ -232,7 +232,7 @@ An engineering organisation has adopted Claude Code widely. Engineers now open p
 
 A platform team wants a nightly job that runs Claude Code headless across 40 repositories to update dependencies, run tests and open pull requests. Nobody watches it run. Security requires that the job cannot push to protected branches, cannot run arbitrary commands, and cannot merge its own changes. Which configuration keeps the job safe while it runs unattended?
 
-- A. bypassPermissions mode with an organisation admin token, so the job is never blocked.
+- A. bypassPermissions mode with an organization admin token, so the job is never blocked, plus a nightly report to security of every command it ran.
 - B. default mode with the platform lead's credentials, so the lead can approve anything unusual.
 - C. The developer's personal access token with full repository rights, to avoid setting up a new identity.
 - D. Headless operation with an explicit allow list for the package manager and test commands, a token that can open pull requests but not push to protected branches or merge, and human review before merge.
@@ -252,7 +252,7 @@ A platform team wants a nightly job that runs Claude Code headless across 40 rep
 
 The database-review plugin from one team is now used by twenty teams. A flaw is found in its hook that blocks edits to applied migrations, and the fix must reach every team quickly. Some teams have also been copying the plugin's files into their repositories and changing them locally. The platform team wants every team on the same, current version. Which approach fits best?
 
-- A. Ask each team to fork the plugin and apply the fix themselves.
+- A. Ask each team to fork the plugin into its own repository, apply the fix, and confirm in the engineering channel when it is done.
 - B. Publish the fixed version through the internal marketplace and use managed settings to point every machine at that marketplace and enable the plugin centrally.
 - C. Post a message in the engineering channel asking teams to update when they can.
 - D. Copy the fixed hook into every repository by hand.

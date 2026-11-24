@@ -115,7 +115,7 @@ A. Connect `run_query` with a database role that has read-only privileges on the
 
 B. Add a system prompt instruction listing SQL statements the agent must never run.
 
-C. Add a pre-tool-use hook that inspects each `run_query` call and blocks anything other than read statements.
+C. Add a pre-tool-use hook that allows a `run_query` call only if it is a single read-only `SELECT` statement, and blocks everything else.
 
 D. Ask the agent to restate each query in plain English and confirm it is safe before running it.
 
@@ -134,24 +134,24 @@ E. Send an alert to the security channel whenever a destructive statement appear
 
 ### Item 4
 
-A platform team's CI pipeline runs nightly evals that call the Messages API. During an audit, the security lead finds that the pipeline uses an Admin API key stored as a CI secret, because "it worked for everything". The pipeline only needs to send Messages requests for one project. What should the team change?
+A platform team's CI pipeline runs nightly evals that call the Messages API for one project. During an audit, the security lead finds that the pipeline's secrets also include an organisation Admin API key, added "in case the pipeline ever needs it", and that every job in the pipeline can read it. The pipeline only needs to send Messages requests for that one project. What should the team change?
 
-A. Keep the admin key but store it in a second, more restricted CI secret.
+A. Keep the admin key in CI but move it to a second, more restricted secret.
 
 B. Rotate the admin key monthly and keep using it in the pipeline.
 
-C. Create a workspace-scoped API key for the project's workspace and use it in the pipeline, and keep admin keys out of application and CI traffic.
+C. Use a workspace-scoped API key for the project's workspace in the pipeline, and remove the admin key from CI entirely.
 
 D. Replace the key with a personal API key belonging to the security lead.
 
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: C.** Admin keys exist for managing the organisation through the Admin API, not for sending model requests. A workspace-scoped API key gives the pipeline what it needs and nothing more, so a leak exposes only that workspace's access.
+**Answer: C.** Admin keys manage the organisation through the Admin API: members, workspaces, and API keys. The pipeline never needs that power, so keeping the key where every job can read it only adds risk. A workspace-scoped API key gives the pipeline what it needs, so a leak exposes only that workspace's access.
 
 - **A** is wrong because the problem is the key's scope, not where it is stored.
 - **B** is wrong because rotating an over-scoped key keeps it over-scoped.
-- **D** is wrong because a personal key ties a shared pipeline to one person and is not scoped to the project.
+- **D** is wrong because a personal key ties a shared pipeline to one person and is not scoped to the project, and it leaves the admin key question unanswered.
 
 </details>
 
@@ -241,7 +241,7 @@ E. Add a `PreToolUse` hook that blocks Bash commands that push to `main`.
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: B and E.** A deny rule in shared or managed settings blocks reads of the `.env` files whatever the session asks for. A `PreToolUse` hook that blocks pushes to `main` stops that command before it runs. Both are enforced by Claude Code itself, not by the model's choices.
+**Answer: B and E.** A deny rule in shared or managed settings blocks Claude Code's file-read tool from opening the `.env` files, and deny rules win over any allow rule. A `PreToolUse` hook that blocks pushes to `main` stops that command before it runs. Both are enforced by Claude Code itself, not by the model's choices.
 
 - **A** is wrong because CLAUDE.md is guidance that the model may not follow every time.
 - **C** is wrong because it removes permission checks, the opposite of a guarantee.

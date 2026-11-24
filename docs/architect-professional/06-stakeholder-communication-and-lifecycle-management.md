@@ -9,7 +9,7 @@ Weight: 7% of scored items, about 4 items.
 This domain tests whether you can write and review the documents that sit around a Claude system: requirements, SLAs, decision records and handoff packages. The guide lists three skills:
 
 - **Unsupportable commitments.** Spot a promise in discovery notes or a draft SLA that the proposed architecture cannot keep, and specify the requirement clarification or architectural change that resolves it.
-- **Architecture decision records.** Review a draft ADR against a stakeholder constraint it ignores, and choose the revision that states the trade-off and its residual risk openly, without overstating certainty about model behaviour.
+- **Architecture decision records.** Review a draft ADR against a stakeholder constraint it ignores, and choose the revision that states the trade-off and its residual risk openly, without overstating certainty about model behavior.
 - **Operational handoff.** Find the missing assumption, dependency or runbook element in a handoff package that would block the receiving team, and specify the documentation that closes the gap.
 
 It is a small domain on the exam, but in practice these documents are where projects fail. A promise of perfect accuracy in an SLA, or a missing runbook, can sink a system that works well technically.
@@ -25,7 +25,7 @@ Wrong options tend to fall into three groups: promising the impossible more firm
 1. Read the artifact as the stakeholder named in the stem would read it. Ask what they need to decide or do.
 2. For commitments, test each one against how language models behave: outputs vary, accuracy is measured rather than guaranteed, and long multi-step work takes time.
 3. Turn an unsupportable promise into one that can be measured: an agreed threshold on an agreed test set, a review step, or a redesign that changes what is being promised.
-4. For ADRs, check that the record names the constraint, the alternatives, the trade-off accepted and the residual risk. Replace any certainty about model behaviour with measured evidence and mitigations.
+4. For ADRs, check that the record names the constraint, the alternatives, the trade-off accepted and the residual risk. Replace any certainty about model behavior with measured evidence and mitigations.
 5. For handoffs, imagine the receiving team on its first bad day. What account, credential, assumption, owner or procedure would they need that is not in the package?
 6. Choose the option that adds that one missing piece, not the option that adds the most material.
 
@@ -52,9 +52,9 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 | Determinism | Model outputs can vary between runs. Promise consistent decisions, not identical wording. |
 | Latency promises | Long multi-step work may need streaming, asynchronous jobs or a different commitment, such as time to first response. |
 | ADR essentials | Context, decision, alternatives, trade-off accepted, residual risk, how the risk is monitored. |
-| Certainty about model behaviour | Replace "always" and "never" with measured rates and mitigations. |
+| Certainty about model behavior | Replace "always" and "never" with measured rates and mitigations. |
 | Stakeholder fit | Each ADR must address the constraint of the person who will rely on it, such as cost, legal defensibility or security. |
-| Handoff ownership | Accounts, keys, quotas and billing must move to the receiving organisation. |
+| Handoff ownership | Accounts, keys, quotas and billing must move to the receiving organization. |
 | Handoff assumptions | Input limits, languages, volumes and tested ranges, plus what happens outside them. |
 | Handoff dependencies | Third-party services, contract terms, owners and fallbacks. |
 | Runbook | Alerts, thresholds, triage steps, rollback to a known-good version, owners and escalation. |
@@ -68,7 +68,7 @@ These 10 items are original, written for these notes. They are not taken from An
 
 A pension provider's discovery notes include this requirement from its audit team: "The assistant must give word-for-word identical answers to identical member questions, every time, so auditors can verify consistency." The proposed design is a Claude assistant answering from the scheme rules. About 40 questions make up most of the traffic, and auditors mainly care about those. Which response best resolves the commitment?
 
-- A. Accept the requirement and set the sampling temperature to zero, which guarantees identical output.
+- A. Accept the requirement and set the sampling temperature to zero, which removes randomness so the same input always gives the same output.
 - B. Clarify the requirement as consistent outcomes measured against an agreed evaluation threshold, and serve reviewed answers for the 40 common questions from an approved answer store.
 - C. Accept the requirement now and revisit it if auditors find differences after launch.
 - D. Accept the requirement and use the largest model tier, which produces identical answers to identical inputs.
@@ -89,7 +89,7 @@ A pension provider's discovery notes include this requirement from its audit tea
 A draft SLA for a logistics client's customs-document extraction service states: "The service will extract all declared fields with 100% accuracy." The prototype scores 97.5% field accuracy on an agreed test set of 2,000 documents, and most errors are on handwritten declarations. The client's real concern is that incorrect declarations cause fines. Which revision resolves the commitment?
 
 - A. Commit to a measured field-accuracy threshold on an agreed, refreshed test set, and route handwritten declarations and fields that fail validation checks to human review before submission.
-- B. Keep 100% in the SLA and add a footnote saying that AI systems can make mistakes.
+- B. Keep 100% in the SLA, since the client asked for it, and add a footnote saying AI systems can make mistakes and that errors will be fixed promptly.
 - C. Keep 100% and move to the largest model tier to close the remaining gap.
 - D. Remove accuracy from the SLA entirely, since it cannot be guaranteed.
 
@@ -108,7 +108,7 @@ A draft SLA for a logistics client's customs-document extraction service states:
 
 A procurement client's draft SLA says: "Every request will be fully answered within one second." The proposed design retrieves supplier documents, then makes three sequential Claude calls to compare long contracts and draft a recommendation. The prototype's p95 for the full flow is nine seconds. Users said in interviews that they mostly need to know quickly that work has started, and they are happy to receive the final recommendation a little later. Which change best resolves the commitment?
 
-- A. Keep the one-second commitment and plan to add more compute capacity before launch.
+- A. Keep the one-second commitment and plan to add more compute capacity, parallel workers and a faster network path before launch.
 - B. Remove retrieval from the flow so that only model calls remain.
 - C. Switch all three calls to the smallest model tier without re-running the quality evaluation.
 - D. Redefine the commitment around time to first visible response with streaming, and run the full comparison as an asynchronous job with a completion notice.
@@ -137,10 +137,10 @@ A draft ADR for a claims-triage system says: "Decision: use the largest Claude t
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: C and E.** The record fails the finance director's cost constraint and overstates certainty about model behaviour. A cost comparison makes the trade-off explicit (C), and replacing the absolute claim with measured accuracy, mitigation and residual risk makes it honest (E).
+**Answer: C and E.** The record fails the finance director's cost constraint and overstates certainty about model behavior. A cost comparison makes the trade-off explicit (C), and replacing the absolute claim with measured accuracy, mitigation and residual risk makes it honest (E).
 
 - **A** is wrong because alternatives are where the trade-off is made visible.
-- **B** is wrong because it overstates certainty about future model behaviour.
+- **B** is wrong because it overstates certainty about future model behavior.
 - **D** is wrong because generic benchmarks are not evidence for this workload, and they do not address cost.
 
 </details>
@@ -149,7 +149,7 @@ A draft ADR for a claims-triage system says: "Decision: use the largest Claude t
 
 An ADR for an internal legal research assistant records the decision to use agentic search over the document repository instead of a fixed retrieval pipeline, citing better results on complex questions. The general counsel has said that, if an answer is challenged in a dispute, the team must be able to show exactly what material the system relied on. The ADR does not mention this. Which revision best addresses the constraint?
 
-- A. State that agentic search is deterministic, so the same question will always use the same documents.
+- A. State that agentic search is deterministic at low temperature, so the same question will always retrieve the same documents and produce the same answer.
 - B. Leave the ADR unchanged, since evidence handling is a legal matter rather than an architectural one.
 - C. State that search paths can vary between runs, specify that each answer stores its search trace and cited sources, and record the residual risk that a re-run may phrase the answer differently.
 - D. Reverse the decision to a fixed retrieval pipeline without explaining the change.
@@ -167,10 +167,10 @@ An ADR for an internal legal research assistant records the decision to use agen
 
 ### Item 6
 
-A consultancy is handing a production Claude system over to a client's operations team. The package contains architecture diagrams, all prompts, the evaluation suite, deployment scripts and a monitoring dashboard. During the handoff review, the client notices that the API account, its keys and its rate-limit tier all sit under the consultancy's own organisation, and the consultancy's engagement ends next month. Which documentation and action close the gap?
+A consultancy is handing a production Claude system over to a client's operations team. The package contains architecture diagrams, all prompts, the evaluation suite, deployment scripts and a monitoring dashboard. During the handoff review, the client notices that the API account, its keys and its rate-limit tier all sit under the consultancy's own organization, and the consultancy's engagement ends next month. Which documentation and action close the gap?
 
-- A. Add a page explaining the rate-limit tier so the client understands its limits.
-- B. Transfer the API account, keys, quotas and billing to the client's organisation, store the keys in the client's secret manager, and document the owners.
+- A. Add a page explaining the account's rate-limit tier, key rotation schedule and billing contacts, so the client understands how the account works and who to contact.
+- B. Transfer the API account, keys, quotas and billing to the client's organization, store the keys in the client's secret manager, and document the owners.
 - C. Add more detail to the architecture diagrams so the dependency is easier to see.
 - D. Give the client the consultancy's support email for any account issues after the engagement ends.
 
@@ -190,7 +190,7 @@ A consultancy is handing a production Claude system over to a client's operation
 A support assistant is being handed to an internal platform team. The package includes prompts, the evaluation suite, dashboards and an alert that fires when the weekly groundedness score drops below its threshold. The receiving team asks what it should actually do when that alert fires, and nobody on the build team has written it down. Prompts are versioned, but only the build team knows which version is the last known-good one. What should be added to close the gap?
 
 - A. A runbook for the alert: triage steps (check retrieval results, tool errors and the model version in use), how to roll back to the last known-good prompt version, and who owns each step and escalation.
-- B. More detailed architecture diagrams of the retrieval pipeline.
+- B. More detailed architecture diagrams of the retrieval pipeline and evaluation suite, so the team can work out for itself where a groundedness drop comes from.
 - C. A list of every prompting technique used in the system.
 - D. The personal phone number of the lead engineer on the build team.
 
@@ -213,7 +213,7 @@ A document-summary system is being handed over to a client's IT team. It was bui
 - B. The tested input assumptions (language, document length, volume), and what the system does with documents outside those limits.
 - C. The full evaluation results from the final release candidate.
 - D. The OCR dependency, including its owner, contract terms, renewal date and fallback if it becomes unavailable.
-- E. An updated diagram of the summarisation pipeline's components.
+- E. An updated diagram of the summarization pipeline's components.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -231,7 +231,7 @@ A document-summary system is being handed over to a client's IT team. It was bui
 A retail client's discovery notes contain this expectation from the head of customer experience: "The assistant will learn from every conversation automatically and get better each week without any work from us." The proposed design is a Claude assistant with a fixed system prompt and a knowledge base. Which response resolves this commitment?
 
 - A. Accept it, since model providers release improved models regularly.
-- B. Agree to retrain a model every night on all raw conversations.
+- B. Agree to retrain a model every night on all raw conversations, so the assistant picks up new questions and corrections automatically, as the client wants.
 - C. Add every past conversation to the system prompt so the assistant can learn from them.
 - D. Clarify that the assistant does not improve on its own, and design an owned improvement process: collect feedback, review it, update prompts and knowledge, re-run evaluations, and release on a set cadence.
 
@@ -250,7 +250,7 @@ A retail client's discovery notes contain this expectation from the head of cust
 
 A draft ADR for a document-processing agent includes: "Prompt injection risk: eliminated by our input filter, which blocked all 50 test attacks." The CISO, who must sign off, has asked for an honest view of what remains. The architecture also limits the agent's tools and requires confirmation before external actions. Which revision best meets the CISO's need?
 
-- A. Keep the statement, since the filter blocked every test attack.
+- A. Keep the statement, since the filter blocked all 50 test attacks, and attach the test report as an appendix so the CISO can see the evidence.
 - B. Remove the security section to avoid making claims that could be challenged.
 - C. State that injection risk is reduced rather than eliminated, list the layered controls (input filter, restricted tools, confirmation for external actions), describe the residual risk, and explain how it is monitored.
 - D. State that the model is trained to resist injection, so no further controls are needed.
@@ -262,7 +262,7 @@ A draft ADR for a document-processing agent includes: "Prompt injection risk: el
 
 - **A** is wrong because 50 passing tests cannot prove a risk is eliminated.
 - **B** is wrong because removing the section hides the trade-off from the person who must approve it.
-- **D** is wrong because it overstates certainty about model behaviour and ignores the controls the design actually relies on.
+- **D** is wrong because it overstates certainty about model behavior and ignores the controls the design actually relies on.
 
 </details>
 

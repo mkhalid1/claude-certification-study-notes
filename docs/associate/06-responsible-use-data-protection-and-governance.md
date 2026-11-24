@@ -273,4 +273,6 @@ A recruiting team has been using Claude to rank applicants' résumés for a role
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) | Next: [Exam overview: Developer, Foundations](../developer/README.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

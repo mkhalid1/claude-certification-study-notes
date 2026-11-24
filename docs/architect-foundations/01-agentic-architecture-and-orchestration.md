@@ -283,4 +283,6 @@ E. Let subagents send results directly to each other to cut out coordinator roun
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Exam overview: Architect, Foundations](README.md) | Next: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

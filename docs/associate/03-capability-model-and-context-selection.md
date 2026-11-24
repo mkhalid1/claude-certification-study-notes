@@ -274,4 +274,6 @@ A team lead uses a faster, lower-cost model tier to summarize each day's short s
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) | Next: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

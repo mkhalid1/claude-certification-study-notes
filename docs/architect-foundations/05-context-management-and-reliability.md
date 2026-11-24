@@ -284,4 +284,6 @@ D. Increase the confidence threshold for automation from high to very high.
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) | Next: [Exam overview: Architect, Professional](../architect-professional/README.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

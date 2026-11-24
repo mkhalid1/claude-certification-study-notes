@@ -274,4 +274,6 @@ A project manager has finished the research and analysis phases of a plan to red
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) | Next: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

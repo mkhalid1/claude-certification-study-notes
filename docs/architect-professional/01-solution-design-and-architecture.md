@@ -28,7 +28,7 @@ Expect artifacts in prose form: a description of data flow, a list of subagents 
 1. Underline every requirement in the stem, then mark which one is hard (legal, contractual, physical) and which ones are preferences.
 2. Eliminate any option that breaks the hard requirement, however attractive its other features.
 3. For delegation items, rank each step by reversibility and stakes, and check who is named as accountable. Irreversible or accountable decisions stay with a person.
-4. For pattern items, ask how predictable the steps are. Fixed steps favour a workflow. Open-ended exploration favours an agent. Shared, reusable procedures favour Skills. A single call with retrieval favours an augmented LLM.
+4. For pattern items, ask how predictable the steps are. Fixed steps favor a workflow. Open-ended exploration favors an agent. Shared, reusable procedures favor Skills. A single call with retrieval favors an augmented LLM.
 5. For decomposition items, trace one failure through the design. Ask what the orchestrator sees, whether it can retry one part, and whether the final answer can be traced to its sources.
 6. For "fails first" items, apply the stated load or trust condition to each component in order and stop at the first one that cannot meet it.
 7. Prefer the option that names the trade-off it accepts. Be suspicious of answers that claim none.
@@ -74,7 +74,7 @@ A regional insurer wants Claude in its property claims process. The steps are: c
 
 - A. Claude decides and sends denials automatically for claims below a value threshold, and adjusters review denials above it.
 - B. Claude classifies, extracts and drafts the estimate and letters, and a licensed adjuster makes and signs every denial decision using Claude's summary.
-- C. Adjusters handle intake and extraction, and Claude makes the coverage decisions because it applies policy wording more consistently.
+- C. Adjusters handle intake and extraction, and Claude makes the coverage decisions because it applies policy wording more consistently, with adjusters spot-checking a sample of decisions each week.
 - D. Claude handles every step, and a weekly sample audit by the claims manager provides accountability.
 
 <details>
@@ -92,7 +92,7 @@ A regional insurer wants Claude in its property claims process. The steps are: c
 
 A law firm proposes a matter-research assistant. Lawyers ask questions in a web app, a retrieval service searches one vector index that holds documents from all client matters, Claude writes the answer, and thumbs-up ratings feed a weekly prompt review. Ethical walls forbid some lawyers from seeing certain matters, and the design enforces this by hiding walled matter names in the web app's matter list. Under the ethical-wall condition, which component fails first?
 
-- A. The model, because a smaller tier cannot recognise privileged content and should be replaced by a larger one.
+- A. The model, because a smaller tier cannot recognize privileged material, so the firm should move to a larger tier that can withhold walled content on its own.
 - B. The output renderer, because answers should be shown without citations to walled matters.
 - C. The feedback loop, because ratings from walled lawyers are pooled with everyone else's.
 - D. The retrieval service, because it searches all matters without the user's permissions, so walled content reaches the context before any app control applies.
@@ -114,7 +114,7 @@ A bank wants to automate checks on new business-account applications. Every appl
 
 - A. A workflow where code runs the five steps in order and calls Claude for the extraction, comparison and summary steps.
 - B. An autonomous agent with tools for each check that decides the order and number of checks per application.
-- C. A single augmented-LLM call that receives all documents and retrieval results and returns the full findings at once.
+- C. A single augmented-LLM call that receives all documents and retrieval results and returns the full findings at once, with the full response stored for auditors.
 - D. A Skills-based agent that loads a skill for each check when it judges the check relevant.
 
 <details>
@@ -133,7 +133,7 @@ A bank wants to automate checks on new business-account applications. Every appl
 A consultancy runs a research system in which an orchestrator sends five subagents to investigate different market questions. Each subagent returns a prose summary, and the orchestrator writes the final report. Clients now require that every claim in the report can be traced to the subagent and source behind it. When any subagent fails, the orchestrator restarts the whole run, and the operations team cannot tell which subtask failed. Which two changes address the stated requirements? (Choose two.)
 
 - A. Have each subagent return a structured result with its findings, the source for each finding, and a completion status.
-- B. Merge the five subagents into one agent with a larger context window so that there is only one result to synthesise.
+- B. Merge the five subagents into one agent with a larger context window so that there is only one result to synthesize.
 - C. Handle failures per subagent: retry or mark that subtask incomplete and log it, instead of restarting the full run.
 - D. Move the orchestrator to a larger model tier so it can infer which source each claim came from.
 - E. Let subagents message each other directly so they can fill gaps in each other's findings before reporting.
@@ -154,7 +154,7 @@ A consultancy runs a research system in which an orchestrator sends five subagen
 A telecom's customer service programme is funded on one metric: cost per resolved contact. It must also keep first-response time under four seconds, which is a contractual SLA. Today every chat goes to the largest Claude tier, which resolves contacts well but costs far more than the budget allows. About 70% of chats are simple intents such as balance checks and plan questions. Which proposal should the architect back?
 
 - A. Add a voice channel with real-time speech so customers can call instead of chat.
-- B. Keep the largest tier for all chats and reduce cost by shortening every answer.
+- B. Keep the largest tier for every chat, since it resolves contacts best, and reduce cost by capping answer length and trimming the system prompt.
 - C. Route simple intents to a smaller, faster tier and escalate complex chats to the larger tier, measuring resolution rate by route.
 - D. Build an executive dashboard that shows sentiment trends across all chats.
 
@@ -175,7 +175,7 @@ A software company is building a support agent that runs multi-hour troubleshoot
 
 - A. Amazon Bedrock with a self-hosted Agent SDK service on the company's container platform.
 - B. The Anthropic API with a Messages API loop the platform team writes and hosts.
-- C. Headless Claude Code running on the company's own CI runners, triggered per support session.
+- C. Headless Claude Code running on the company's own CI runners, triggered per support session, reusing pipelines the company already operates.
 - D. The Anthropic API with Claude Managed Agents, so Anthropic hosts the agent loop, sessions and sandbox.
 
 <details>
@@ -193,7 +193,7 @@ A software company is building a support agent that runs multi-hour troubleshoot
 
 A retailer has twelve product teams building separate Claude agents for marketing copy, product pages and customer emails. All of them must follow the same brand and legal review procedure, which legal updates every month. Today each team pastes its own copy of the procedure into its system prompt, and the copies have drifted apart. Legal wants one maintained version, and the agents should load it only when they produce customer-facing text. Which approach fits best?
 
-- A. Ask each team to update its system prompt on the first day of each month from a shared document.
+- A. Ask each team to update its system prompt on the first day of each month from a shared document, with legal sending a reminder when each new version is published.
 - B. Package the procedure as a shared, versioned Skill that each agent loads when it produces customer-facing text.
 - C. Hard-code the review steps as a separate workflow in each team's codebase.
 - D. Fine-tune a model on examples of approved copy so the procedure is learned implicitly.
@@ -235,7 +235,7 @@ A manufacturer has chosen to run the Claude Agent SDK on its own Kubernetes clus
 A logistics firm processes delivery documents each night. An upload service accepts files, a single worker sends one synchronous Claude request per document and waits for each response before starting the next, results go to a managed database sized for twenty times current write volume, and a review screen lets staff correct errors. Tonight's volume is about 8,000 documents, which finish in the window. At month end, volume rises to about 60,000 documents that must finish before 6 a.m. Which component fails first?
 
 - A. The processing worker, because one-at-a-time synchronous calls cannot finish month-end volume in the window and have no queue to absorb the backlog.
-- B. The results database, because month-end write volume exceeds its capacity.
+- B. The results database, because month-end volume multiplies write load, and managed databases often throttle when many results arrive in a short window.
 - C. The upload service, because 60,000 files cannot be accepted in one night.
 - D. The review screen, because staff cannot correct that many errors before 6 a.m.
 
@@ -255,7 +255,7 @@ A logistics firm processes delivery documents each night. An upload service acce
 An engineering team uses an orchestrator to migrate a 200-file service to a new framework. The orchestrator splits the files alphabetically into ten groups and gives each group to a subagent. Many files share data types and interfaces defined across groups. The final step concatenates the subagents' changes into one pull request, which now fails to compile because different subagents changed the same shared types in different ways. Where does the decomposition fail, and what is the fix?
 
 - A. Too few subagents. Split the work into forty smaller groups so each has less to change.
-- B. Context per subagent. Give every subagent all 200 files so each one can see everything.
+- B. Context per subagent. Give every subagent all 200 files so each can see the shared types, and keep the alphabetical split for parallel speed.
 - C. Task boundaries. Split by module and dependency, and give one step ownership of the shared types before dependent modules are migrated.
 - D. Sampling variation. Lower the temperature so subagents make the same choices for shared types.
 

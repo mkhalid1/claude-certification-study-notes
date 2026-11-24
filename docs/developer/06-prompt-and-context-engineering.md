@@ -9,7 +9,7 @@ Weight: 15% of scored items, about 9 items.
 This domain tests whether you can control what Claude does through the words and data you give it, and keep that control as sessions grow and inputs get messy. The guide groups it into four skills:
 
 - **Context management for long-running sessions.** Spotting context bloat or drift in a long session or agent, and choosing the technique that restores the intended behaviour: compaction, pruning tool output, isolating work in subagents, or deciding when to start a fresh session.
-- **Prompt revision.** Changing a prompt to close a gap that regression evaluations have exposed between the output you want and the output you get. The tools are clearer instructions, putting content in the system or user turn as fits, zero-, one-, or multi-shot examples, output constraints, and sanitizing inputs. The goal is to close the gap and keep it closed.
+- **Prompt revision.** Changing a prompt to close a gap that regression evaluations have exposed between the output you want and the output you get. The tools are clearer instructions, putting content in the system or user turn as fits, zero-, one-, or multi-shot examples, output constraints, and sanitising inputs. The goal is to close the gap and keep it closed.
 - **Structured output and defensive parsing.** Using structured outputs with strict schema validation, validating responses, and parsing free-text fallbacks defensively, so downstream code is protected from malformed or unexpected output.
 - **Grounding and source citation.** Building a request that answers only from the supplied documents, cites them, and says "not found" when they do not contain the answer. That includes deciding, from corpus size, cost, and freshness, whether to put the whole document set in context or retrieve only the relevant passages.
 
@@ -47,7 +47,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 | Idea | What to remember |
 |---|---|
 | System vs user placement | Stable operator instructions and role go in the system prompt. Per-request data and the user's request go in the user turn. |
-| Input sanitization | Delimit untrusted text clearly (for example in labelled XML-style tags), say it is data to analyse, and strip or neutralise content that should never reach the model. |
+| Input sanitising | Delimit untrusted text clearly (for example in labelled XML-style tags), say it is data to analyse, and strip or neutralise content that should never reach the model. |
 | Examples | Zero-shot for clear tasks. One or more varied examples when format or edge-case judgement is wrong. Examples should cover the hard cases, not just the easy ones. |
 | Output constraints | State length, format, allowed content, and what to do when unsure. Constraints should be testable by the eval. |
 | Keeping a fix closed | Add the failing cases to the regression set and run it on every prompt change. |

@@ -244,7 +244,7 @@ D. Treat an `error` event as a failed response: stop the spinner, mark the parti
 **Answer: D.** A stream that started with HTTP 200 can still fail partway through, and the API reports that as an `error` event in the stream. Overload is transient, so the right recovery is to mark the partial output as incomplete and retry with backoff. The handler only knew how to finish on `message_stop`, so it hung.
 
 - **A** is wrong because no `message_stop` will follow an error event, so the spinner never stops.
-- **B** is wrong because the response did not stop at the output limit. It failed because of overload.
+- **B** is wrong because the logs show an overload error, and a larger output limit has no effect on overload.
 - **C** is wrong because it gives up streaming to avoid a handling bug. Streaming errors are reported in-stream and can be handled there.
 
 </details>
@@ -269,7 +269,7 @@ E. Increase `max_tokens` on every request so that each call does more work and f
 **Answer: A and C.** Immediate retries make a rate-limit problem worse, because every failure turns into another request at once. Backing off as the server asks lets capacity recover. Smoothing the steady request rate keeps the job under its limits in the first place. Together they let an unattended job finish reliably.
 
 - **B** is wrong because a 429 is transient. Dropping those tickets loses data that would have succeeded on a later attempt.
-- **D** is wrong because rate limits apply to the organisation and workspace, not to each key, so extra keys do not add capacity. They also add keys that need managing.
+- **D** is wrong because rate limits are set for the organisation and its workspaces, so keys in the same workspace share the same limits. Extra keys add no capacity, only more secrets to manage.
 - **E** is wrong because `max_tokens` caps the output of each response. It does not combine tickets or reduce the number of requests.
 
 </details>
@@ -289,7 +289,7 @@ D. Move the tool results into the system prompt so that the assistant turn no lo
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: B.** When thinking is used with tools, the assistant turn must be passed back as it was returned, including its thinking blocks, so the model can continue its reasoning across the tool call. Stripping or editing those blocks breaks the continuation. Thinking is billed when it is generated, so cutting it from history does not save what the developer expected.
+**Answer: B.** When thinking is used with tools, the assistant turn must be passed back as it was returned, including its thinking blocks, so the model can continue its reasoning across the tool call. Stripping or editing those blocks breaks the continuation, which matches both symptoms in the stem.
 
 - **A** is wrong because it gives up the reasoning the agent needs. On current models, thinking cannot always be switched off.
 - **C** is wrong because a rewritten summary is not the original block, and moving it to the system prompt still leaves the assistant turn altered.

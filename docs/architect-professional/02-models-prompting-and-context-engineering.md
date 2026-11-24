@@ -6,13 +6,13 @@ Weight: 13% of scored items, about 8 items.
 
 ## What this domain measures
 
-This domain tests whether you can get the right behaviour from Claude at the right cost. The guide lists six skills:
+This domain tests whether you can get the right behavior from Claude at the right cost. The guide lists six skills:
 
 - **Model tier selection.** Pick the tier that meets every binding latency, cost and quality constraint for a workload, and say why each rejected tier fails.
-- **System prompt diagnosis.** Find the underspecification behind degraded or inconsistent output, and choose a revision that constrains scope, format and behaviour without blocking legitimate variation.
+- **System prompt diagnosis.** Find the underspecification behind degraded or inconsistent output, and choose a revision that constrains scope, format and behavior without blocking legitimate variation.
 - **Prompting technique.** Match the technique (zero-shot, few-shot, prompted reasoning versus native thinking, structured output) to an observed failure, without paying for tokens the task does not need.
 - **Context composition and token economics.** Look at what goes into each call and how caching behaves at a given call volume, and find where tokens can be cut without losing task-relevant information.
-- **Cache breakpoints and reusable packaging.** Order prompts so stable content comes before dynamic content, place breakpoints, and use modular or Skill-based packaging to maximise reuse.
+- **Cache breakpoints and reusable packaging.** Order prompts so stable content comes before dynamic content, place breakpoints, and use modular or Skill-based packaging to maximize reuse.
 - **Reasoning effort and context lifecycle.** Allocate reasoning effort and choose context editing, the memory tool or compaction so a long-running agent keeps performing within its latency and accuracy requirements.
 
 In practice, this domain decides your unit economics. The same design can cost several times more, or run several times slower, depending on prompt order, model tier and how context is managed.
@@ -61,7 +61,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 | Skills packaging | Short descriptions load up front, full procedures load only when relevant. Good for many procedures with separate owners. |
 | Context editing | Clears stale content such as old tool results during a long session. |
 | Memory tool | Stores information outside the context window so it can be read back later, including in new sessions. |
-| Compaction | Summarises earlier context so a long conversation can continue within the window. |
+| Compaction | Summarizes earlier context so a long conversation can continue within the window. |
 | Token economics | Multiply per-call waste by call volume. Unused tool definitions and redundant examples add up fast. |
 
 ## Practice items
@@ -70,12 +70,12 @@ These 10 items are original, written for these notes. They are not taken from An
 
 ### Item 1
 
-A payments company classifies each incoming support message into one of twelve routing queues. Volume is about two million messages a month, the routing call must return within 800 ms at p95, and the required accuracy is 94%. An offline evaluation shows the Haiku tier at 96% accuracy with p95 latency of 450 ms, the Sonnet tier at 97% with 1,100 ms, and the Opus tier at 98% with 2,300 ms. Which choice satisfies every binding constraint?
+A payments company classifies each incoming support message into one of twelve routing queues. Volume is about two million messages a month, the routing call must return within 800 ms at p95, and the required accuracy is 94%. An offline evaluation shows the Haiku tier at 96% accuracy with p95 latency of 450 ms, the Sonnet tier at 97% with 1,100 ms, and the Opus tier at 98% with 2,300 ms. These measurements were taken with prompt caching already enabled. Which choice satisfies every binding constraint?
 
-- A. The Opus tier, because the highest accuracy minimises misrouted messages.
+- A. The Opus tier, because the highest accuracy minimizes misrouted messages.
 - B. The Sonnet tier, with prompt caching added to bring latency under the target.
 - C. The Haiku tier, because it meets the accuracy floor and is the only tier inside the latency limit, at the lowest cost.
-- D. The Sonnet tier for half of the traffic and the Opus tier for the other half, to balance cost and accuracy.
+- D. The Sonnet tier for half of the traffic and the Opus tier for the other half, to balance cost and accuracy, with the split reviewed each month.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -83,7 +83,7 @@ A payments company classifies each incoming support message into one of twelve r
 **Answer: C.** Only Haiku meets the 800 ms latency limit, and its 96% accuracy clears the 94% floor. At two million calls a month, it is also the cheapest option, so nothing is gained by paying for a larger tier.
 
 - **A** is wrong because Opus fails the latency constraint by a wide margin, and the extra accuracy is not required.
-- **B** is wrong because caching helps with long repeated prefixes, and nothing in the stem suggests it would close a gap from 1,100 ms to 800 ms on short routing calls.
+- **B** is wrong because the measurements already include caching, so Sonnet still misses the 800 ms limit.
 - **D** is wrong because both tiers in the split fail the latency limit.
 
 </details>
@@ -92,10 +92,10 @@ A payments company classifies each incoming support message into one of twelve r
 
 An HR assistant uses this system prompt: "You are a helpful assistant for Northwind HR. Answer employee questions." Users report that it sometimes discusses other employees' pay when asked, its answers range from one line to several pages, and it gives legal opinions on employment disputes. Which revision best fixes the problem without over-constraining it?
 
-- A. State that it answers questions about Northwind's published HR policies using the provided handbook, that it declines questions about other employees or legal disputes and points users to the HR portal, and that answers lead with a short direct answer followed by the policy reference.
-- B. Instruct it to answer only by quoting exact sentences from the handbook and to refuse any question that the handbook does not answer word for word.
+- A. State that it answers questions about Northwind's HR policies from the provided handbook, declines questions about other employees or legal disputes and points users to the HR portal, and leads with a short answer followed by the policy reference.
+- B. Instruct it to answer only by quoting exact sentences from the handbook, to refuse any question the handbook does not answer word for word, and to keep every answer under three sentences.
 - C. Add "Be careful, accurate and professional at all times" to the end of the existing prompt.
-- D. Add a list of forty topics it must NEVER discuss, written in capital letters, and keep the rest of the prompt unchanged.
+- D. Add a list of forty topics it must NEVER discuss, including colleagues' pay and legal disputes, written in capital letters at the top of the prompt, and keep the rest unchanged.
 
 <details>
 <summary>Answer and explanation</summary>
@@ -112,7 +112,7 @@ An HR assistant uses this system prompt: "You are a helpful assistant for Northw
 
 A procurement platform extracts invoice fields with Claude and passes the result straight into an accounting system that rejects anything that is not valid JSON matching its schema. Field values are almost always correct, but about one response in two hundred has a trailing comment or a missing bracket, and the import fails. The team wants to remove these failures without making each call noticeably more expensive. Which change addresses the observed failure?
 
-- A. Add ten complete example invoices with their JSON outputs to the prompt.
+- A. Add ten complete example invoices with their exact JSON outputs to the prompt so the model copies the format reliably.
 - B. Enable native extended thinking so the model plans the JSON before writing it.
 - C. Ask the model to reason step by step about each field before giving the final JSON.
 - D. Use structured output with the accounting schema so responses are constrained to valid, schema-conforming JSON.
@@ -130,7 +130,7 @@ A procurement platform extracts invoice fields with Claude and passes the result
 
 ### Item 4
 
-A contract-review agent makes about 20,000 calls a day. Each call carries a 4,000-token system prompt, definitions for 40 tools totalling 15,000 tokens (traces show only 3 tools are ever used in this workflow), the full conversation history including raw output from file reads in earlier turns that are no longer referenced, and the 10,000-token contract under review. The team wants to cut tokens sent per call without losing task-relevant information. Which two changes should it make? (Choose two.)
+A contract-review agent makes about 20,000 calls a day. Each call carries a 4,000-token system prompt, definitions for 40 tools totaling 15,000 tokens (traces show only 3 tools are ever used in this workflow), the full conversation history including raw output from file reads in earlier turns that are no longer referenced, and the 10,000-token contract under review. The team wants to cut tokens sent per call without losing task-relevant information. Which two changes should it make? (Choose two.)
 
 - A. Truncate each contract to its first 5,000 tokens, since key terms usually appear early.
 - B. Remove the tool definitions this workflow never uses, or load them only on demand.
@@ -153,9 +153,9 @@ A contract-review agent makes about 20,000 calls a day. Each call carries a 4,00
 
 A customer-support assistant sends a 20,000-token policy document with every request. The system prompt begins with the current timestamp and the customer's name, followed by the policy document, and the team set a cache breakpoint at the end of the system prompt. Monitoring shows a cache hit rate close to zero even though the policy document never changes during the day. What is the most effective fix?
 
-- A. Extend the cache lifetime so that entries last longer between requests.
+- A. Extend the cache lifetime so entries survive longer between requests, since a short lifetime is the most common reason for low hit rates.
 - B. Move the timestamp and customer name after the policy document, so the stable policy forms an identical prefix, and keep the breakpoint at the end of the policy.
-- C. Add several more cache breakpoints inside the policy document.
+- C. Add several more cache breakpoints inside the policy document so smaller sections of it can be reused independently.
 - D. Shorten the policy document so that the cache matters less.
 
 <details>
@@ -173,7 +173,7 @@ A customer-support assistant sends a 20,000-token policy document with every req
 
 A platform team runs a Claude agent that maintains a large codebase in working sessions of about six hours, and work on one migration spans several days. After about two hours, the context is full of old file reads and test logs, and the agent starts repeating work. Each morning, the new session has no record of decisions made the day before. Which context lifecycle strategy fits best?
 
-- A. Set reasoning effort to the maximum for every step so the agent reasons its way past the clutter.
+- A. Set reasoning effort to the maximum for every step, so the agent can reason past the clutter and reconstruct yesterday's decisions from the code itself, without changing anything else.
 - B. Start a fresh session every hour with no carryover, so the context never fills.
 - C. Clear stale tool results with context editing during the session, and record decisions and progress with the memory tool so they are available in later sessions.
 - D. Paste the full transcripts of all previous sessions into the system prompt each morning.
@@ -191,11 +191,11 @@ A platform team runs a Claude agent that maintains a large codebase in working s
 
 ### Item 7
 
-A collections agency asks Claude to label each outgoing letter's tone as "neutral", "firm" or "hostile" for a compliance review. The definitions are internal: "firm" allows a clear deadline and consequence, while "hostile" means threats outside the agreed process. Zero-shot labels are inconsistent, and most errors are letters the reviewers consider firm being labelled hostile. Which change addresses the failure most directly?
+A collections agency asks Claude to label each outgoing letter's tone as "neutral", "firm" or "hostile" for a compliance review. The definitions are internal: "firm" allows a clear deadline and consequence, while "hostile" means threats outside the agreed process. Zero-shot labels are inconsistent, and most errors are letters the reviewers consider firm being labeled hostile. Which change addresses the failure most directly?
 
-- A. Add labelled examples to the prompt, including borderline letters that sit near the firm and hostile boundary.
-- B. Enable native thinking at high effort for every letter.
-- C. Use structured output with an enum of the three labels.
+- A. Add labeled examples to the prompt, including borderline letters that sit near the firm and hostile boundary.
+- B. Enable native thinking at high effort for every letter so the model reasons carefully about the tone of each one.
+- C. Use structured output with an enum of the three labels so every response is one of the allowed values.
 - D. Move the workload to the largest model tier.
 
 <details>
@@ -234,7 +234,7 @@ A travel company's booking agent runs three steps for each request: classify the
 
 An internal operations assistant includes eight procedures in every system prompt, each about 6,000 tokens long. Any single request needs at most one procedure. Evaluations show accuracy falls when unrelated procedures are present, and each procedure has a different owner who updates it on their own schedule. Which approach fits best?
 
-- A. Cache all eight procedures so the repeated 48,000 tokens cost less.
+- A. Cache all eight procedures in a stable prefix so the repeated 48,000 tokens cost far less on every request.
 - B. Merge the eight procedures into one condensed 10,000-token procedure.
 - C. Include a random subset of four procedures in each request to halve the context.
 - D. Package each procedure as a separate Skill, so only short descriptions load up front and the full procedure loads when a request needs it.
@@ -252,9 +252,9 @@ An internal operations assistant includes eight procedures in every system promp
 
 ### Item 10
 
-A media company runs a summarisation endpoint at about one million calls a month. Each call includes a 3,000-token instruction block, twelve worked examples totalling 8,000 tokens, and an article of about 2,000 tokens. An evaluation on 500 representative articles shows that three examples give the same quality score as twelve. The instructions and examples do not change between calls. Which change cuts token spend the most without lowering quality?
+A media company runs a summarization endpoint at about one million calls a month. Each call includes a 3,000-token instruction block, twelve worked examples totaling 8,000 tokens, and an article of about 2,000 tokens. An evaluation on 500 representative articles shows that three examples give the same quality score as twelve. The instructions and examples do not change between calls. Which change cuts token spend the most without lowering quality?
 
-- A. Move to the largest model tier so fewer summaries need to be regenerated.
+- A. Move to the largest model tier, which follows examples more closely, so fewer summaries need to be regenerated, keeping the prompt otherwise unchanged.
 - B. Reduce to the three best examples, and place the instructions and examples in a cached prefix ahead of the article.
 - C. Remove the instruction block and keep all twelve examples.
 - D. Send only every other paragraph of each article to halve input size.

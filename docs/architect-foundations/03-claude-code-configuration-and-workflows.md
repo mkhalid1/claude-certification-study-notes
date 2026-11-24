@@ -284,4 +284,6 @@ E. Include the prior review's findings in context on re-runs and instruct Claude
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) | Next: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

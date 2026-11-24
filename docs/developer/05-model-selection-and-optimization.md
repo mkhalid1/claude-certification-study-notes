@@ -70,7 +70,7 @@ A. Remove the breakpoint from the system prompt and put a single breakpoint on t
 
 B. Shorten the system prompt by half so that each request carries fewer tokens.
 
-C. Add a rolling cache breakpoint on the latest turn, so each request reuses the conversation prefix cached by the previous request.
+C. Add a rolling breakpoint on the latest turn, so each request reuses the conversation prefix cached by the previous request.
 
 D. Switch to a smaller model tier, since the conversation history is billed at the same rate whichever tier reads it.
 
@@ -173,7 +173,7 @@ D. Shorten the prompt so that there is less room for variation in the output.
 
 **Answer: B.** Generation is sampled, so you should not expect identical wording from repeated calls. When a specific approved text must appear every time, the reliable design is to store it and serve it. That also saves the cost of generating it again.
 
-- **A** is wrong because the Messages API does not offer a seed parameter that makes output repeatable.
+- **A** is wrong because regenerating the text on each page load cannot guarantee the exact wording legal approved. The Messages API also offers no seed parameter for this.
 - **C** is wrong because effort changes how thoroughly the model works, not whether its output repeats word for word.
 - **D** is wrong because a shorter prompt does not remove sampling variation.
 
@@ -288,7 +288,7 @@ D. Move the system prompt into the user turn so that it is cached with the quest
 <details>
 <summary>Answer and explanation</summary>
 
-**Answer: B.** The prefix is stable, so matching is not the problem. Timing is. The default lifetime is about 5 minutes, so with 15 to 25 minute gaps each entry expires before the next request. The 1-hour lifetime costs more per write but keeps the entry alive across the gaps, so most requests become cache reads.
+**Answer: B.** The prefix is stable, so the misses come from timing. The default lifetime is about 5 minutes, so with 15 to 25 minute gaps each entry expires before the next request. The 1-hour lifetime costs more per write but keeps the entry alive across the gaps, so most requests become cache reads.
 
 - **A** is wrong because caching works for bursty traffic once the lifetime matches the gaps.
 - **C** is wrong because a changing timestamp guarantees misses.

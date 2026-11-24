@@ -46,4 +46,6 @@ If you have a day, one more timed run helps more than more reading. The free dia
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Study plans: 7 days and 2 days](study-plans.md) | Next: [FAQ](faq.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->

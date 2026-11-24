@@ -283,4 +283,6 @@ D. Drop the 300 documents from the report and note them as unavailable.
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) | Next: [Domain 5: Context Management & Reliability](05-context-management-and-reliability.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

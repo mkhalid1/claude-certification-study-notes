@@ -275,4 +275,6 @@ A team lead asks Claude for 30 theme ideas for the department's annual offsite. 
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 1: Task Definition and Prompting](01-task-definition-and-prompting.md) | Next: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

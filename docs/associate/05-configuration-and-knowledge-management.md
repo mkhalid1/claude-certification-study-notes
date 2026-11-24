@@ -275,4 +275,6 @@ A Project produces detailed monthly client reports and short weekly summaries. L
 
 ---
 
+---
+
 <!-- nav:bottom -->← Previous: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) | Next: [Domain 6: Responsible Use, Data Protection, and Governance](06-responsible-use-data-protection-and-governance.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->

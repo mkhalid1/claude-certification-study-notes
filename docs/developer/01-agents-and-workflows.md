@@ -51,7 +51,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 | Self-hosted harness | You run the loop and the compute, for example with the Claude Agent SDK on your own infrastructure. Maximum control, and you operate it. |
 | Managed agent runtime | Claude Managed Agents: Anthropic runs the agent loop and a sandboxed workspace per session. Less to operate. |
 | Hooks | Code that runs at fixed points in the loop, such as before a tool call. A pre-tool hook can block a call deterministically. |
-| Loop termination | Continue while `stop_reason` is `tool_use`. Stop on `end_turn` or any other stop reason. Add an iteration or budget cap as a backstop. |
+| Loop termination | Continue while `stop_reason` is `tool_use`. Return the answer on `end_turn`. Handle the other stop reasons explicitly, for example `max_tokens` as incomplete. Add an iteration or budget cap as a backstop. |
 | Subagent isolation | Keeps bulky intermediate work out of the coordinator's context and limits what each part can touch. |
 | Memory | Durable facts stored outside the conversation and loaded when relevant, so they survive across sessions. |
 | Context-window management | Prune or clear old tool output, compact long histories, and keep tool results small, so the task stays in view. |
@@ -133,7 +133,7 @@ D. Remove `check_compliance` as a separate tool and ask the model to judge compl
 
 A developer writes a custom agent loop on the Messages API for a documentation assistant. The loop is `while True:` and it sends the next request after every response, appending tool results when there are any. Traces show that after Claude gives a complete final answer, the loop keeps sending requests, and in some runs it alternates between the same two searches for hundreds of turns until the job is killed. The developer wants the loop to end correctly and never run away again. Choose two.
 
-A. Continue the loop while `stop_reason` is `tool_use`, and return the final answer when it is `end_turn`, handling other stop reasons such as `max_tokens` explicitly.
+A. Continue the loop only while `stop_reason` is `tool_use`, and return the final answer when it is `end_turn`, handling any other stop reason explicitly.
 
 B. Raise `max_tokens` so that Claude can fit its whole answer and all its searches into a single response.
 

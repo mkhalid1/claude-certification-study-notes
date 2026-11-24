@@ -79,7 +79,7 @@ D. Split `get_account` into 40 tools, one per CRM field, so the agent can call e
 
 **Answer: C.** The raw record costs tokens and buries the right renewal date among old values. Returning only the needed fields, clearly labelled, gives the model a small, actionable result. A way to fetch more history covers the rare cases that need it.
 
-- **A** is wrong because the output limit is not the problem. The input is bloated and confusing.
+- **A** is wrong because the output limit caps Claude's reply, while the trouble comes from the bloated tool result going in.
 - **B** is wrong because an instruction does not remove the misleading old dates from the result.
 - **D** is wrong because 40 narrow tools make selection harder and multiply the calls.
 
