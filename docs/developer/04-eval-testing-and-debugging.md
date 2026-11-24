@@ -57,32 +57,9 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 3 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
-
-A legal-tech team wants to use an LLM-as-judge to grade contract summaries for faithfulness, and plans to make the judge's score a release gate. They have written a rubric and run the judge on 500 summaries, and the average score looks reasonable. Two senior lawyers have each labelled 100 of the same summaries as faithful or not. What should the team do before trusting the judge as a gate?
-
-A. Raise the passing threshold on the judge's score so that the gate errs on the side of caution.
-
-B. Use a larger model as the judge, since a stronger model will grade more accurately without further checks.
-
-C. Average the judge's scores across all 500 summaries again to confirm the result is stable.
-
-D. Compare the judge's verdicts with the lawyers' labels on those summaries, measure agreement, and refine the rubric until agreement is acceptable.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** A judge has to be calibrated against human judgment before it can stand in for that judgment. The lawyers' labels are the reference, so measuring the judge's agreement with them shows whether the score means what the team thinks. Refining the rubric until agreement holds makes the gate defensible.
-
-- **A** is wrong because a stricter threshold on an unvalidated score is still unvalidated.
-- **B** is wrong because a stronger judge still needs checking against human labels, and model strength alone does not prove agreement.
-- **C** is wrong because re-averaging shows the score is stable, not that it is correct.
-
-</details>
-
-### Item 2
 
 A team built a golden set for their customer-support bot from 50 questions the product manager wrote for a sales demo. The bot scores 96% on it, yet support escalations about wrong answers keep rising in production. Reviewing escalations shows multi-part questions, typos, and questions about discontinued products, none of which appear in the golden set. What is the best fix?
 
@@ -105,55 +82,7 @@ D. Replace the golden set with a weekly count of thumbs-down ratings from users.
 
 </details>
 
-### Item 3
-
-An accounts-payable team uses Claude to extract invoice number, supplier, date, total, and currency from scanned invoices into JSON for an ERP import. The quality goal is "imports succeed and every field matches the invoice". They have 400 invoices with fields labelled by the finance team. The team needs metrics they can defend to the finance director. Choose two.
-
-A. Field-level exact-match accuracy against the labelled values, reported per field.
-
-B. Average length of the JSON response, compared against last month's average.
-
-C. The rate at which responses pass validation against the ERP import schema.
-
-D. A single "overall quality" score from 1 to 10 given by an uncalibrated LLM judge.
-
-E. The number of thumbs-up ratings from the two clerks who use the tool.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and C.** The goal has two parts. Per-field exact match against the finance labels measures "every field matches", and it shows which fields fail. Schema validity rate measures "imports succeed". Together they map directly onto the stated goal.
-
-- **B** is wrong because response length says nothing about whether fields are correct or imports work.
-- **D** is wrong because an uncalibrated overall score is hard to defend and does not separate the two parts of the goal.
-- **E** is wrong because two people's ratings are a tiny, biased sample that does not measure field accuracy.
-
-</details>
-
-### Item 4
-
-An HR assistant answers policy questions from a retrieved set of policy documents. An employee reports that it confidently cited a "remote work stipend policy" that does not exist. The trace shows that the retrieval step returned zero documents for that query, because a recent change to the department filter excluded all documents, and the prompt then asked Claude to answer the question. What is the best fix?
-
-A. Add "never make things up" to the system prompt and move to a larger model.
-
-B. Lower the effort level so that the model writes shorter answers with fewer details to get wrong.
-
-C. Fix the department filter in the retrieval code, and change the request so that when retrieval returns nothing the assistant says it could not find the answer instead of answering.
-
-D. Add a disclaimer under every answer telling employees to check the policy portal.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** The trace shows the failure starting in the integration layer: retrieval sent no documents. The filter bug is the cause, and the missing "no results" path let a hallucination through. Fixing both addresses the cause and closes the path for future retrieval misses.
-
-- **A** is wrong because it treats an integration bug as a model problem. No prompt can ground an answer in documents that were never sent.
-- **B** is wrong because shorter answers with no supporting documents are still unsupported.
-- **D** is wrong because a disclaimer hides the symptom and leaves employees with wrong answers.
-
-</details>
-
-### Item 5
+### Item 2
 
 A pipeline asks Claude to return a JSON object and parses it with a strict JSON parser. For weeks it worked, but parse failures have crept up to about 3% of requests. Logs show the failing responses wrap the JSON in Markdown code fences or add a sentence before it. The developer's first idea is to add more regular expressions to strip fences and leading text. What fix addresses the cause?
 
@@ -176,78 +105,7 @@ D. Ask for the JSON in a longer, more detailed system prompt that describes the 
 
 </details>
 
-### Item 6
-
-A stock-checking agent has a `check_inventory` tool. In about one in eight conversations, the trace shows Claude replying "Let me check the warehouse stock for you" and then ending its turn with `stop_reason: "end_turn"` and no tool call. Customers wait for an answer that never comes. The tool works whenever it is called. Which diagnosis and fix fit best?
-
-A. Hallucination: add an instruction never to invent stock numbers.
-
-B. Context loss: send the full conversation history with every request.
-
-C. Refusal: remove any safety wording from the system prompt so the model is less cautious.
-
-D. Under-acting: make the tool description and instructions say clearly when to call `check_inventory` and that Claude should call it rather than announce it, then add regression cases for these conversations.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** The model states an intent to act and then stops without calling the tool. That is under-acting. Clear guidance on when to use the tool, attached to the tool itself and backed by instructions to act directly, addresses it. Regression cases keep it from coming back.
-
-- **A** is wrong because no stock numbers were invented. The model never got that far.
-- **B** is wrong because nothing in the trace shows missing history.
-- **C** is wrong because the model agreed to help, so this is a failure to act, which is a different failure mode.
-
-</details>
-
-### Item 7
-
-A team tunes the system prompt of a ticket-routing assistant to fix a reported misroute of billing disputes. The new prompt fixes that case, and they ship it after checking only that ticket. Two days later, routing accuracy for technical tickets has dropped sharply. They have a labelled set of 600 past tickets that nobody ran. What process change prevents this?
-
-A. Ask the person who reported each bug to approve the next prompt change.
-
-B. Run the full labelled set as a regression suite on every prompt change and block the change if accuracy drops in any category.
-
-C. Ship prompt changes only on Mondays so that problems are noticed during the working week.
-
-D. Freeze the prompt permanently and route misroutes to a human queue.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** A prompt change can fix one case and break others. Running the whole labelled set on every change, with a check per category, catches that before release. The team already has the data. It just was not used.
-
-- **A** is wrong because the reporter checks only their own case, which is how the regression slipped through.
-- **C** is wrong because timing does not stop a regression. It only changes when users meet it.
-- **D** is wrong because freezing the prompt gives up improvement to avoid testing.
-
-</details>
-
-### Item 8
-
-A content-moderation service labels user posts into five categories. When the team runs the same 300 posts through the service three times, about 15% of posts get a different label on at least one run, mostly in two neighbouring categories. The eval they use today runs each post once. They want to measure the problem honestly and reduce it. Choose two.
-
-A. Keep running each post once, and when two runs disagree, keep the label that sounds more severe.
-
-B. Run each eval case several times and report a consistency rate alongside accuracy, broken down by category.
-
-C. Use the same model as both the classifier and the judge so that their labels always agree.
-
-D. Rewrite the prompt with explicit criteria that separate the two neighbouring categories, with worked examples of borderline posts.
-
-E. Raise `max_tokens` so that the model has more room to decide.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and D.** Repeated runs turn the inconsistency into a number the team can track, and breaking it down by category shows where it is. Clear criteria and borderline examples for the two confused categories attack the cause: the model has no firm rule for those cases.
-
-- **A** is wrong because single runs hide the problem, and picking the more severe label adds a bias without measuring anything.
-- **C** is wrong because agreement between a model and itself is not evidence of correctness.
-- **E** is wrong because the output limit is not what makes the label vary.
-
-</details>
-
-### Item 9
+### Item 3
 
 A pharmacy app answers questions using the product labels it supplies in the request. After someone added "Never provide medical advice of any kind" to the system prompt, the app began refusing to answer "What is the maximum daily dose on this label?", which the business wants answered from the supplied label. The model and the retrieval code have not changed. What is the best fix?
 
@@ -270,28 +128,7 @@ D. Remove the system prompt entirely so that no instruction can cause a refusal.
 
 </details>
 
-### Item 10
-
-A travel chatbot is told early in a conversation that the user is travelling with a wheelchair. Twenty messages later it recommends a hotel with no step-free access. The trace shows the request for that turn contained only the last 10 messages, because the app trims history to control cost. The wheelchair message was turn 3. Where does the failure start, and what is the fix?
-
-A. In the integration layer: replace blind trimming with history management that keeps key facts, for example by carrying a running summary of constraints or pinning them into the request.
-
-B. In the model output: add an instruction telling Claude to always remember accessibility needs.
-
-C. In the model output: move to a model with a larger context window.
-
-D. In the retrieval layer: add more hotels with step-free access to the hotel database.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The trace shows the constraint was never sent on the failing turn, so the failure is in the integration's history handling. The model could not respect a fact it did not see. Keeping key constraints when trimming fixes the cause and still controls cost.
-
-- **B** is wrong because an instruction to remember cannot recover a message the app removed.
-- **C** is wrong because the app trims history itself, so a bigger window would receive the same trimmed request.
-- **D** is wrong because suitable hotels already existed in the data. The model was never told about the constraint.
-
-</details>
+Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Developer, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer).
 
 ## Next step
 

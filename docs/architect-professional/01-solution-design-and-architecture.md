@@ -66,7 +66,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -90,46 +90,6 @@ A regional insurer wants Claude in its property claims process. The steps are: c
 
 ### Item 2
 
-A law firm proposes a matter-research assistant. Lawyers ask questions in a web app, a retrieval service searches one vector index that holds documents from all client matters, Claude writes the answer, and thumbs-up ratings feed a weekly prompt review. Ethical walls forbid some lawyers from seeing certain matters, and the design enforces this by hiding walled matter names in the web app's matter list. Under the ethical-wall condition, which component fails first?
-
-- A. The model, because a smaller tier cannot recognize privileged material, so the firm should move to a larger tier that can withhold walled content on its own.
-- B. The output renderer, because answers should be shown without citations to walled matters.
-- C. The feedback loop, because ratings from walled lawyers are pooled with everyone else's.
-- D. The retrieval service, because it searches all matters without the user's permissions, so walled content reaches the context before any app control applies.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** Access control must apply where data enters the model's context. The index is queried without per-user filtering, so text from walled matters can be retrieved and used in an answer even though the matter list hides the names.
-
-- **A** is wrong because no model tier enforces permissions. Access control is an architecture responsibility.
-- **B** is wrong because hiding citations conceals the leak but the walled content has already shaped the answer.
-- **C** is wrong because pooled ratings are a minor issue that comes later. Exposure happens at retrieval.
-
-</details>
-
-### Item 3
-
-A bank wants to automate checks on new business-account applications. Every application goes through the same five checks in the same order: extract company details, verify registration, screen names against sanctions lists, compare declared ownership with registry data, and produce a findings summary. The compliance team requires that every run follows an identical, documented path that auditors can replay step by step. Which architectural pattern fits best?
-
-- A. A workflow where code runs the five steps in order and calls Claude for the extraction, comparison and summary steps.
-- B. An autonomous agent with tools for each check that decides the order and number of checks per application.
-- C. A single augmented-LLM call that receives all documents and retrieval results and returns the full findings at once, with the full response stored for auditors.
-- D. A Skills-based agent that loads a skill for each check when it judges the check relevant.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The steps are fixed and auditors need an identical, replayable path. A workflow puts control flow in code, so the sequence is guaranteed and each step can be logged and tested on its own, while Claude does the steps that need language understanding.
-
-- **B** is wrong because letting the model choose order and count breaks the identical-path requirement.
-- **C** is wrong because one combined call gives no step-level record for auditors to replay.
-- **D** is wrong because the agent decides when a check is relevant, so a check could be skipped. That violates the governance constraint.
-
-</details>
-
-### Item 4
-
 A consultancy runs a research system in which an orchestrator sends five subagents to investigate different market questions. Each subagent returns a prose summary, and the orchestrator writes the final report. Clients now require that every claim in the report can be traced to the subagent and source behind it. When any subagent fails, the orchestrator restarts the whole run, and the operations team cannot tell which subtask failed. Which two changes address the stated requirements? (Choose two.)
 
 - A. Have each subagent return a structured result with its findings, the source for each finding, and a completion status.
@@ -149,47 +109,7 @@ A consultancy runs a research system in which an orchestrator sends five subagen
 
 </details>
 
-### Item 5
-
-A telecom's customer service programme is funded on one metric: cost per resolved contact. It must also keep first-response time under four seconds, which is a contractual SLA. Today every chat goes to the largest Claude tier, which resolves contacts well but costs far more than the budget allows. About 70% of chats are simple intents such as balance checks and plan questions. Which proposal should the architect back?
-
-- A. Add a voice channel with real-time speech so customers can call instead of chat.
-- B. Keep the largest tier for every chat, since it resolves contacts best, and reduce cost by capping answer length and trimming the system prompt.
-- C. Route simple intents to a smaller, faster tier and escalate complex chats to the larger tier, measuring resolution rate by route.
-- D. Build an executive dashboard that shows sentiment trends across all chats.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** The programme is funded on cost per resolved contact under a latency SLA. Routing the large share of simple intents to a cheaper, faster tier lowers cost and protects the SLA, and measuring resolution by route checks that quality holds.
-
-- **A** is wrong because a new channel is a transformation feature that does not reduce cost per resolved contact.
-- **B** is wrong because shorter answers barely touch the cost of using the largest tier for every chat and risk lower resolution.
-- **D** is wrong because visibility does not change the funded metric.
-
-</details>
-
-### Item 6
-
-A software company is building a support agent that runs multi-hour troubleshooting sessions and executes diagnostic scripts in a sandbox. Its legal team has confirmed there is no requirement to keep processing inside any particular cloud provider. The platform team is two people and has said clearly that it cannot host, scale or maintain session state and sandboxes for an agent runtime. Which choice best fits?
-
-- A. Amazon Bedrock with a self-hosted Agent SDK service on the company's container platform.
-- B. The Anthropic API with a Messages API loop the platform team writes and hosts.
-- C. Headless Claude Code running on the company's own CI runners, triggered per support session, reusing pipelines the company already operates.
-- D. The Anthropic API with Claude Managed Agents, so Anthropic hosts the agent loop, sessions and sandbox.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** The binding constraint is operational ownership: the team cannot run a runtime, session state or sandboxes. With no residency constraint in play, the first-party API with a managed runtime moves that work off the team.
-
-- **A** is wrong because a self-hosted SDK service puts hosting, sessions and sandboxing on the two-person team.
-- **B** is wrong because a custom loop is the option with the most operational ownership.
-- **C** is wrong because CI runners are not built for multi-hour interactive sessions, and the team would still own them.
-
-</details>
-
-### Item 7
+### Item 3
 
 A retailer has twelve product teams building separate Claude agents for marketing copy, product pages and customer emails. All of them must follow the same brand and legal review procedure, which legal updates every month. Today each team pastes its own copy of the procedure into its system prompt, and the copies have drifted apart. Legal wants one maintained version, and the agents should load it only when they produce customer-facing text. Which approach fits best?
 
@@ -209,48 +129,7 @@ A retailer has twelve product teams building separate Claude agents for marketin
 
 </details>
 
-### Item 8
-
-A manufacturer has chosen to run the Claude Agent SDK on its own Kubernetes cluster. Security requires that agent tool calls run inside the company network, where the plant databases live. The model itself is reached through the company's chosen API surface. Which two responsibilities does this choice place on the manufacturer's team? (Choose two.)
-
-- A. Obtaining a new data residency attestation, because self-hosting the SDK moves model inference into the cluster.
-- B. Isolating and sandboxing the environment where the agent executes tools and code.
-- C. Building a custom prompt caching layer, because caching is only available inside managed runtimes.
-- D. Rewriting the tool-use protocol, because the SDK supports only hosted tools.
-- E. Persisting and restoring agent session state across restarts and scaling events.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and E.** A self-hosted runtime means the team owns where tools execute and how that environment is contained (B), and it owns session state when pods restart or scale (E). These are the hosting, sandboxing and session-state trade-offs of self-hosting.
-
-- **A** is wrong because the SDK still calls the model through the chosen API surface. Inference does not move into the cluster.
-- **C** is wrong because prompt caching is requested through the model API, so a self-hosted runtime can use it without building its own layer.
-- **D** is wrong because the SDK supports custom tools defined by the team. No protocol rewrite is needed.
-
-</details>
-
-### Item 9
-
-A logistics firm processes delivery documents each night. An upload service accepts files, a single worker sends one synchronous Claude request per document and waits for each response before starting the next, results go to a managed database sized for twenty times current write volume, and a review screen lets staff correct errors. Tonight's volume is about 8,000 documents, which finish in the window. At month end, volume rises to about 60,000 documents that must finish before 6 a.m. Which component fails first?
-
-- A. The processing worker, because one-at-a-time synchronous calls cannot finish month-end volume in the window and have no queue to absorb the backlog.
-- B. The results database, because month-end volume multiplies write load, and managed databases often throttle when many results arrive in a short window.
-- C. The upload service, because 60,000 files cannot be accepted in one night.
-- D. The review screen, because staff cannot correct that many errors before 6 a.m.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** Volume rises by more than seven times while the worker runs strictly in sequence, so throughput, not storage, is the first limit reached. A queue with parallel workers, or batch processing for this non-interactive job, is the natural fix.
-
-- **B** is wrong because the stem says the database is sized for twenty times current writes, which covers month end.
-- **C** is wrong because nothing in the stem suggests upload capacity is limited.
-- **D** is wrong because review happens after processing, and the stem's deadline applies to processing.
-
-</details>
-
-### Item 10
+### Item 4
 
 An engineering team uses an orchestrator to migrate a 200-file service to a new framework. The orchestrator splits the files alphabetically into ten groups and gives each group to a subagent. Many files share data types and interfaces defined across groups. The final step concatenates the subagents' changes into one pull request, which now fails to compile because different subagents changed the same shared types in different ways. Where does the decomposition fail, and what is the fix?
 
@@ -269,6 +148,8 @@ An engineering team uses an orchestrator to migrate a 200-file service to a new 
 - **D** is wrong because lower temperature does not coordinate independent design decisions across agents.
 
 </details>
+
+Want more? The free timed Architect, Professional diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Professional diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect-professional?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect-professional).
 
 ## Next step
 

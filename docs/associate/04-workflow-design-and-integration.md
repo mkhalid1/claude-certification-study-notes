@@ -62,7 +62,7 @@ Guidance only: the exam gives 120 minutes for 70 items, which is about 1.7 minut
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -86,47 +86,6 @@ An operations analyst has been asked to recommend whether the company should con
 
 ### Item 2
 
-A customer service team is redesigning its complaint workflow with Claude. Claude will tag incoming complaints by type and draft replies that agents edit. One step decides whether to offer a customer goodwill compensation, which commits the company and is hard to reverse once offered. The team has written guidelines for that step. How should the compensation step be assigned?
-
-- A. AI-executed, because written guidelines make the decision rule-based.
-- B. Human-retained, with Claude preparing a case summary for the agent who decides.
-- C. AI-executed, with a manager auditing a sample of decisions each month.
-- D. Removed from the workflow, since AI should not be involved in customer matters.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The decision commits the company, is hard to reverse and carries accountability, so it should stay with a person. Claude can still save time by preparing the facts for the decision.
-
-- **A** is wrong because guidelines do not remove the stakes or the accountability for the decision.
-- **C** is wrong because a monthly sample audit finds problems after customers have already received offers.
-- **D** is wrong because the step still has to happen, and Claude can usefully support it.
-
-</details>
-
-### Item 3
-
-An HR operations lead is reviewing a redesigned employee lifecycle workflow that a colleague built with Claude. She wants to find any over-delegation before it goes live. Which two steps show over-delegation? (Choose two.)
-
-- A. Claude sends final termination letters to employees without anyone reading them first.
-- B. Claude drafts the agenda for the monthly HR team meeting, which the organizer edits.
-- C. Claude's performance ratings are entered straight into the HR system without manager review.
-- D. Claude summarizes public articles on workplace trends for the team's reading list.
-- E. Claude formats the onboarding schedule spreadsheet, which the coordinator then checks.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and C.** Termination letters are irreversible, high-stakes and need human judgment and empathy. Performance ratings affect people's careers and carry manager accountability. Both have been handed to Claude with no person involved.
-
-- **B** is wrong because an internal agenda is low stakes and already reviewed by the organizer.
-- **D** is wrong because summarizing public articles for reading is low stakes and easily corrected.
-- **E** is wrong because formatting is low stakes and the coordinator checks it.
-
-</details>
-
-### Item 4
-
 Five event coordinators each produce a weekly event report with Claude, each using their own prompts. Managers complain that the reports use different sections, different metrics and different tone. The coordinators all draw on the same booking data. What change would make the reports consistent?
 
 - A. Share a document of prompting tips that each coordinator can follow.
@@ -145,47 +104,7 @@ Five event coordinators each produce a weekly event report with Claude, each usi
 
 </details>
 
-### Item 5
-
-A finance analyst built a monthly variance workflow in Claude: a Project with instructions, a Drive connector to the ledger export, a code-executed analysis step and a checklist she uses to review the results. She is moving to another team next month, and a colleague will own the workflow from then on. What is the best handover?
-
-- A. Document the setup, sources, review checkpoints and known failure points, and run one month together.
-- B. Share the link to her most recent chat so the colleague can see how it was done.
-- C. Leave the Project as it is, since the colleague can work it out by using it.
-- D. Keep running the workflow herself from her new team so nothing changes.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** A workflow that a colleague will own must be understandable and fixable without the original author. Documentation plus one shared run lets the new owner see each step and where it can go wrong.
-
-- **B** is wrong because one chat shows a single run, not the setup or the review points.
-- **C** is wrong because the colleague would have to rediscover the checkpoints and failure points alone.
-- **D** is wrong because the colleague is meant to own it, and it leaves the team dependent on someone who has moved on.
-
-</details>
-
-### Item 6
-
-A vice president with little AI experience asks a team lead, "Can Claude replace our analysts in producing the quarterly forecast?" The analysts currently gather data, clean it, build the forecast and explain the assumptions to the leadership team. The team lead wants to give an honest answer. Which response is best?
-
-- A. Yes. Claude can produce the full forecast, so the analysts can move to other work.
-- B. No. AI tools are not reliable with numbers, so they should not be used for forecasting.
-- C. Yes. Claude will cut the time spent on the forecast by about three quarters.
-- D. Claude can speed up data preparation and drafting, but analysts still own the assumptions and check the figures.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** It describes what Claude can do, the human oversight that stays in place and a realistic outcome. It neither overstates nor understates capability.
-
-- **A** is wrong because it overstates capability and removes the human judgment and accountability the forecast needs.
-- **B** is wrong because it understates capability; Claude can help with data work, including exact computation through code execution.
-- **C** is wrong because the time saving is invented, and promising a figure sets false expectations.
-
-</details>
-
-### Item 7
+### Item 3
 
 A retail operations team runs a weekly inventory variance check. Each week they paste the stock counts into a chat and ask Claude for the variance by store. Running the same data twice has produced slightly different totals, and the team now distrusts the numbers. What should they change?
 
@@ -205,48 +124,7 @@ A retail operations team runs a weekly inventory variance check. Each week they 
 
 </details>
 
-### Item 8
-
-An operations manager is deciding whether a step in a new workflow should be AI-executed or human-reviewed. The step produces supplier payment instructions. Which two factors most support making this step human-reviewed? (Choose two.)
-
-- A. The step is repetitive and happens many times a week.
-- B. The step takes staff a long time when done by hand.
-- C. Once sent, the instructions go to an outside party and are hard to reverse.
-- D. Claude completes the step much faster than staff do.
-- E. An error would cause financial loss that the team is accountable for.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C and E.** Low reversibility and serious, accountable consequences are core Delegation criteria for keeping a person in the loop. Together they mean a person should check before the step takes effect.
-
-- **A** is wrong because repetition is a reason to bring Claude in, not a reason for review.
-- **B** is wrong because time saved is a benefit of delegation, not a risk that calls for review.
-- **D** is wrong because speed says nothing about the risk of an error.
-
-</details>
-
-### Item 9
-
-During an internal training session, a team lead tells staff, "Claude can't work with spreadsheets, so don't use it for anything involving data." Several staff had planned to use it to analyze survey exports. The organization's policy allows this for non-sensitive data. How should this statement be corrected?
-
-- A. Explain that Claude can analyze uploaded data using code-executed analysis, and that results should still be checked.
-- B. Agree with the statement, since it is safer to keep Claude away from data.
-- C. Tell staff that Claude is fully reliable with spreadsheets and needs no checking.
-- D. Ask staff to stop using Claude until the team lead is retrained.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The original statement understates capability and blocks a valid use. The correction gives an accurate picture: Claude can do the analysis, and people still check the results.
-
-- **B** is wrong because it repeats an inaccurate claim and blocks a use the policy allows.
-- **C** is wrong because it overcorrects into overstating, removing the review step.
-- **D** is wrong because it halts all use over one inaccurate statement.
-
-</details>
-
-### Item 10
+### Item 4
 
 A project manager has finished the research and analysis phases of a plan to reduce new-hire attrition. She has verified findings and a few assumptions that could not be confirmed. Leadership has asked for something they can act on at next week's meeting. What should the final deliverable look like?
 
@@ -265,6 +143,8 @@ A project manager has finished the research and analysis phases of a plan to red
 - **C** is wrong because it throws away the verified work and invites generic advice.
 
 </details>
+
+Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Associate, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate).
 
 ## Next step
 

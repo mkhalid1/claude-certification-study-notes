@@ -70,7 +70,7 @@ Guidance only: the exam gives 120 minutes for 60 items, so about 2 minutes per i
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 5 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -94,27 +94,6 @@ D. Limit the bot to the five findings it ranks as most important.
 
 ### Item 2
 
-A code review system has five finding categories. Developers dismiss about 80% of the "outdated comment" findings, and the team notices they have started dismissing the security findings too, which are usually correct. The team wants to restore trust now and fix the noisy category properly over the next few weeks. Which two actions fit best? (Choose two.)
-
-A. Temporarily disable the "outdated comment" category while its prompt is improved.
-B. Add "be more careful" to the instructions for every category.
-C. Add a `detected_pattern` field to each finding so dismissals can be analysed by the code construct that triggered them.
-D. Raise the confidence threshold for all five categories.
-E. Require a human to approve every finding before it is posted.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and C.** A high false-positive category undermines trust in the accurate ones, so switching it off temporarily restores trust quickly. Recording `detected_pattern` on findings shows which constructs cause dismissals, which is the data needed to fix the category's prompt.
-
-- **B** is wrong because general caution instructions do not meaningfully improve precision.
-- **D** is wrong because confidence filtering is not a reliable precision fix and would also suppress good security findings.
-- **E** is wrong because reviewing every finding by hand does not scale and does not fix the noisy category.
-
-</details>
-
-### Item 3
-
 A platform team uses Claude to generate database migration scripts. After generating each script, the same session is asked to "review the migration critically and list any problems." The review almost never finds anything, yet production incidents keep tracing back to subtle ordering bugs in these scripts. What change is most likely to catch more issues?
 
 A. Turn on extended thinking for the review step in the same session.
@@ -133,48 +112,7 @@ D. Ask the generating session to review the script twice.
 
 </details>
 
-### Item 4
-
-An IT helpdesk agent chooses between `reset_password`, `unlock_account` and `escalate_access_request`. The system prompt already explains each tool in detail. Ambiguous requests like "I can't get into the finance portal since this morning" are still routed inconsistently: sometimes a reset, sometimes an unlock, sometimes an escalation. What is the most effective next step?
-
-A. Add another paragraph of rules describing the difference between the three tools.
-B. Merge the three tools into one `fix_access` tool.
-C. Move tool selection into a keyword-based router in code.
-D. Add 2 to 4 few-shot examples of ambiguous requests that show which tool was chosen and why it beat the plausible alternatives.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** When detailed instructions still give inconsistent results on ambiguous cases, a few targeted examples that show the reasoning behind each choice are the most effective technique. They also help the model generalize to ambiguous requests the examples did not cover.
-
-- **A** is wrong because more instruction text is what is already failing to produce consistent choices.
-- **B** is wrong because merging the tools hides the decision inside one vague contract instead of improving it.
-- **C** is wrong because keyword routing handles ambiguous phrasing poorly and discards the model's understanding.
-
-</details>
-
-### Item 5
-
-A procurement platform extracts supplier certificates into a schema. Every field is required, and the `certificate_type` field is an enum of six values. Two problems appear: when a certificate has no expiry date, the model fills in a plausible one, and new certificate types that are not in the enum get forced into the closest wrong value. Which two schema changes address these problems? (Choose two.)
-
-A. Keep `expiry_date` required and add a prompt line saying "never guess dates".
-B. Make `expiry_date` optional and nullable so the model can return null when the certificate has no expiry.
-C. Turn `certificate_type` into a free-text string with no enum.
-D. Add the twenty most likely future certificate types to the enum now.
-E. Add an `"other"` value to the `certificate_type` enum, paired with a detail string field describing the actual type.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and E.** A nullable field lets the model report that information is absent instead of fabricating a value to satisfy a required field. An `"other"` enum value with a detail string keeps the category structured while handling types the enum does not list.
-
-- **A** is wrong because a required field still pressures the model to produce a value, and the prompt line is only guidance against that pressure.
-- **C** is wrong because free text loses the consistent categories downstream systems rely on.
-- **D** is wrong because no list anticipates every new type, so the same problem returns with the next one.
-
-</details>
-
-### Item 6
+### Item 3
 
 An accounts payable inbox receives invoices, credit notes and purchase orders, mixed together, with no reliable label on which is which. The team defined one extraction tool per document type. With `tool_choice` set to `"auto"`, about 5% of responses come back as a prose description of the document instead of a tool call, and the pipeline fails on them. What setting fits best?
 
@@ -194,28 +132,7 @@ D. Collapse the three tools into one schema where every field from every documen
 
 </details>
 
-### Item 7
-
-An expense platform extracts receipts using a tool with a strict JSON schema. The output always parses, but finance finds receipts where the line items do not add up to the stated total, usually because a discount line was dropped or a value landed in the wrong field. The team wants to catch and correct these automatically. Which two changes fit best? (Choose two.)
-
-A. Have the schema capture a `calculated_total` (sum of extracted line items) alongside the `stated_total`, and flag records where they differ.
-B. Switch from tool use to asking for raw JSON in the text response.
-C. Make the schema stricter by tightening every field's type.
-D. When validation fails, send a follow-up request containing the original receipt, the failed extraction and the specific validation error.
-E. Resend the identical request whenever totals disagree, and keep the result that matches.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and D.** Strict schemas remove syntax errors but not semantic ones like totals that do not sum. A `calculated_total` beside `stated_total` detects the discrepancy, and retrying with the document, the failed extraction and the specific error gives the model what it needs to correct itself.
-
-- **B** is wrong because leaving tool use brings back syntax errors and does nothing for semantic ones.
-- **C** is wrong because tighter types still allow numbers that are valid individually but do not add up.
-- **E** is wrong because an identical retry gives the model no information about what went wrong.
-
-</details>
-
-### Item 8
+### Item 4
 
 A legal operations team extracts the renewal date from each customer contract. For about 10% of contracts, validation keeps failing even after three retries with specific error feedback. Reviewing them, the team finds that these contracts say "renewal terms as set out in Amendment 2", and the amendments are stored in a separate system that the pipeline does not query. What should the team conclude?
 
@@ -235,27 +152,7 @@ D. Make the renewal date required so the model must produce a value.
 
 </details>
 
-### Item 9
-
-A compliance team processes regulatory filings with the Message Batches API to save cost. Each filing must have results within 28 hours of arriving. Batches can take up to 24 hours to process. Filings arrive steadily all day. How often should the team submit a batch of newly arrived filings to guarantee the 28-hour SLA?
-
-A. Once a day.
-B. Every 12 hours.
-C. Every 6 hours.
-D. Every 3 hours.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** In the worst case, a filing arrives just after a submission, waits a full interval, then takes up to 24 hours to process. The interval plus 24 hours must be at most 28 hours, so the interval can be no more than 4 hours. Of the options, only every 3 hours meets that.
-
-- **A** is wrong because the worst case is 24 hours of waiting plus 24 hours of processing, 48 hours in total.
-- **B** is wrong because the worst case is 12 plus 24, 36 hours.
-- **C** is wrong because the worst case is 6 plus 24, 30 hours, which still misses the 28-hour SLA.
-
-</details>
-
-### Item 10
+### Item 5
 
 A research firm submits a nightly Message Batches job of 5,000 document summaries. Last night, 5,000 results came back, and 300 of them were errors because the documents exceeded the context limit. The other 4,700 succeeded. What is the best way to handle the failures?
 
@@ -274,6 +171,8 @@ D. Drop the 300 documents from the report and note them as unavailable.
 - **D** is wrong because the failures are recoverable. Silently dropping them leaves the report incomplete for no reason.
 
 </details>
+
+Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect).
 
 ## Next step
 

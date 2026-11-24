@@ -72,7 +72,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -96,46 +96,6 @@ A software company deploys a subagent whose only job is to summarize open suppor
 
 ### Item 2
 
-A multi-tenant SaaS product adds an agent that answers questions about each customer's CRM records. To make it work quickly, the team put one CRM API key with full admin scope into the system prompt and gave the agent a generic HTTP tool to call the CRM. Every tenant's users talk to the same agent configuration. Which mitigation addresses both the credential exposure and the privilege escalation risk?
-
-- A. Rotate the admin key every week, store previous keys in a vault, and alert on any use of a retired key to limit the damage from a leak.
-- B. Move credentials into the tool layer where the model cannot see them, and call the CRM with each user's delegated token scoped to their tenant and role.
-- C. Encrypt the system prompt at rest in the application database.
-- D. Add an instruction telling the model never to reveal the API key or access other tenants.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The key is exposed because it sits in the model's context, and privileges escalate because every user acts as admin. Keeping secrets in the tool layer fixes the first problem, and delegated, tenant-scoped tokens fix the second.
-
-- **A** is wrong because rotation shortens a leaked key's life but leaves it in context and leaves every user with admin rights.
-- **C** is wrong because the prompt is decrypted before it reaches the model, so the key is still in context.
-- **D** is wrong because an instruction is not an enforceable control and can be overridden by injected content.
-
-</details>
-
-### Item 3
-
-An engineering knowledge assistant must reach 90% answer accuracy before launch. It currently scores 81%. Its p95 latency is 3 seconds against an 8-second limit. Error analysis shows that in most failures the passage with the answer was ranked between sixth and twelfth by the retriever, but only the top five passages are sent to the model. Which change relieves the binding constraint at the least cost to the other?
-
-- A. Switch to a smaller model tier to reduce latency further.
-- B. Add prompt caching to the system prompt.
-- C. Retrieve the top fifteen passages and apply a reranker before sending the best five to the model.
-- D. Move to the largest model tier so it can infer answers when the passage is missing, accepting the higher cost per answer.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** Accuracy is binding and latency has five seconds of slack. Deeper retrieval with reranking brings the missing passages into context, at a modest latency cost the budget can absorb.
-
-- **A** is wrong because it improves the dimension that already has slack and likely lowers accuracy.
-- **B** is wrong because caching reduces cost and latency, not retrieval misses.
-- **D** is wrong because no model can reliably answer from a passage it never received, and the change is costly.
-
-</details>
-
-### Item 4
-
 A retailer runs about 300 concurrent agent sessions that handle order questions. After a vendor update, the order-lookup tool began returning an empty list with a success status for many valid orders. For three days, agents told customers that no orders were found. The monitoring stack tracked tool error rates, HTTP status codes and latency, and none of them moved. Which two monitoring additions would most likely have surfaced the failure? (Choose two.)
 
 - A. Track the share of empty results per tool over time and alert on sudden shifts.
@@ -155,47 +115,7 @@ A retailer runs about 300 concurrent agent sessions that handle order questions.
 
 </details>
 
-### Item 5
-
-A professional services firm wants an assistant for its internal policy handbook. The handbook is about 80,000 tokens, changes once a quarter, and receives about 200 questions a day. Many questions need information from several sections at once, such as travel rules combined with expense limits. Staff expect answers within a few seconds, and the team wants the highest accuracy with the least infrastructure to maintain. Which retrieval approach fits best?
-
-- A. Send the full handbook in context on each request, with prompt caching on the handbook.
-- B. Build a chunked vector index with a retrieval pipeline and send the top five chunks.
-- C. Give the agent search tools and let it query the handbook iteratively for each question.
-- D. Fine-tune a model on the handbook so retrieval is not needed.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The handbook fits comfortably in the context window, changes rarely and is queried at low volume. Full-corpus context lets the model connect sections directly, and caching keeps the repeated cost down, with nothing to index or maintain.
-
-- **B** is wrong because chunked retrieval can split cross-section answers and adds an index to maintain for no clear gain.
-- **C** is wrong because iterative search adds latency and calls to reach content that could simply be in context.
-- **D** is wrong because fine-tuning is costly, hard to update each quarter and less reliable for exact policy details.
-
-</details>
-
-### Item 6
-
-An industrial equipment maker builds a support assistant over two million pages of product manuals. Technicians search with exact part numbers and error codes, such as "E-4471 on model XR-9". Pure embedding retrieval often misses these exact strings, and retrieved chunks frequently lose track of which product and section they came from. The answer must be grounded in a manual or clearly say none was found. Which configuration fits best?
-
-- A. Switch to a larger, more recent embedding model, re-embed the existing chunks, and raise the number of chunks retrieved per query from five to twenty.
-- B. Load the full corpus into context so nothing is missed.
-- C. Index whole manuals as single chunks so product and section context is never lost, and let the model find the relevant page inside each manual.
-- D. Prepend a short product and section context to each chunk before indexing, combine keyword and semantic search with reranking, and return a clear "not found" when nothing passes a relevance threshold.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** Contextual chunk headers restore product and section identity, keyword search catches exact codes that embeddings miss, reranking orders the combined results, and the threshold gives the required fallback instead of an ungrounded answer.
-
-- **A** is wrong because a better embedding model still struggles with exact identifiers and does nothing about lost chunk context.
-- **B** is wrong because two million pages is far beyond any context window.
-- **C** is wrong because whole-manual chunks dilute relevance and quickly exceed useful context sizes.
-
-</details>
-
-### Item 7
+### Item 3
 
 A large enterprise wants Claude to work with its internal incident-management system. Engineers use Claude Code, analysts use the Claude desktop app, and two teams are building custom agents, and all of them need the same set of incident tools. Security wants one place to define those tools, enforce authentication and audit usage, rather than each team writing its own client code. Which connection mechanism do these constraints favor?
 
@@ -215,48 +135,7 @@ A large enterprise wants Claude to work with its internal incident-management sy
 
 </details>
 
-### Item 8
-
-A document-processing service calls Claude from 40 worker processes. Throughput data from a peak hour shows bursts of rate-limit errors every few seconds. Traces show that each worker retries a failed request immediately, so all workers retry at the same moment, and the next burst follows straight away. The requests are read-only summarization calls with no side effects. Which two controls best address this pattern? (Choose two.)
-
-- A. Attach an idempotency key to every summarization request.
-- B. Honor the retry hint returned with rate-limit errors and use exponential backoff with random jitter.
-- C. Raise the maximum number of immediate retries from three to twenty.
-- D. Add client-side throttling, such as a shared queue that keeps the request rate under the account's limit.
-- E. Move every request to the largest model tier.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and D.** The pattern is synchronized instant retries against a rate limit. Backoff with jitter spreads retries out and respects the server's hint (B), and client-side throttling keeps demand under the limit in the first place (D).
-
-- **A** is wrong because the calls are read-only, so duplicates cause no harm and idempotency addresses nothing here.
-- **C** is wrong because more immediate retries make each burst larger.
-- **E** is wrong because changing the tier does not change how requests are paced.
-
-</details>
-
-### Item 9
-
-An internal platform agent can act on any of about 300 internal API operations. Loading every tool definition into context up front uses about 90,000 tokens, and evaluations show the agent sometimes picks a similar-sounding wrong tool. A typical task uses three to five operations, but which ones vary widely, so none can be removed. Users accept a short delay while the agent looks up tools. Which strategy fits best?
-
-- A. Load all 300 definitions up front in a cached prefix, so the cost of carrying them on every call stays low, which also keeps every tool one step away.
-- B. Use progressive discovery: give the agent a way to search for tools and load only the definitions a task needs.
-- C. Create one subagent per operation, each with a single tool.
-- D. Permanently remove all operations outside the ten most used.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** Each task needs a few tools from a large, unpredictable set, and users tolerate a short lookup. Loading definitions on demand frees most of the context and reduces confusion between similar tools.
-
-- **A** is wrong because caching lowers cost but leaves 90,000 tokens of similar definitions in context, which is what causes wrong selections.
-- **C** is wrong because 300 subagents add huge coordination overhead and still require choosing the right one.
-- **D** is wrong because the stem says any operation may be needed, so removal breaks real tasks.
-
-</details>
-
-### Item 10
+### Item 4
 
 A telecom's sales agent chats with customers about plans. When a customer raises a billing dispute, the conversation must move to the billing team's agent, which owns refund tools, its own policies and its own audit trail. The dispute usually takes several more turns with the customer, and the customer should not have to repeat what they already said. The billing team will not let other agents hold its refund tools. Which mechanism fits these constraints?
 
@@ -275,6 +154,8 @@ A telecom's sales agent chats with customers about plans. When a customer raises
 - **D** is wrong because it loses the context and forces the customer to repeat everything.
 
 </details>
+
+Want more? The free timed Architect, Professional diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Professional diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect-professional?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect-professional).
 
 ## Next step
 

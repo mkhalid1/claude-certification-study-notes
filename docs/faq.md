@@ -30,7 +30,7 @@ Yes. Each exam has an official guide, and the three updating exams have two: one
 
 ## Is there an official practice test?
 
-Anthropic's FAQ says the practice exam on its previous platform was retired in the move to Pearson. Each exam guide includes sample questions. These notes have 10 original practice items per domain, and the [diagnostic page](diagnostic.md) lists free timed diagnostics.
+Anthropic's FAQ says the practice exam on its previous platform was retired in the move to Pearson. Each exam guide includes sample questions. These notes have 3 to 5 original practice items per domain, and the [diagnostic page](diagnostic.md) lists free timed diagnostics.
 
 ## Where can I find Claude certification exam questions?
 

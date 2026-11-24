@@ -61,7 +61,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -88,52 +88,6 @@ D. Switch the service to the Message Batches API so that failed requests are ret
 
 ### Item 2
 
-A retail analytics team classifies about 40,000 product reviews every night into sentiment and topic labels. Nobody looks at the results until the morning stand-up, the next business day. The current script sends realtime requests from a single worker and regularly hits rate limits, and finance has asked the team to cut the cost of the job. The prompt and model are already producing good labels. What should the team change?
-
-A. Submit the reviews through the Message Batches API, keyed by a `custom_id` per review, and collect the results when the batch ends.
-
-B. Keep realtime requests but add 30 parallel workers so the job finishes faster and stays inside the overnight window.
-
-C. Stream each response so that labels start arriving sooner and the script spends less time waiting on each request.
-
-D. Concatenate all 40,000 reviews into one very large realtime request so the system prompt is only sent once.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** Nobody is waiting on these results, the window is long, and cost is the constraint. That is the case batch processing is built for: it runs asynchronously at a lower price than realtime calls. Results can arrive in any order, so a `custom_id` per review lets the script match each label to its review.
-
-- **B** is wrong because more parallel realtime calls increase rate-limit pressure and do nothing for cost.
-- **C** is wrong because streaming improves perceived latency for a waiting user. It does not lower cost or help an unattended job.
-- **D** is wrong because one huge request risks the context and output limits, makes one failure lose everything, and makes per-review attribution unreliable.
-
-</details>
-
-### Item 3
-
-A travel assistant lets Claude call `search_flights` and `search_hotels`. For a trip-planning question, the assistant turn comes back with `stop_reason: "tool_use"` and two `tool_use` blocks, one for each tool. The handler runs only the first tool, appends a user message with that one `tool_result`, and sends the next request. The API rejects it with a 400 error about tool use blocks that have no matching results. What is the correct fix?
-
-A. Disable parallel tool use globally so that Claude can only ever request one tool per turn.
-
-B. Send the second tool's output as a plain text message in a separate user turn after the first `tool_result`.
-
-C. Drop the second `tool_use` block from the stored assistant message before sending the next request.
-
-D. Run both tools and return both `tool_result` blocks, each with its matching `tool_use_id`, in a single user message.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** Every `tool_use` block in an assistant turn needs a `tool_result` with the same id in the next user message. When Claude requests several tools at once, all the results go back together in that one message. The handler broke that contract by answering only one call.
-
-- **A** is wrong because it removes a useful capability to avoid fixing the handler, and makes multi-tool questions slower.
-- **B** is wrong because plain text is not a `tool_result`, and splitting results across turns still leaves the first request unanswered in the structure the API expects.
-- **C** is wrong because editing Claude's turn hides the call it made, so the conversation history no longer matches what happened.
-
-</details>
-
-### Item 4
-
 A platform team runs a Claude-powered contract summariser in development, staging, and production. Last month a production incident was traced to a prompt that someone edited directly in the production config, and to a model alias that moved to a newer version without anyone testing it. The team now wants every behaviour change to be traceable to a commit and easy to roll back, with staging always proving a change before production gets it. Choose two.
 
 A. Let the on-call engineer edit the production prompt in place during incidents, and copy the change back into the repository afterwards.
@@ -157,53 +111,7 @@ E. Pin an explicit model identifier in each environment's config and promote a n
 
 </details>
 
-### Item 5
-
-An insurance intake pipeline uploads customer files through the Files API and then sends one Messages request per file. Customers submit a mix of PDF policy documents and PNG photos of damaged property. The code builds every request with a `document` content block that references the uploaded `file_id`. PDF requests succeed, but every PNG request fails with a 400 error. Which change fixes the ingestion defect?
-
-A. Convert every PNG to base64 and paste the string into a text block so that the request no longer depends on the Files API.
-
-B. Choose the content block type from the file's type: reference images in an `image` block and PDFs in a `document` block.
-
-C. Retry the PNG requests with exponential backoff, because the uploaded file may not have finished processing yet.
-
-D. Re-upload each PNG with a `.pdf` file name so that it is accepted by the existing `document` block.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** A file referenced by `file_id` must sit in a content block that matches its type. Images go in `image` blocks and PDFs or plain text go in `document` blocks. The failure is deterministic and limited to one file type, which points straight at the block type.
-
-- **A** is wrong because base64 pasted into a text block is just a long string of characters. Claude would not see it as an image.
-- **C** is wrong because a 400 on every PNG is a request error, not a transient condition, so retrying will not help.
-- **D** is wrong because renaming does not change what the file is, and it makes the pipeline harder to debug.
-
-</details>
-
-### Item 6
-
-A bank builds a support assistant that answers questions about a customer's recent card transactions. To keep the code simple, the backend sends the customer's full profile with every request: name, address, date of birth, national ID number, all accounts, and 24 months of transactions. A new data-handling requirement says that only the data needed to answer a question may leave the bank's application, and national ID numbers must never leave it. Which design meets the requirement?
-
-A. Have the backend select and send only the fields and transaction window the question needs, with identifiers such as the national ID removed before the request is built.
-
-B. Keep sending the full profile but add a system prompt instruction telling Claude never to repeat the national ID number in answers.
-
-C. Keep sending the full profile but mask the national ID in the user interface before the answer is displayed.
-
-D. Move the full profile into a cached system prompt block so that it is sent once and reused across requests.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The requirement is about what crosses the application boundary, so the control has to sit before the request is sent. Minimising and redacting in the backend means the restricted data never leaves the application. It also keeps the request smaller.
-
-- **B** is wrong because the data has already left the application. An instruction about output does not change what was sent.
-- **C** is wrong because masking in the UI happens after the data crossed the boundary, so it fails the requirement.
-- **D** is wrong because caching changes cost and latency, not exposure. The data is still sent to the model.
-
-</details>
-
-### Item 7
+### Item 3
 
 A developer builds a recipe assistant on the Messages API. Each time the user types something, the app sends a request containing the system prompt and only the user's newest message. Users complain that when they say "make it vegetarian", the assistant asks which recipe they mean, even though it suggested one a moment ago. Logs show no errors. What is the defect?
 
@@ -226,55 +134,7 @@ D. The app should enable prompt caching, which stores the conversation on the se
 
 </details>
 
-### Item 8
-
-A writing tool streams Claude's responses into an editor. The handler checks that the HTTP response status is 200, then appends text from each `content_block_delta` event until `message_stop` arrives. During a busy period, some users are left with a partial draft and a spinner that never stops. Server logs for those sessions show that, after a few deltas, the stream delivered an `error` event with type `overloaded_error` and no `message_stop`. What should the handler do?
-
-A. Ignore unknown event types and keep the connection open until `message_stop` eventually arrives.
-
-B. Raise `max_tokens` so that the model has more room to finish the response before the stream closes.
-
-C. Switch to non-streaming requests, because errors can only be reported in the HTTP status of a non-streaming response.
-
-D. Treat an `error` event as a failed response: stop the spinner, mark the partial text as incomplete, and retry the request with backoff because the error is transient.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** A stream that started with HTTP 200 can still fail partway through, and the API reports that as an `error` event in the stream. Overload is transient, so the right recovery is to mark the partial output as incomplete and retry with backoff. The handler only knew how to finish on `message_stop`, so it hung.
-
-- **A** is wrong because no `message_stop` will follow an error event, so the spinner never stops.
-- **B** is wrong because the logs show an overload error, and a larger output limit has no effect on overload.
-- **C** is wrong because it gives up streaming to avoid a handling bug. Streaming errors are reported in-stream and can be handled there.
-
-</details>
-
-### Item 9
-
-A data team runs a backfill that summarises 200,000 support tickets through realtime Messages calls. They start 20 worker threads, and each worker retries immediately whenever it receives a 429 `rate_limit_error`. Within minutes almost every request is failing with 429, and the job makes little progress. The job is not urgent, but it must finish within the week without manual babysitting. Choose two.
-
-A. On a 429, wait before retrying, using the `retry-after` header when present and exponential backoff with jitter otherwise.
-
-B. Treat 429 responses as invalid requests and drop those tickets from the backfill so the remaining work can continue.
-
-C. Lower the number of concurrent workers or add a client-side rate limiter so the steady request rate stays within the organisation's limits.
-
-D. Create several more API keys in the same workspace and spread the workers across them to multiply the available rate limit.
-
-E. Increase `max_tokens` on every request so that each call does more work and fewer calls are needed overall.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and C.** Immediate retries make a rate-limit problem worse, because every failure turns into another request at once. Backing off as the server asks lets capacity recover. Smoothing the steady request rate keeps the job under its limits in the first place. Together they let an unattended job finish reliably.
-
-- **B** is wrong because a 429 is transient. Dropping those tickets loses data that would have succeeded on a later attempt.
-- **D** is wrong because rate limits are set for the organisation and its workspaces, so keys in the same workspace share the same limits. Extra keys add no capacity, only more secrets to manage.
-- **E** is wrong because `max_tokens` caps the output of each response. It does not combine tickets or reduce the number of requests.
-
-</details>
-
-### Item 10
+### Item 4
 
 An internal research agent uses adaptive thinking and calls a `query_warehouse` tool. To save tokens, the developer's loop keeps only the `text` and `tool_use` blocks from each assistant turn, discarding the thinking blocks, before appending the turn to history and sending the `tool_result`. Since that change, the API rejects some continuation requests and the agent's multi-step reasoning has become noticeably worse. Which change is correct?
 
@@ -296,6 +156,8 @@ D. Move the tool results into the system prompt so that the assistant turn no lo
 - **D** is wrong because tool results belong in `tool_result` blocks answering specific `tool_use` ids. The system prompt is not part of the tool-use protocol.
 
 </details>
+
+Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Developer, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer).
 
 ## Next step
 

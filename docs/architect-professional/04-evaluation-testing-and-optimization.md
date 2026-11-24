@@ -69,7 +69,7 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -93,46 +93,6 @@ A hospital group uses Claude to summarize discharge notes for primary care docto
 
 ### Item 2
 
-An insurer's underwriting assistant drafts a risk note and suggests a risk tier for each commercial policy application. The team wants a release gate for prompt changes. What the business cares about is that underwriters assign the correct tier and can accept notes with only light edits. Production traffic is mostly small businesses, but a small share of large, complex applications drives most premium value. Which evaluation design fits best?
-
-- A. Score each new note's word overlap with the previous prompt's output on the same applications, and block changes that drift too far.
-- B. Have senior engineers write twenty clear-cut example applications covering each risk tier, and require all twenty to pass before any prompt change ships.
-- C. Use historical applications labeled with the underwriter's final tier, measure tier agreement and edit effort, and sample the set to match production mix while including enough large, complex cases.
-- D. Launch the change and survey underwriters after a month.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** The labels come from the real business decision, the criteria match the outcome the business cares about, and the sample reflects the production mix while making sure the high-value cases are present. That makes it a valid gate for prompt changes.
-
-- **A** is wrong because similarity to the old output measures change, not correctness, and would penalize improvements.
-- **B** is wrong because a small, easy, engineer-written set does not reflect the deployed distribution.
-- **D** is wrong because a post-launch survey is not a release gate.
-
-</details>
-
-### Item 3
-
-A team uses Claude as a pairwise judge to compare answers from two prompt versions. The judge prefers whichever answer is shown first in about 70% of comparisons. Human reviewers given the same pairs, in random order, split close to evenly. Which correction addresses the responsible bias?
-
-- A. Replace the judge with the largest available model tier, which is less likely to be swayed by presentation and more consistent across runs.
-- B. Run each comparison in both orders and count a preference only when the judge prefers the same answer both times.
-- C. Add an instruction telling the judge to be fair and unbiased.
-- D. Shorten both answers before judging so they are easier to compare.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** A preference that tracks display order is position bias. Evaluating both orders and keeping only consistent preferences cancels the order effect by design.
-
-- **A** is wrong because larger judges can still show position bias, and the change does not test for it.
-- **C** is wrong because an instruction does not reliably remove a systematic order effect.
-- **D** is wrong because length is not the bias shown in the evidence.
-
-</details>
-
-### Item 4
-
 An analytics vendor compares two configurations using a rubric-based judge. Configuration A uses the same model as the judge. Configuration B uses a different model. The judge scores A clearly higher, and it also gives higher scores to longer answers. Human reviewers prefer B, and they prefer shorter answers that still cover the rubric. Tests showed that swapping answer order has no effect. Which two corrections address the biases responsible? (Choose two.)
 
 - A. Run the judge at a higher temperature to vary its scores.
@@ -152,47 +112,7 @@ An analytics vendor compares two configurations using a rubric-based judge. Conf
 
 </details>
 
-### Item 5
-
-A team must choose between two system prompts for a support assistant. Its evaluation budget is 600 model runs. It has a 200-case evaluation set, and earlier testing showed that about 15% of cases flip between pass and fail when the same configuration is run twice. The team wants a comparison that shows whether any difference comes from the prompt rather than run-to-run variance. Which design fits the budget and the goal?
-
-- A. Run prompt A on cases 1 to 100 and prompt B on cases 101 to 200, three times each, using the full budget.
-- B. Run prompt A 300 times and prompt B 300 times on the single hardest case.
-- C. Run both prompts once on all 200 cases and compare the pass rates.
-- D. Select 100 representative cases and run each prompt three times on every case, comparing per-case pass rates between prompts.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** One hundred cases, three trials and two prompts is exactly 600 runs. Pairing both prompts on the same cases removes case differences, and repeated trials measure variance per case so the prompt effect can be separated from noise.
-
-- **A** is wrong because each prompt sees different cases, so differences in case difficulty get mixed up with the prompt effect.
-- **B** is wrong because one case says nothing about the distribution the assistant will see.
-- **C** is wrong because single runs give no way to tell a real difference from the 15% flip rate.
-
-</details>
-
-### Item 6
-
-A customer asked an e-commerce assistant about the return window for orders shipped to Germany. The trace shows the retrieval step returned the correct EU policy passage, which states a 14-day window, and that passage is in the model's context. No tool calls failed. The final answer told the customer the window was 45 days, a figure that appears nowhere in the context or the system prompt. What is the root cause, and what is the corrective action?
-
-- A. Hallucination. Require answers to cite the retrieved passage for each policy figure and add a groundedness check before responses are sent.
-- B. Retrieval failure. Increase the number of retrieved passages so the correct policy outweighs any conflicting text.
-- C. Tool error. Add retries to the retrieval tool.
-- D. Model mismatch. Move the assistant to the largest tier.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** Retrieval worked and no tool failed, but the answer states a figure found nowhere in the context. That is an ungrounded generation. Requiring citations and checking groundedness before sending targets that stage directly.
-
-- **B** is wrong because the correct passage was already retrieved.
-- **C** is wrong because the trace shows no tool errors.
-- **D** is wrong because nothing shows the task is beyond the current tier, and a larger model does not guarantee grounded figures.
-
-</details>
-
-### Item 7
+### Item 3
 
 A publisher's telemetry shows that 60% of Claude spend comes from a nightly job that re-summarizes every article updated that day. Results are needed by the next morning. The remaining 40% comes from an interactive reader chat, which only meets its quality floor on the current tier. Each nightly request is a different article with a short 500-token instruction block, and its cache hit rate is near zero. Which optimization reduces spend most without breaching the quality floor?
 
@@ -212,48 +132,7 @@ A publisher's telemetry shows that 60% of Claude spend comes from a nightly job 
 
 </details>
 
-### Item 8
-
-A bank's document assistant runs on a model version that will be deprecated in 90 days. Regression results for the candidate version are better overall, but two categories regress: structured field extraction now sometimes changes output formatting, and some answers about loan terms are worded differently enough to fail exact-match checks that were tuned to the old model. Which two actions fit the timeline? (Choose two.)
-
-- A. Re-tune the prompts for the two regressed categories and re-run the evaluations on the candidate version.
-- B. Defer the migration until after the deprecation date, when more is known.
-- C. Pin the current version indefinitely so behavior never changes.
-- D. Point production at an alias that always tracks the newest model, so future migrations happen automatically.
-- E. Re-baseline the evaluation suite on the candidate version, then pin that exact version in production once it passes the gates.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and E.** With 90 days to go, the team should fix the specific regressions through prompt changes (A) and refresh its baseline and checks for the new version before pinning it (E). Together, these manage drift inside the timeline.
-
-- **B** is wrong because deferring past the deprecation date leaves production on a model that is going away.
-- **C** is wrong because a deprecated version cannot be pinned indefinitely.
-- **D** is wrong because a moving alias lets behavior change without evaluation, which is the drift the team must manage.
-
-</details>
-
-### Item 9
-
-A legal research tool runs on a model version that the deprecation schedule shows will remain available for about twelve more months. A newer candidate version improves general answers, but in regression testing it misstates citation details in a small share of case-law answers, which is the product's highest-stakes category. No current customer has asked for the new version's capabilities. Which response is most appropriate?
-
-- A. Migrate now, since the newer version is better on average.
-- B. Migrate now and fix the citation regression after launch, using customer reports to find which case-law answers are affected, with a hotfix process ready.
-- C. Keep the current version pinned, defer the migration, and schedule a re-evaluation of later versions well before the deprecation date.
-- D. Remove the case-law citation tests from the suite so the candidate version passes.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** The timeline leaves plenty of room, the regression is in the highest-stakes category, and there is no business pressure to move. Pinning and deferring with a planned re-evaluation manages risk without wasting the remaining window.
-
-- **A** is wrong because average improvement does not justify a regression in the most important category.
-- **B** is wrong because letting customers find citation errors is unacceptable for a legal product.
-- **D** is wrong because removing the tests hides the regression instead of managing it.
-
-</details>
-
-### Item 10
+### Item 4
 
 A market-intelligence system uses an orchestrator and four subagents. A client's report said "no competitor pricing data is available", although public pricing pages exist. The trace shows that the pricing subagent's web search call timed out, the subagent returned an empty result marked as a success, and the orchestrator wrote the report from what it received. The orchestrator's prompt and the other subagents behaved as expected. What is the root cause, and what is the corrective action?
 
@@ -272,6 +151,8 @@ A market-intelligence system uses an orchestrator and four subagents. A client's
 - **C** is wrong because the report faithfully reflected its inputs. The input itself was wrong.
 
 </details>
+
+Want more? The free timed Architect, Professional diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Professional diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect-professional?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect-professional).
 
 ## Next step
 

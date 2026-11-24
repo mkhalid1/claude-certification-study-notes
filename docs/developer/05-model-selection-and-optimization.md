@@ -60,32 +60,9 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 3 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
-
-A coding agent runs long sessions of 60 to 100 turns. Its request has a large, fixed system prompt with a cache breakpoint at the end of it, followed by the growing conversation. Usage data shows cache reads covering the system prompt on every request, but uncached input tokens grow with every turn and now dominate the bill late in sessions. The team wants to cut cost without changing what the model sees. Which change fits best?
-
-A. Remove the breakpoint from the system prompt and put a single breakpoint on the first user message instead.
-
-B. Shorten the system prompt by half so that each request carries fewer tokens.
-
-C. Add a rolling breakpoint on the latest turn, so each request reuses the conversation prefix cached by the previous request.
-
-D. Switch to a smaller model tier, since the conversation history is billed at the same rate whichever tier reads it.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** In a long session, the conversation history is most of the input, and it is re-sent each turn. A breakpoint that moves to the end of the latest turn caches that growing prefix, so the next request reads it from cache and pays full price only for the new turn. The system prompt breakpoint can stay as well.
-
-- **A** is wrong because it drops the reliable system prompt cache and still leaves the growing history uncached.
-- **B** is wrong because the system prompt is already cached, so shortening it saves little and may change behaviour.
-- **D** is wrong because a different tier changes quality and behaviour, which the team ruled out, and it ignores the actual driver.
-
-</details>
-
-### Item 2
 
 A support summarisation service caches a long system prompt with tool definitions. Usage logs show `cache_creation_input_tokens` high on every request and `cache_read_input_tokens` at zero, even for requests seconds apart. Reviewing the code, the team finds that the first line of the system prompt is "Current time: " followed by the exact time of the request, which the model uses to judge ticket age. What should they change?
 
@@ -108,55 +85,7 @@ D. Remove prompt caching, since it cannot work for prompts that include time inf
 
 </details>
 
-### Item 3
-
-An email client adds an inline "suggest a reply" feature. Suggestions must appear within about a second at the 95th percentile, traffic is millions of requests a day, and each request is short and simple. A regression eval on 1,000 real emails shows that the smallest current model tier, with extended thinking off, meets the product's quality bar. Larger tiers score slightly higher but miss the latency target. Choose two.
-
-A. Use the most capable tier at maximum effort, because the higher quality score justifies the extra cost and time.
-
-B. Choose the smallest tier that passes the eval, since it meets the quality bar and the latency target at the lowest cost.
-
-C. Send the suggestions through the Message Batches API to reduce cost on the high volume.
-
-D. Keep extended thinking off for this route, because the eval showed quality holds without it and it keeps responses fast and cheap.
-
-E. Turn on the longest available reasoning for every suggestion so that the replies are as considered as possible.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and D.** The binding constraint is latency, and the eval shows the smallest tier without extended thinking meets the quality bar. Choosing that tier and that setting meets every requirement at the lowest cost. The choice is justified by measurement, not by preference.
-
-- **A** is wrong because the larger tiers miss the latency target, which is binding.
-- **C** is wrong because batch results can take hours, and these users need a suggestion in about a second.
-- **E** is wrong because more reasoning adds time and tokens to a simple task that already meets its bar.
-
-</details>
-
-### Item 4
-
-A healthcare documentation team runs a summarisation feature on a pinned model version. A new model version is released, and a teammate proposes switching production to it today, since it scores better on public benchmarks. The team's golden set of 300 labelled clinical notes has never been run against the new version, and the summaries feed a regulated workflow. What is the right plan?
-
-A. Switch production today and watch user complaints for a week before deciding whether to keep it.
-
-B. Switch to the model alias that always points to the newest version, so that future upgrades happen automatically.
-
-C. Stay on the current version indefinitely, because any new model might change behaviour.
-
-D. Run the golden set against the new version in staging, compare results and review any changed behaviour, adjust prompts if needed, then promote by updating the pinned version.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** New releases can change behaviour in ways benchmarks do not show. For a regulated workflow, the team's own golden set is the evidence that counts. Running it in staging, reviewing differences, and promoting by changing the pinned version keeps the upgrade controlled and reversible.
-
-- **A** is wrong because using production users as the test puts a regulated workflow at risk.
-- **B** is wrong because an auto-moving alias removes the control the team needs.
-- **C** is wrong because refusing all upgrades gives up improvements. The answer is to test, not freeze.
-
-</details>
-
-### Item 5
+### Item 2
 
 A marketing team generates product descriptions and notices that the same input produces differently worded text each time. Legal has approved one description per product and requires that the approved text be shown every time a product page loads. A developer suggests passing a fixed random seed in each request so the model always generates the same words. What is the right approach?
 
@@ -179,78 +108,7 @@ D. Shorten the prompt so that there is less room for variation in the output.
 
 </details>
 
-### Item 6
-
-A research assistant's monthly cost has doubled. The usage breakdown shows input tokens are modest and mostly cached, but output tokens make up about 80% of spend. Reviewing outputs, the team sees long preambles, repeated restatements of the question, and multi-page answers where users asked for a short list. The quality team says users prefer shorter answers. Which change targets the dominant cost driver?
-
-A. Constrain output: specify the expected length and format in the prompt, for example a list of at most five items with one line each, set `max_tokens` to fit, and test whether a lower effort level holds quality.
-
-B. Add more cache breakpoints to the system prompt so that more input is read from cache.
-
-C. Move the workload to the Message Batches API, since output tokens are not billed in batches.
-
-D. Remove the conversation history from each request so that the model has less to respond to.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The data says output tokens are the driver, and users want shorter answers anyway. Telling the model the length and format you want, and sizing `max_tokens` to that, cuts output directly. Lower effort can trim further, but only if the eval shows quality holds.
-
-- **B** is wrong because input is already mostly cached and is not the driver.
-- **C** is wrong because batches lower the price of a request but output is still billed. Batch also does not fix verbosity.
-- **D** is wrong because removing history damages answers and targets input, which is not the problem.
-
-</details>
-
-### Item 7
-
-A financial-analysis product has three routes: a quick "define this term" lookup, a news summary, and a multi-step valuation that reasons over several tables. All three run at low effort to save cost. The regression eval shows the first two meet their quality bars, but the valuation route fails a quarter of its cases, with reasoning errors in the intermediate steps. What should the team change?
-
-A. Raise effort on all three routes to the maximum so that every answer gets the deepest reasoning.
-
-B. Leave effort low everywhere and add a sentence asking the model to think harder on valuations.
-
-C. Raise the effort level on the valuation route only, then re-run its eval to confirm the gain is worth the extra tokens.
-
-D. Split each valuation into three separate requests at low effort so that each step is smaller.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** Effort is a per-route setting that trades tokens and time for thoroughness. Only the multi-step route is failing, and reasoning-heavy work responds to higher effort. Raising it there and measuring keeps the other routes cheap.
-
-- **A** is wrong because it raises cost and latency on routes that already pass.
-- **B** is wrong because effort is the control built for this. A prompt request is a weaker substitute.
-- **D** is wrong because splitting without more reasoning may not fix the intermediate errors, and it adds orchestration the team would need to build and test.
-
-</details>
-
-### Item 8
-
-A compliance team runs a nightly job that reviews about 15,000 new transactions. Each request starts with the same 6,000-token block of review rules, followed by one transaction. Results are read the next morning. The cost report shows this job is now the biggest line on the bill, with nearly all of it uncached input tokens on realtime requests. The team wants the largest saving without changing the model's output. Choose two.
-
-A. Run the job through the Message Batches API, since nobody needs the results until morning.
-
-B. Switch the job to a larger model tier so that each review is more thorough.
-
-C. Split each transaction into several smaller requests so that each request uses fewer tokens.
-
-D. Raise `max_tokens` so that each review has room to cover every rule.
-
-E. Put a cache breakpoint after the shared review rules so the repeated block is read from cache instead of billed in full each time.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and E.** The two drivers are realtime pricing for work nobody waits on, and a large identical block sent 15,000 times. Batch processing addresses the first. Caching the shared rules addresses the second. Neither changes what the model sees, so output stays the same.
-
-- **B** is wrong because a larger tier raises cost and changes behaviour.
-- **C** is wrong because splitting repeats the rules in even more requests.
-- **D** is wrong because `max_tokens` caps output and does nothing about the input cost.
-
-</details>
-
-### Item 9
+### Item 3
 
 A team is deciding whether to invest a sprint in prompt caching for a document Q&A service. Before starting, the engineering manager asks for an estimate of the likely saving, based on data the team can pull from existing logs. Which measurement best supports that estimate?
 
@@ -273,28 +131,7 @@ D. The share of input tokens that form a stable prefix shared across requests, a
 
 </details>
 
-### Item 10
-
-An internal knowledge assistant uses a large, stable system prompt with a cache breakpoint after it. Usage is bursty: people ask a question, read the answer, and ask the next one about 15 to 25 minutes later. Logs show that nearly every request writes the cache again instead of reading it, even though the prompt is byte-identical between requests. What change fits best?
-
-A. Remove the cache breakpoint, since bursty traffic cannot use caching.
-
-B. Use the 1-hour cache lifetime on that breakpoint so the entry survives the 15 to 25 minute gaps, accepting its higher write cost.
-
-C. Add a timestamp to the system prompt so that each request is tracked separately in the cache.
-
-D. Move the system prompt into the user turn so that it is cached with the question.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The prefix is stable, so the misses come from timing. The default lifetime is about 5 minutes, so with 15 to 25 minute gaps each entry expires before the next request. The 1-hour lifetime costs more per write but keeps the entry alive across the gaps, so most requests become cache reads.
-
-- **A** is wrong because caching works for bursty traffic once the lifetime matches the gaps.
-- **C** is wrong because a changing timestamp guarantees misses.
-- **D** is wrong because putting the stable prompt in with a changing question breaks the shared prefix.
-
-</details>
+Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Developer, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer).
 
 ## Next step
 

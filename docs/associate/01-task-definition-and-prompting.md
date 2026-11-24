@@ -62,7 +62,7 @@ Guidance only: the exam gives 120 minutes for 70 items, which is about 1.7 minut
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -86,46 +86,6 @@ An operations lead at a logistics company asks Claude to "write a welcome email 
 
 ### Item 2
 
-A program manager needs a 30-page quarterly program review that covers status from twelve workstreams, a consolidated risk register and a set of recommendations. She pasted all the source material into one long prompt and asked for the full review. The result covered every workstream in two sentences and gave vague recommendations. She has a week before the review is due. What is the best way to restructure the work?
-
-- A. Rewrite the single prompt with more detail and ask for a longer response.
-- B. Ask Claude to think harder and produce the full review again in one response.
-- C. Stage it: summarize each workstream against a set template, check those summaries, then build the risk register and draft recommendations from them.
-- D. Run twelve separate chats, one per workstream, and paste the twelve outputs together as the final review.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** The deliverable has several distinct parts that depend on each other, which is the case for decomposition. Staging the work with a check between steps gives each part proper depth and catches errors before the recommendations are built on them.
-
-- **A** is wrong because a longer single request still spreads one response across too many parts.
-- **B** is wrong because the problem is the structure of the request, not effort within one response.
-- **D** is wrong because it skips the synthesis step; a review needs a consolidated risk register and recommendations, not twelve pasted summaries.
-
-</details>
-
-### Item 3
-
-A marketing analyst asks Claude to "summarize this customer survey into key themes for the leadership deck." Claude returns fourteen themes, each with a full paragraph. The leadership deck template allows one slide with at most five short bullets. The themes themselves are accurate and well grounded in the survey. What is the most likely cause of the mismatch?
-
-- A. The prompt did not state a constraint on the number of themes, their length, or the slide format.
-- B. The prompt did not give enough background about the company's market position.
-- C. The task needed a more capable model to judge which themes matter most.
-- D. Claude invented themes that were not supported by the survey responses.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The content is accurate, but the shape is wrong. Nothing in the prompt told Claude the output had to fit five short bullets on one slide, so this is an absent constraint.
-
-- **B** is wrong because more company background would not change the count or length of the themes.
-- **C** is wrong because the themes are correct; the problem is format, which a stated limit fixes on any model.
-- **D** is wrong because the stem says the themes are accurate and grounded in the survey.
-
-</details>
-
-### Item 4
-
 A communications manager wants a name for a new internal recognition program. She asks Claude, "What is the best name for our employee recognition program?" Claude returns one safe, forgettable name with a short justification. She wants options her committee can debate next week. What change would best fit this task?
 
 - A. Add the company's brand guidelines and ask again for the single best name.
@@ -144,48 +104,7 @@ A communications manager wants a name for a new internal recognition program. Sh
 
 </details>
 
-### Item 5
-
-An HR specialist asks Claude to draft an employee FAQ about the company's new hybrid-work policy. The first draft answers questions the policy never addresses and gives a commute allowance the company does not offer. She has the final policy document and a list of the questions employees have actually asked managers. Which two changes would most improve the next draft? (Choose two.)
-
-- A. Attach the final policy document and tell Claude to answer only from it.
-- B. Tell Claude to fill any gaps with typical industry practice so no question is left unanswered.
-- C. Provide the list of real employee questions and say who the audience is.
-- D. Set the lowest effort level so Claude does not overthink the answers.
-- E. Repeat the main instruction three times in the prompt so Claude treats it as important.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and C.** The draft invented policy details because Claude never had the policy, so supplying it and restricting answers to it fixes the source-material gap. The real questions and the audience fix the second problem: Claude was guessing what employees want to know.
-
-- **B** is wrong because "typical practice" is exactly how the invented allowance appeared; it invites more fabrication.
-- **D** is wrong because effort level does not supply the missing policy or questions.
-- **E** is wrong because repetition adds no information Claude lacks.
-
-</details>
-
-### Item 6
-
-A project coordinator has spent a long chat refining a stakeholder update. After many rounds of corrections, Claude keeps bringing back a section structure she rejected near the start. The current requirements are clear in her mind, but they are spread across dozens of messages. What should she do next?
-
-- A. Keep adding corrections in the same chat until the structure sticks.
-- B. Start a fresh chat with one consolidated prompt that states the final requirements and structure.
-- C. Switch to a different model in the same chat and continue correcting.
-- D. Ask Claude to list every mistake it has made so far before continuing.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The conversation has drifted, and the early rejected structure is still pulling on the output. Restarting with a single clear request removes the conflicting history and gives Claude the final requirements in one place.
-
-- **A** is wrong because more corrections add more scattered instructions to a chat that is already pulling back to old versions.
-- **C** is wrong because the same conflicting history remains in the chat.
-- **D** is wrong because a list of mistakes does not consolidate the requirements.
-
-</details>
-
-### Item 7
+### Item 3
 
 A business analyst uses Claude in three stages to build a market-sizing estimate. Stage one gathers population and adoption figures from sources, stage two calculates the market size, and stage three drafts a recommendation for the leadership team. Every later stage uses the figures from stage one. Where is a validation checkpoint most important?
 
@@ -205,48 +124,7 @@ A business analyst uses Claude in three stages to build a market-sizing estimate
 
 </details>
 
-### Item 8
-
-A client services manager asks Claude to "make this quarterly report shorter and more formal." Claude returns a tidy, formal version that is half the length. To get there, it removed the appendix data tables that the client's finance team relies on every quarter. The manager did not mention the tables in her request. What best explains the problem?
-
-- A. Claude did not have the source material it needed to shorten the report.
-- B. Shortening a report is a brainstorming task and needed a different strategy.
-- C. "Shorter" was ambiguous, and the prompt did not say which content had to be kept.
-- D. The model tier was too limited to recognize which sections were important.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** "Make it shorter" can be satisfied many ways, and Claude made a reasonable choice that happened to remove what the client needs. Stating what must be kept resolves the ambiguous instruction.
-
-- **A** is wrong because Claude had the full report to work from.
-- **B** is wrong because editing a report is not brainstorming, and strategy was not the issue.
-- **D** is wrong because Claude could not know the finance team relies on the tables; that is a specification gap, not a model limit.
-
-</details>
-
-### Item 9
-
-An operations analyst uploads a quarterly sales spreadsheet and asks Claude, in one prompt, to analyze regional performance and write a summary email to regional managers. Two of the regional totals in the email are wrong, and the email uses jargon the managers dislike. She needs the figures to be exact. Which two changes would most improve the result? (Choose two.)
-
-- A. Ask Claude to sound more confident when it states the figures.
-- B. Separate the analysis from the drafting, and check the figures before the email is written.
-- C. Tell Claude to double-check its arithmetic carefully before answering.
-- D. Shorten the prompt so Claude can focus on the email.
-- E. For the analysis step, have Claude compute the totals with code-executed analysis on the uploaded file.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and E.** Analysis and drafting are different task types and benefit from separate stages with a check in between. Exact totals call for code-executed analysis, which computes from the file instead of estimating in text.
-
-- **A** is wrong because confidence does not make wrong figures right.
-- **C** is wrong because an instruction to be careful does not change how the figures are produced or give a verifiable result.
-- **D** is wrong because a shorter prompt does not fix the arithmetic or the jargon.
-
-</details>
-
-### Item 10
+### Item 4
 
 A department head asks Claude to produce next year's internal headcount plan by team. Claude returns specific numbers for each team. She rewords the request four times, adding "be accurate" and "use real figures," and each time gets different numbers. The real figures are in the finance team's approved budget file, which she has not shared. What should she do?
 
@@ -265,6 +143,8 @@ A department head asks Claude to produce next year's internal headcount plan by 
 - **D** is wrong because there is no real source for Claude to cite, so the request invites fabricated citations.
 
 </details>
+
+Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Associate, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate).
 
 ## Next step
 

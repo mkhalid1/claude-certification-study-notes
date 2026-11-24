@@ -2,7 +2,7 @@
 
 # Claude Certified Developer, Foundations (CCDV-F): Study Notes
 
-Free study notes for the Claude Certified Developer, Foundations exam, written against the exam guide that takes effect on December 7, 2026 (guide version 1.1). Each domain page explains what the domain measures, how its questions tend to look, a method for answering them, common traps, and 10 original practice items with explanations.
+Free study notes for the Claude Certified Developer, Foundations exam, written against the exam guide that takes effect on December 7, 2026 (guide version 1.1). Each domain page explains what the domain measures, how its questions tend to look, a method for answering them, common traps, and 3 to 4 original practice items with explanations.
 
 ## Exam at a glance
 

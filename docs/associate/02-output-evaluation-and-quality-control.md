@@ -63,7 +63,7 @@ Guidance only: the exam gives 120 minutes for 70 items, which is about 1.7 minut
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 5 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -87,26 +87,6 @@ A procurement lead asked Claude to compare three shortlisted software vendors on
 
 ### Item 2
 
-A compliance coordinator uploads the full text of a new industry regulation and asks Claude for a one-page summary. The summary cites a specific section number for the record-keeping rule and gives an exact date when the rule takes effect. The coordinator cannot remember seeing that date in the document. The summary will be circulated to department heads as guidance. What should she do before circulating it?
-
-- A. Find each section number and date in the uploaded regulation, and remove or flag anything she cannot find there.
-- B. Ask Claude whether it is confident that the section number and date are correct.
-- C. Circulate it, because Claude was working directly from the full regulation text.
-- D. Regenerate the summary and check whether the same date appears again.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** Precise section numbers and dates are typical places for confident invented specifics, even when a source was supplied. Checking each one against the source document is independent verification.
-
-- **B** is wrong because Claude confirming its own output is not independent.
-- **C** is wrong because having a source available does not guarantee every detail came from it.
-- **D** is wrong because getting the same answer twice is consistency, not verification.
-
-</details>
-
-### Item 3
-
 A strategy analyst uses Claude's research capability to prepare background for a board paper on supply-chain resilience. The output summarizes findings from eight cited web sources, including several specific statistics. The board will rely on the figures when it decides on investment. Which two steps are the best verification before the figures go into the paper? (Choose two.)
 
 - A. Count the citations, since eight sources show the summary is well supported.
@@ -126,47 +106,7 @@ A strategy analyst uses Claude's research capability to prepare background for a
 
 </details>
 
-### Item 4
-
-An operations manager at a utility company asks Claude to draft the company's response to a formal information request from its industry regulator. The draft uses internal documents she uploaded and reads well. The response will be filed on the record, and errors could lead to penalties. What review is appropriate before it is sent?
-
-- A. A quick proofread for tone and spelling, as she would do for an internal email.
-- B. Ask Claude to review its own draft for factual errors and fix any it finds.
-- C. Send it, since the content was drawn from the company's own documents.
-- D. Have the accountable compliance or legal owner verify each factual statement and approve it.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** A regulatory filing is external, on the record and hard to reverse, with real consequences for errors. That calls for verification of every factual claim and approval by the person accountable for it.
-
-- **A** is wrong because an internal-draft standard is far too light for a regulatory filing.
-- **B** is wrong because self-review by Claude is not independent and does not provide accountable approval.
-- **C** is wrong because drawing on internal documents does not guarantee every statement is accurate.
-
-</details>
-
-### Item 5
-
-A finance operations specialist must reconcile 3,000 invoice lines in an export, including currency conversions at given rates, and report one exact total to the controller. A difference of even a small amount will hold up the month-end close. She wants Claude to help. Which output approach fits this need?
-
-- A. Code-executed analysis on the uploaded export, then a check of the method and a sample of lines.
-- B. An inline chat answer in which Claude reads the export and states the total.
-- C. An artifact containing a formatted summary table that Claude writes from the data.
-- D. An estimate from Claude, rounded to the nearest thousand to allow for small errors.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The figure must be exact, which is the case for code-executed results. Running the computation on the data, then checking the method and some lines, gives a result she can stand behind.
-
-- **B** is wrong because a total stated in text is not computed and may not be exact.
-- **C** is wrong because a formatted table written from reading the data still lacks an exact computation.
-- **D** is wrong because the controller needs an exact figure, not a rounded estimate.
-
-</details>
-
-### Item 6
+### Item 3
 
 A product marketer asks Claude to create buyer personas from a set of customer interview notes. Every persona for the "decision maker" role is described as a man over 45, although the interview notes record a mix of genders and ages in that role. The personas will guide the next campaign's targeting. What should the marketer do?
 
@@ -186,27 +126,7 @@ A product marketer asks Claude to create buyer personas from a set of customer i
 
 </details>
 
-### Item 7
-
-A regional manager asks Claude to summarize quarterly performance from a set of reports. The executive summary says revenue grew by 8 percent. A table later in the same output shows revenue falling from the previous quarter. The summary goes to the leadership team on Monday. What should the manager do?
-
-- A. Trust the table, because tables are generally more precise than prose.
-- B. Check both statements against the source reports and correct the output before it goes out.
-- C. Trust the executive summary, because leadership will mainly read that section.
-- D. Ask Claude to reconcile the two statements and accept whichever one it chooses.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** An internal inconsistency is a warning sign that at least one statement is unsupported. Only the source reports can show which is right, so both should be checked before use.
-
-- **A** is wrong because the table could be the wrong one; format does not decide accuracy.
-- **C** is wrong because what leadership reads first does not make it correct.
-- **D** is wrong because accepting Claude's choice is not independent verification.
-
-</details>
-
-### Item 8
+### Item 4
 
 An IT service manager has a detailed Claude-drafted incident analysis. It includes internal system names, the names of engineers on call, a confirmed customer impact window, and some unconfirmed theories about root cause. She needs a version for the public customer status page, and the incident owner signs off public updates. Which two actions are most appropriate? (Choose two.)
 
@@ -227,27 +147,7 @@ An IT service manager has a detailed Claude-drafted incident analysis. It includ
 
 </details>
 
-### Item 9
-
-An account manager produces a weekly progress report for a client, who opens it in standard office software and expects the company's branded document layout. Her organization has an approved custom Skill that produces reports in that layout. Last week she pasted an inline chat response into a blank document, and the client asked why the format had changed. What should she use this week?
-
-- A. An inline chat response, copied into the client's usual file.
-- B. An artifact that shows the report as an interactive page.
-- C. A structured data file the client can import.
-- D. The approved report Skill, to produce the document in the branded layout.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** The destination is a branded document opened in standard office software, and an approved Skill exists to produce exactly that. Using it gives the client the format they expect every week.
-
-- **A** is wrong because that is what caused the format complaint last week.
-- **B** is wrong because an interactive page is not the branded document the client expects.
-- **C** is wrong because the client needs a readable report, not a data import.
-
-</details>
-
-### Item 10
+### Item 5
 
 A team lead asks Claude for 30 theme ideas for the department's annual offsite. The list will be read aloud at a planning meeting tomorrow, where the team will vote on a few to explore. Nothing will be shared outside the team or committed to without further discussion. How much review does the list need before the meeting?
 
@@ -266,6 +166,8 @@ A team lead asks Claude for 30 theme ideas for the department's annual offsite. 
 - **D** is wrong because brainstorming is a reasonable, low-risk use.
 
 </details>
+
+Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Associate, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate).
 
 ## Next step
 

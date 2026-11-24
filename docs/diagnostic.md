@@ -4,29 +4,28 @@
 
 Before you study, find out where your points are leaking. Your real score report will show percent correct by domain, so it makes sense to measure yourself the same way from day one.
 
-## Option 1: the in-repo diagnostic (about 30 to 45 minutes)
+## Option 1: the in-repo diagnostic (about 10 to 15 minutes)
 
-Every domain page in these notes has 10 original practice items. Items 1 to 3 on each page make a quick diagnostic.
+Every domain page in these notes has 3 to 5 original practice items. Item 1 on each page makes a quick diagnostic.
 
 1. Open your exam's overview page and list its domain pages.
 2. Set a timer: about 1.7 minutes per item for the 70-item exams, 2 minutes per item for Architect, Foundations.
-3. Answer Items 1 to 3 on every domain page, without opening the explanations.
-4. Score each domain out of 3 in the table below.
+3. Answer Item 1 on every domain page, without opening the explanations.
+4. Mark each domain right or wrong in the table below.
 
 | Exam | Domains | Items in the diagnostic | Time to allow |
 |---|---|---|---|
-| [Associate, Foundations](associate/README.md) | 6 | 18 | about 31 minutes |
-| [Developer, Foundations](developer/README.md) | 8 | 24 | about 41 minutes |
-| [Architect, Foundations](architect-foundations/README.md) | 5 | 15 | about 30 minutes |
-| [Architect, Professional](architect-professional/README.md) | 7 | 21 | about 36 minutes |
+| [Associate, Foundations](associate/README.md) | 6 | 6 | about 10 minutes |
+| [Developer, Foundations](developer/README.md) | 8 | 8 | about 14 minutes |
+| [Architect, Foundations](architect-foundations/README.md) | 5 | 5 | about 10 minutes |
+| [Architect, Professional](architect-professional/README.md) | 7 | 7 | about 12 minutes |
 
 ### Reading your result
 
-| Domain score | What it means | What to do |
+| Item 1 | What it means | What to do |
 |---|---|---|
-| 0 or 1 out of 3 | A real gap | Study this domain first, starting with its "What this domain measures" and "Traps" sections |
-| 2 out of 3 | Partly there | Read the explanations for all 10 items, then do Items 4 to 10 |
-| 3 out of 3 | Solid for now | Do Items 4 to 10 later as a check |
+| Missed | A real gap | Study this domain first, starting with its "What this domain measures" and "Traps" sections |
+| Right | Solid for now | Do the other items on the page later as a check |
 
 Then weight your plan by the exam blueprint. A gap in a 20% domain costs about twice as much as a gap in a 10% domain. Each exam's overview page has the weights.
 

@@ -62,7 +62,7 @@ Guidance only: the exam gives 120 minutes for 70 items, which is about 1.7 minut
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -86,46 +86,6 @@ A business development manager needs a briefing on how competitors in her sector
 
 ### Item 2
 
-A consultant is starting a three-month engagement with one client. She will refer to the same set of client documents, a glossary of the client's terms, and the same working style in dozens of separate chats over that time. Last engagement she pasted the documents into each new chat and lost hours. What should she set up?
-
-- A. One long chat for the whole engagement, so everything stays in one place.
-- B. A saved prompt that she pastes, with the documents, into each new chat.
-- C. Memory, by telling Claude about the documents once so it recalls them later.
-- D. A Project for the engagement, with the documents as knowledge and her working style as instructions.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** Ongoing work across many chats with the same material is the core use for a Project. Knowledge holds the documents and instructions hold the working style, so each new chat starts ready.
-
-- **A** is wrong because a single chat over three months will become long and cluttered, and quality degrades.
-- **B** is wrong because that repeats the manual effort that cost her hours last time.
-- **C** is wrong because memory is not a store for full documents.
-
-</details>
-
-### Item 3
-
-A training coordinator is building a one-page onboarding checklist with Claude. She expects to revise it several times over the afternoon, view it on its own without scrolling through the conversation, and then download it to share. Which capability fits this best?
-
-- A. An inline chat response, which she copies out after each revision.
-- B. An artifact, so the checklist sits on its own and updates as she revises it.
-- C. Research, so the checklist reflects current onboarding practices.
-- D. A connector to her calendar, so the checklist links to onboarding dates.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** She wants a standalone piece of content to view, refine over several rounds and reuse, which is what artifacts are for. Each revision updates the same piece instead of scattering versions through the chat.
-
-- **A** is wrong because copying out each revision from the chat is the clumsy pattern artifacts avoid.
-- **C** is wrong because the need is about building and revising a document, not gathering outside information.
-- **D** is wrong because calendar access does not help her view, revise or download the checklist.
-
-</details>
-
-### Item 4
-
 A support operations lead is choosing models for several tasks. He wants to use a faster, lower-cost model tier wherever quality would still be adequate. For which two tasks is the faster, lower-cost tier the best choice? (Choose two.)
 
 - A. Drafting a recommendation to the executive team that weighs several conflicting strategic trade-offs.
@@ -145,47 +105,7 @@ A support operations lead is choosing models for several tasks. He wants to use 
 
 </details>
 
-### Item 5
-
-A strategy manager is preparing an analysis of how two business units should be combined after an acquisition. The work involves many interdependent decisions, and errors would affect hundreds of staff. The analysis is due next week, so speed is not a concern today. Which choice is easiest to defend?
-
-- A. The fastest tier, because it lowers cost and he can always run it again.
-- B. A more capable tier with a higher effort level, because the task is complex and high stakes and there is time.
-- C. The fastest tier, followed by asking Claude to check its own reasoning.
-- D. Whatever model is set by default, because effort level makes no difference to analysis.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** Complexity and stakes are both high, and the deadline allows for slower, deeper work. That combination is where a more capable tier and higher effort earn their cost.
-
-- **A** is wrong because rerunning a weaker analysis does not make a complex task simple.
-- **C** is wrong because a self-check by the same fast setting does not add the depth the task needs.
-- **D** is wrong because effort level is a real lever on reasoning depth.
-
-</details>
-
-### Item 6
-
-A project manager has used one chat for three weeks to plan a product launch. Recently Claude has started forgetting decisions made in the first week and contradicting itself on dates. She still has two weeks of planning left. What is the best next step?
-
-- A. Ask Claude to summarize the decisions so far and open questions, check that summary, and continue in a fresh chat or a Project with it.
-- B. Keep working in the same chat and repeat the early decisions whenever Claude forgets them.
-- C. Switch to a more capable model in the same chat so it can hold more detail.
-- D. Turn on incognito mode so the long history stops affecting the answers.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The chat has become long enough that early decisions are being lost. A checked summary carried into a fresh chat or persisted in a Project gives Claude the decisions in a clean, compact form for the remaining work.
-
-- **B** is wrong because it adds even more length to a chat that is already degrading.
-- **C** is wrong because the cluttered history stays the same.
-- **D** is wrong because incognito controls memory and history for new chats; it does not repair an existing long conversation.
-
-</details>
-
-### Item 7
+### Item 3
 
 An employee moved from the marketing team to HR two months ago. Claude still often assumes she works in marketing, suggests campaign ideas she did not ask for, and refers to her old manager. Everything else about her experience with memory has been helpful. What should she do?
 
@@ -205,48 +125,7 @@ An employee moved from the marketing team to HR two months ago. Claude still oft
 
 </details>
 
-### Item 8
-
-A marketing specialist wants to spend an hour exploring ideas for a friend's unrelated home bakery. She does not want any of it to shape Claude's suggestions in her normal work chats afterward. Her work chats rely on memory and she wants to keep it on. What is the best approach?
-
-- A. Use a normal chat, since memory only keeps details that relate to her job.
-- B. Create a separate Project for the bakery and work there.
-- C. Use an incognito chat for the bakery session.
-- D. Use a normal chat and tell Claude at the end to forget the conversation.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** Incognito chats are meant for conversations that should not shape memory or appear in chat history. She keeps memory on for her normal work and keeps this session out of it.
-
-- **A** is wrong because there is no basis for assuming memory will skip unrelated details.
-- **B** is wrong because a Project organizes ongoing work; it is not the tool for keeping a one-off session out of memory.
-- **D** is wrong because asking in the chat is not a reliable control over what memory keeps.
-
-</details>
-
-### Item 9
-
-An operations analyst prepares a monthly performance report. The source spreadsheet is updated by the finance team in a shared Google Drive folder, and the report needs exact totals and growth percentages. Last month he downloaded an old version by mistake and his estimates were off. Which two capabilities should the workflow use? (Choose two.)
-
-- A. A Google Drive connector, so Claude works from the current file in the shared folder.
-- B. Research, so Claude can find the latest figures on the web.
-- C. Memory, so Claude remembers last month's numbers for comparison.
-- D. Code-executed analysis, so the totals and percentages are computed exactly.
-- E. An incognito chat, so the figures are not stored after the session.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and D.** The connector solves the stale-file problem by reading the current file where finance maintains it. Code-executed analysis provides the exact computation the report needs.
-
-- **B** is wrong because the figures are internal and live in Drive, not on the web.
-- **C** is wrong because memory is not a reliable store for figures the report depends on.
-- **E** is wrong because the stem raises no sensitivity concern, and incognito does nothing for accuracy or freshness.
-
-</details>
-
-### Item 10
+### Item 4
 
 A team lead uses a faster, lower-cost model tier to summarize each day's short standup notes into three bullets for the team channel. A colleague says he should always use the most capable tier. The summaries are read by the team the same morning, and the team corrects anything that is off. Which justification for his choice is strongest?
 
@@ -265,6 +144,8 @@ A team lead uses a faster, lower-cost model tier to summarize each day's short s
 - **D** is wrong because more capable tiers can handle short text; they are simply not needed here.
 
 </details>
+
+Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Associate, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate).
 
 ## Next step
 

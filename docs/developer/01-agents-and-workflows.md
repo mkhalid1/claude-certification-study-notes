@@ -58,32 +58,9 @@ Guidance only: the exam gives 120 minutes for 70 items, about 1.7 minutes per it
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 3 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
-
-A logistics company wants to automate supplier invoice handling. Every invoice goes through the same steps: extract fields, check them against the purchase order, flag mismatches over a set tolerance, and post matched invoices to the ledger. Finance auditors require a record of exactly which step produced each decision, and a wrong posting is expensive to reverse. The team is choosing between a fixed workflow and an autonomous agent. Which design fits best?
-
-A. An autonomous agent with all four capabilities as tools, told in its system prompt to process each invoice in whatever order it judges best.
-
-B. A workflow in which code runs the steps in a fixed order, calls Claude for extraction and mismatch explanations, and logs each step's input and output.
-
-C. A single prompt that asks Claude to extract, validate, and post each invoice in one response, with the full purchase order list attached.
-
-D. An orchestrator agent that spawns a new subagent for each invoice and lets each subagent decide which checks are needed.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The steps are known in advance, errors are costly, and the auditors need to see which step made each decision. A workflow your code controls gives a fixed order and a clean log per step. Claude is still used where it adds value, in extraction and explanation.
-
-- **A** is wrong because letting the model choose the order adds unpredictability to a fixed process and makes the audit trail harder to reconstruct.
-- **C** is wrong because one combined response mixes the steps together, so there is no per-step record and no chance to stop a bad posting.
-- **D** is wrong because per-invoice agents that decide their own checks add cost and variation where the checks should always be the same.
-
-</details>
-
-### Item 2
 
 A platform team wants help investigating production incidents. An engineer describes a symptom, and the assistant needs to search logs, read recent deploy diffs, query metrics, and form and test hypotheses. The path differs every time and depends on what each search finds. Every finding is reviewed by an engineer before anyone acts on it, so a wrong lead costs only time. Which architecture fits best?
 
@@ -106,55 +83,7 @@ D. An agent with tools for log search, metrics, and diffs, running in a loop whe
 
 </details>
 
-### Item 3
-
-A sales-assist agent built with the Claude Agent SDK drafts and sends customer emails. Compliance requires that the `check_compliance` tool runs on every draft before `send_email` is called. The system prompt states this rule in bold, but an audit of traces finds a small number of emails that were sent without a compliance check. The team needs the rule to hold every time. What should they change?
-
-A. Add a pre-tool-use hook on `send_email` that blocks the call unless a passing compliance check has been recorded for that draft.
-
-B. Repeat the compliance rule at the end of the system prompt and in every user message, so the model sees it more often.
-
-C. Lower the effort level so that the model takes fewer, more consolidated actions and is less likely to skip steps.
-
-D. Remove `check_compliance` as a separate tool and ask the model to judge compliance itself before sending.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The requirement is "every time", and a prompt instruction cannot guarantee that. A hook that runs before `send_email` is code, so it blocks an unchecked send no matter what the model decides. The model can still be told about the rule, but enforcement moves out of its hands.
-
-- **B** is wrong because repeating the instruction may reduce misses but cannot eliminate them.
-- **C** is wrong because effort changes how much the model thinks and acts. It does not enforce an ordering rule.
-- **D** is wrong because it replaces a checkable tool with the model's own judgment, which is weaker and leaves no record.
-
-</details>
-
-### Item 4
-
-A developer writes a custom agent loop on the Messages API for a documentation assistant. The loop is `while True:` and it sends the next request after every response, appending tool results when there are any. Traces show that after Claude gives a complete final answer, the loop keeps sending requests, and in some runs it alternates between the same two searches for hundreds of turns until the job is killed. The developer wants the loop to end correctly and never run away again. Choose two.
-
-A. Continue the loop only while `stop_reason` is `tool_use`, and return the final answer when it is `end_turn`, handling any other stop reason explicitly.
-
-B. Raise `max_tokens` so that Claude can fit its whole answer and all its searches into a single response.
-
-C. Add a maximum number of iterations or a token budget that ends the run gracefully and reports where it stopped.
-
-D. Remove the search tool so that Claude has no way to keep calling it.
-
-E. Add a sentence to the system prompt asking Claude to stop searching when it has enough information, and keep the loop as it is.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and C.** A tool-use loop should continue only while Claude asks for a tool, so checking `stop_reason` is the correct exit. A hard cap on iterations or tokens is the backstop for cases where the model keeps calling tools without making progress. Together they end normal runs correctly and stop runaway ones.
-
-- **B** is wrong because the loop ignores the stop signal. A larger output limit does not change that.
-- **D** is wrong because it breaks the assistant's main function to hide a loop bug.
-- **E** is wrong because the loop ignores `end_turn` even after a complete answer. A prompt change cannot fix the code's missing exit.
-
-</details>
-
-### Item 5
+### Item 2
 
 A due-diligence agent must review 30 long contracts and produce a one-page risk summary. In the current design the coordinator reads every contract in full with a file tool. Around contract 18, traces show the coordinator starting to repeat earlier questions and losing track of the summary format it was given at the start. The contracts are independent of each other. Which change best addresses the failure?
 
@@ -177,78 +106,7 @@ D. Put the summary format in every tool result so that the coordinator sees it a
 
 </details>
 
-### Item 6
-
-A startup wants to offer an agent that analyses spreadsheets that customers upload and writes and runs code to produce charts. The generated code must run in an isolated environment, separate for each customer session. The team is three developers with no one to run or secure container infrastructure, and they want to launch soon. Which execution environment fits best?
-
-A. A self-hosted harness that runs the generated code directly on the team's application servers, with a prompt instruction to avoid harmful code.
-
-B. A managed agent runtime that runs the agent loop and provides a sandboxed workspace for each session, such as Claude Managed Agents.
-
-C. A self-hosted harness on a single shared virtual machine that every customer's session uses for code execution.
-
-D. No code execution at all: ask Claude to describe the charts in words and let customers build them in their own spreadsheet tools.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The binding constraints are isolated execution per session and no capacity to run infrastructure. A managed, sandboxed runtime provides both, because Anthropic runs the loop and a separate workspace for each session. The team can focus on the agent itself.
-
-- **A** is wrong because running generated code on application servers has no isolation, and a prompt instruction is not a sandbox.
-- **C** is wrong because a shared machine mixes customers' sessions and data, and the team still has to operate and secure it.
-- **D** is wrong because it drops the core feature to avoid an infrastructure decision.
-
-</details>
-
-### Item 7
-
-A customer-success agent helps account managers prepare for calls. Account managers complain that every new session starts from zero: the agent forgets a client's preferred contact times and past escalations, even though it learned them last week. Each session currently begins with only the system prompt and the new request. Within a session, the agent behaves well. Which pattern is missing?
-
-A. Subagent isolation, so that each client gets a separate subagent within the session.
-
-B. A larger context window, so that last week's session fits into this week's conversation.
-
-C. A stricter loop termination rule, so that sessions end sooner and lose less information.
-
-D. Memory: store durable facts about each client outside the conversation and load the relevant ones when a session for that client starts.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** The failure is knowledge lost between sessions, and nothing carries it across today. A memory store keeps durable facts outside any single conversation and brings back the relevant ones when needed. Sessions stay small, and the knowledge persists.
-
-- **A** is wrong because isolation keeps work apart within a run. It does not keep anything after the run ends.
-- **B** is wrong because context belongs to one request. Last week's session is not in it unless something stores and reloads it.
-- **C** is wrong because ending sessions sooner does not help remember anything across them.
-
-</details>
-
-### Item 8
-
-A team defines a `code-reviewer` subagent with the Claude Agent SDK. It is supposed to read changed files and report issues, never edit them. In testing, the reviewer occasionally rewrites files it disagrees with, because its definition grants it the same Write, Edit, and Bash tools as the main agent. Separately, the main agent rarely delegates to the reviewer, because its description just says "Helps with code." Choose two.
-
-A. Keep the full tool set and add a line to the reviewer's prompt saying it must never modify files.
-
-B. Restrict the reviewer's tools to read-only ones such as file reading and search, so it cannot edit files at all.
-
-C. Give the reviewer every tool the main agent has, plus permission to approve its own changes, so it can fix the issues it finds.
-
-D. Run the reviewer in a permission mode that skips all approval prompts, so it finishes faster.
-
-E. Rewrite the reviewer's description to say when to use it, for example after code changes and before a commit, and what it returns.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and E.** Limiting the reviewer to read-only tools makes "never edit" a property of its definition, not a request. A specific description tells the main agent when to delegate and what to expect back, which fixes the missing delegation. Each change addresses one of the two problems.
-
-- **A** is wrong because a prompt line can be ignored while the write tools remain available.
-- **C** is wrong because it widens the reviewer's privileges, the opposite of the requirement.
-- **D** is wrong because skipping approvals removes a safeguard and does not address either problem.
-
-</details>
-
-### Item 9
+### Item 3
 
 A research orchestrator splits a market study across four subagents with the instructions "research the competitors", "look into pricing", "analyse the market", and "find relevant data". The final report repeats the same three competitors in every section and contradicts itself on pricing figures. Traces show that all four subagents searched for the same companies and returned long, unstructured notes. Which change best fixes the decomposition?
 
@@ -271,28 +129,7 @@ D. Replace the subagents with a single agent that does all the research itself i
 
 </details>
 
-### Item 10
-
-A migration agent upgrades a large codebase file by file. Each step runs the test suite with a shell tool, and every test run returns several thousand lines of output. After about 150 tool calls, the agent starts ignoring its migration plan and eventually fails because the request exceeds the context window. The early test outputs are no longer relevant once those files pass. Which change best addresses the failure?
-
-A. Keep the tool output small and clear out old tool results: have the test tool return only failures and a summary, and drop stale outputs from earlier steps.
-
-B. Restart the agent from the beginning every 100 tool calls, with the same history replayed into the new run.
-
-C. Move the migration plan to the end of every tool result so the agent always sees it last.
-
-D. Switch to a smaller, faster model so that each step completes before the context fills up.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The context is filling with test output that has stopped being useful. Shaping the tool result down to what matters, and clearing old tool results, keeps the plan and the recent state in view and the request within limits. This is context-window management, which the agent was missing.
-
-- **B** is wrong because replaying the same history brings the same bloat straight back.
-- **C** is wrong because it adds more text to every result and does not remove the cause.
-- **D** is wrong because the model's speed has nothing to do with how fast the context fills, which depends on the tool output size.
-
-</details>
+Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Developer, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer).
 
 ## Next step
 

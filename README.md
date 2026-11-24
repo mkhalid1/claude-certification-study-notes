@@ -1,13 +1,13 @@
 # Claude Certification Study Notes
 
-A free, complete study guide for Anthropic's four Claude certification exams: Associate, Foundations; Developer, Foundations; Architect, Foundations; and Architect, Professional. For every domain of every exam you get what it measures, how the questions look, a step-by-step method, the traps that cost points, timing advice and 10 original practice items with full explanations. Updated for the **December 7, 2026** exam changes. Every exam fact comes from Anthropic's official exam guides, its certification FAQ or Pearson VUE, each one [cited](docs/sources.md).
+A free, complete study guide for Anthropic's four Claude certification exams: Associate, Foundations; Developer, Foundations; Architect, Foundations; and Architect, Professional. For every domain of every exam you get what it measures, how the questions look, a step-by-step method, the traps that cost points, timing advice and 3 to 5 original practice items with full explanations. Updated for the **December 7, 2026** exam changes. Every exam fact comes from Anthropic's official exam guides, its certification FAQ or Pearson VUE, each one [cited](docs/sources.md).
 
 Want to see where you stand first? Each exam has a free timed diagnostic: [Associate](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate), [Developer](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer), [Architect Foundations](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect), [Architect Professional](https://prepclubs.com/free-practice-tests/claude-certified-architect-professional?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect-professional).
 
 ## Start here
 
 1. **Pick your exam and version.** Read [which exam, and which version](docs/choosing-an-exam.md). If you test on or after December 7, 2026, three of the four exams change.
-2. **Find your weak domains.** Do the [diagnostic](docs/diagnostic.md): Items 1 to 3 on every domain page, timed, scored by domain.
+2. **Find your weak domains.** Do the [diagnostic](docs/diagnostic.md): Item 1 on every domain page, timed, scored by domain.
 3. **Study the weakest heavy domain first,** then follow the [7-day plan](docs/study-plans.md#7-day-plan), or the [2-day plan](docs/study-plans.md#2-day-plan) if your exam is close.
 
 ## Quick facts
@@ -37,7 +37,7 @@ All four: closed book, delivered by Pearson VUE online or at a test center, vali
   - [The December 7, 2026 update](docs/choosing-an-exam.md#the-december-7-2026-update)
   - [Who can sit the exams](docs/choosing-an-exam.md#who-can-sit-the-exams)
 - [Find your weak domains first](docs/diagnostic.md)
-  - [Option 1: the in-repo diagnostic (about 30 to 45 minutes)](docs/diagnostic.md#option-1-the-in-repo-diagnostic-about-30-to-45-minutes)
+  - [Option 1: the in-repo diagnostic (about 10 to 15 minutes)](docs/diagnostic.md#option-1-the-in-repo-diagnostic-about-10-to-15-minutes)
   - [Option 2: a free timed diagnostic](docs/diagnostic.md#option-2-a-free-timed-diagnostic)
   - [What about the official practice exam?](docs/diagnostic.md#what-about-the-official-practice-exam)
 

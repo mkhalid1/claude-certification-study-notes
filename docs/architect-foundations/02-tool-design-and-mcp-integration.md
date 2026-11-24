@@ -69,7 +69,7 @@ Guidance only: the exam gives 120 minutes for 60 items, so about 2 minutes per i
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 5 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -94,26 +94,6 @@ E. Add a keyword router in code that inspects each question and picks the tool b
 
 ### Item 2
 
-A legal-tech startup gives its agent one tool, `process_contract`, used for three different jobs: pulling out clauses, summarizing the contract, and checking a clause against the firm's standard playbook. Its description says "Processes a contract." Outputs vary in shape from call to call, and downstream code often fails to parse them. What is the best redesign?
-
-A. Keep the single tool but add a `mode` string parameter that the model fills in freely.
-B. Split it into purpose-specific tools such as `extract_clauses`, `summarize_contract` and `compare_clause_to_playbook`, each with its own defined input and output contract.
-C. Keep the tool and add few-shot examples of each job to the system prompt.
-D. Keep the tool and post-process its output with heuristics that guess which job was performed.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** Splitting a generic tool into purpose-specific tools with defined contracts gives Claude clear choices and gives downstream code predictable shapes. Each tool's description can then say exactly when to use it.
-
-- **A** is wrong because a free-form mode string keeps one vague contract and moves the ambiguity into a parameter.
-- **C** is wrong because examples may make outputs more consistent, but the single generic contract is still the root cause.
-- **D** is wrong because guessing after the fact is fragile and does nothing to make the output predictable.
-
-</details>
-
-### Item 3
-
 A retail support agent calls an MCP tool, `update_order`, that returns `{"isError": true, "content": "Operation failed"}` for every kind of failure. Logs show the agent retrying malformed postcode requests five times in a row, and telling customers "please try again later" when an order cannot be changed because it has already shipped. What change best fixes both behaviours?
 
 A. Add a system prompt rule telling the agent to retry at most twice.
@@ -132,47 +112,7 @@ D. Return structured error metadata: an error category (such as validation or bu
 
 </details>
 
-### Item 4
-
-A furniture retailer's `get_deliveries` MCP tool returns an empty list in two situations: when the carrier API times out, and when the customer genuinely has no deliveries scheduled. After a carrier outage, the agent told hundreds of customers they had no deliveries booked. What is the right fix?
-
-A. Have the agent always tell customers to check back later when the list is empty.
-B. Retry the tool three times whenever it returns an empty list.
-C. Return the timeout as an error (`isError` set, category transient, retryable), and keep the empty list only for successful queries that found no deliveries.
-D. Cache the last known delivery list and return it whenever the carrier times out.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** An access failure and a valid empty result must be distinguishable. Marking the timeout as a retryable transient error lets the agent retry or explain the delay, while a true empty list can be reported confidently.
-
-- **A** is wrong because it makes every genuine "no deliveries" answer vague and still cannot tell the two cases apart.
-- **B** is wrong because it wastes retries on true empty results and still treats an outage as success once the retries run out.
-- **D** is wrong because stale cached data presented as current is a new source of wrong answers, and the failure is still hidden.
-
-</details>
-
-### Item 5
-
-A data platform team's analytics agent answers questions about a warehouse with over 300 tables. Before answering, it makes dozens of `list_tables` and `describe_table` calls just to find out what exists, which burns tokens and slows every answer. The team runs its own MCP server for the warehouse. What is the most effective improvement?
-
-A. Expose the schema catalog (table names, descriptions and key columns) as an MCP resource the agent can read.
-B. Add a system prompt instruction listing the ten most-used tables.
-C. Remove `describe_table` so the agent has fewer tools to call.
-D. Raise the agent's token budget so the exploration calls fit comfortably.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** MCP resources are designed to expose content catalogs such as database schemas, so the agent can see what data exists without exploratory tool calls. It still calls tools for the actual queries.
-
-- **B** is wrong because a hand-picked list covers a few tables, goes stale, and leaves the agent exploring for everything else.
-- **C** is wrong because the agent still needs column details for many questions. Removing the tool just causes failures.
-- **D** is wrong because it pays for the waste instead of removing it.
-
-</details>
-
-### Item 6
+### Item 3
 
 A media company built one agent that handles intake, research, fact-checking, drafting and publishing. It has 18 tools from four MCP servers. Logs show it often calls the publishing tool while still researching and uses the web search tool to "check" its own draft. What is the best structural change?
 
@@ -192,27 +132,7 @@ D. Merge the 18 tools into three broad tools so there are fewer choices.
 
 </details>
 
-### Item 7
-
-A support triage pipeline must call `classify_ticket` first on every new ticket, before any of the routing and enrichment tools run. With `tool_choice` set to `"auto"`, the model sometimes skips classification and goes straight to enrichment, and sometimes replies in plain text. Which configuration fits best?
-
-A. Set `tool_choice` to `"any"` on every turn.
-B. Keep `"auto"` and add a system prompt line saying classification must come first.
-C. Remove the enrichment tools from the agent entirely.
-D. On the first request, force the tool with `{"type": "tool", "name": "classify_ticket"}`, then handle routing and enrichment in follow-up turns.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** Forced tool selection guarantees that the named tool runs first. Later steps run in follow-up turns with the classification result available.
-
-- **A** is wrong because `"any"` guarantees some tool call but lets the model pick enrichment first.
-- **B** is wrong because `"auto"` still allows text replies and skipped steps, and a prompt line is only guidance.
-- **C** is wrong because the pipeline needs enrichment after classification. Removing those tools breaks the workflow.
-
-</details>
-
-### Item 8
+### Item 4
 
 A product team wants every developer's Claude Code to connect to the team's issue tracker MCP server, and the tracker needs an API token. Separately, one developer wants to try an experimental MCP server without affecting anyone else. Which two configuration choices are correct? (Choose two.)
 
@@ -233,27 +153,7 @@ E. Add the experimental server to the project `.mcp.json` with a comment saying 
 
 </details>
 
-### Item 9
-
-An engineering org adds a code intelligence MCP server to its Agent SDK assistant. Its `find_references` tool resolves symbols across languages and returns call graphs, but its description just says "Finds references." The assistant keeps using the built-in Grep tool for "who calls this function" questions and misses calls that go through aliases. What should the team do first?
-
-A. Expand the `find_references` description to explain what it resolves, what it returns and when it beats a text search such as Grep.
-B. Remove Grep from the assistant so it has to use `find_references`.
-C. Write a new custom MCP server that wraps both Grep and `find_references`.
-D. Tell users to name the tool explicitly in every question.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** Claude picks tools from their descriptions. When an MCP tool's description undersells it, the agent prefers a familiar built-in tool. Describing its capabilities and outputs in detail is the direct, low-effort fix.
-
-- **B** is wrong because Grep is still the right tool for plain content searches such as error messages. Removing it hurts other tasks.
-- **C** is wrong because building a new server is heavy work for what is a description problem.
-- **D** is wrong because it pushes tool selection onto users instead of fixing the interface.
-
-</details>
-
-### Item 10
+### Item 5
 
 A developer productivity agent must find every test file matching `**/*.spec.ts` in a large repository and then update one configuration line in a shared setup file. The Edit call on the setup file fails because the exact line it anchors on appears three times in the file. Which two actions are correct? (Choose two.)
 
@@ -273,6 +173,8 @@ E. Read the setup file, then Write the full updated file content.
 - **D** is wrong because dumping every file floods the context and is a slow, indirect way to do what Glob does directly.
 
 </details>
+
+Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect).
 
 ## Next step
 

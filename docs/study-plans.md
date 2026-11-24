@@ -11,7 +11,7 @@ These exams test judgment in realistic work scenarios. Reading helps, but the fa
 | Day | Focus | What to do |
 |---|---|---|
 | 1 | Map the exam | Read your exam's overview page and the official exam guide, including its sample questions. Do the [diagnostic](diagnostic.md). Rank your domains by (weight x gap). |
-| 2 | Heaviest weak domain | Read its page in full. Do all 10 items. For each miss, write the trap you fell for. Then spend 30 minutes doing that skill for real in Claude, Claude Code or the API. |
+| 2 | Heaviest weak domain | Read its page in full. Do all of its items. For each miss, write the trap you fell for. Then spend 30 minutes doing that skill for real in Claude, Claude Code or the API. |
 | 3 | Second weak domain | Same routine as day 2. |
 | 4 | Third weak domain, plus a review | Same routine for the third. Then reread your miss notes from days 2 and 3. |
 | 5 | Timed practice | Take a timed practice run, such as the free PrepClubs diagnostic for your exam (links on the [diagnostic page](diagnostic.md)). Score it by domain. |
@@ -36,7 +36,7 @@ For when the exam is booked and close.
 |---|---|---|
 | 1 | 30 to 45 min | Do the [diagnostic](diagnostic.md). |
 | 2 | 20 min | Read the "Traps that cost points" section of every domain page for your exam. |
-| 3 | 90 min | For your two weakest heavy domains, read the full page and do all 10 items. |
+| 3 | 90 min | For your two weakest heavy domains, read the full page and do all of its items. |
 | 4 | 45 min | Take a timed practice run and review every miss. |
 
 ### Day 2 (exam day or the day before)

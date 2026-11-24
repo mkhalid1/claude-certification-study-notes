@@ -71,7 +71,7 @@ Guidance only: the exam gives 120 minutes for 60 items, so about 2 minutes per i
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 5 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -96,26 +96,6 @@ E. Turn the conventions into a skill that developers invoke at the start of each
 
 ### Item 2
 
-A monorepo has twelve packages. The payments packages must follow the company's PCI coding standards, the web packages its accessibility standards, and every package its general style guide. Each standard already lives in its own file under `docs/standards/`. The package maintainers know which standards apply to their package. What is the most maintainable setup?
-
-A. Paste all three standards into the root CLAUDE.md so every package sees everything.
-B. Create a skill for each standard and ask developers to invoke the right one before editing.
-C. In each package's CLAUDE.md, use `@import` to include only the standards files that apply to that package.
-D. Ask each developer to keep the relevant standards in their user-level CLAUDE.md.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** `@import` keeps CLAUDE.md files modular. Each package's maintainer imports exactly the standards that apply, and the standards files stay single-sourced.
-
-- **A** is wrong because it loads irrelevant standards into every session and grows a monolithic file that is hard to maintain.
-- **B** is wrong because standards that must always apply should not depend on someone remembering to invoke a skill.
-- **D** is wrong because user-level files are not shared and would drift between developers.
-
-</details>
-
-### Item 3
-
 A data engineer asks Claude Code to write a function that converts free-form log lines into structured events. She has rewritten her prose description four times, and each version produces a different interpretation of which fields to extract and how to handle missing timestamps. What is the most effective next step?
 
 A. Write a longer, more formal specification of the rules in prose.
@@ -134,47 +114,7 @@ D. Switch to plan mode and ask Claude to design the parser architecture.
 
 </details>
 
-### Item 4
-
-An infrastructure team keeps Terraform files in `infra/`, in `services/*/deploy/`, and in a few legacy folders. They want Claude Code to apply their Terraform conventions (naming, tagging, module layout) whenever it edits a Terraform file, and they do not want those conventions taking up context when developers work on application code. What should they do?
-
-A. Add the Terraform conventions to the root CLAUDE.md under a "Terraform" heading.
-B. Put a CLAUDE.md with the conventions in every directory that currently has Terraform files.
-C. Create a Terraform skill and ask developers to invoke it before infrastructure work.
-D. Create a file in `.claude/rules/` with YAML frontmatter `paths` set to a glob such as `["**/*.tf"]`, containing the conventions.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** A path-scoped rule loads only when Claude edits files that match its globs, wherever they sit in the tree. That applies the conventions to every Terraform file and keeps them out of context otherwise.
-
-- **A** is wrong because root CLAUDE.md content is always loaded, so the conventions consume context during unrelated work.
-- **B** is wrong because directory files are tied to directories. They must be copied everywhere and will miss new Terraform locations.
-- **C** is wrong because it depends on developers remembering to invoke it, so the conventions are not applied automatically.
-
-</details>
-
-### Item 5
-
-A team built a `/map-codebase` skill that walks a repository and produces a long report on modules, dependencies and hotspots. Developers like the report but complain that after running it, their main session is cluttered and later answers get worse as context fills up. They want the skill to keep working the same way and return only its conclusions. Which frontmatter change addresses this?
-
-A. Add `argument-hint` so developers specify which folder to map.
-B. Add `context: fork` so the skill runs in an isolated sub-agent context.
-C. Add `allowed-tools` limited to Read and Grep.
-D. Move the skill from `.claude/skills/` to `.claude/commands/`.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** `context: fork` runs the skill in an isolated sub-agent context, so its verbose exploration stays out of the main conversation. This is the stated use case for that option.
-
-- **A** is wrong because prompting for a folder does not stop the output from entering the main session.
-- **C** is wrong because restricting tools controls what the skill can do, not where its output goes.
-- **D** is wrong because moving it to a command changes how it is defined, not whether its output pollutes the main context.
-
-</details>
-
-### Item 6
+### Item 3
 
 A team's `/release-notes` skill drafts a release notes file from recent commits. Two problems have come up: once it ran a Bash command that deleted a local branch, and developers often invoke it without saying which version they are releasing, so it guesses. Which two frontmatter settings address these problems? (Choose two.)
 
@@ -195,27 +135,7 @@ E. Moving the skill to `~/.claude/skills/` so only one person can run it.
 
 </details>
 
-### Item 7
-
-A team shares a `/pre-merge-check` skill in `.claude/skills/`. One developer wants a version that also runs her extra performance checks and uses a terser output style. Her teammates are happy with the current skill and do not want it changed. What should she do?
-
-A. Edit the shared skill and add a flag for her extra checks.
-B. Add her preferences to the project CLAUDE.md so the shared skill picks them up.
-C. Create a personal variant in `~/.claude/skills/` with a different name.
-D. Copy the shared skill to a new name inside the project's `.claude/skills/` and commit it for her own use.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** Personal customization belongs in `~/.claude/skills/`, and giving the variant a different name keeps the team's skill untouched and avoids any confusion about which one runs.
-
-- **A** is wrong because editing the shared skill changes it for the whole team.
-- **B** is wrong because the project CLAUDE.md is shared, so her preferences would affect everyone.
-- **D** is wrong because anything in the project's `.claude/skills/` is shared through the repository, so her personal variant would appear for every teammate.
-
-</details>
-
-### Item 8
+### Item 4
 
 A CI job uses Claude Code to generate unit tests for changed files. Reviewers reject most of the output: many tests duplicate scenarios that already exist, and others assert trivial things instead of the business rules the team cares about. The repository has good shared fixtures that the generated tests never use. What is the most effective improvement?
 
@@ -235,27 +155,7 @@ D. Provide the existing test files in context, and document testing standards, w
 
 </details>
 
-### Item 9
-
-A developer must replace the HTTP client library used across about 50 files in a service. There are two reasonable approaches: wrap the new library in an adapter that mimics the old interface, or replace call sites directly. They differ in how much code changes and in how retries are handled. What is the best way to use Claude Code for this?
-
-A. Use direct execution and let Claude start replacing call sites file by file, deciding the approach as it goes.
-B. Use direct execution with detailed upfront instructions that pick the adapter approach.
-C. Break the work into 50 separate direct-execution tasks, one per file, with no overall plan.
-D. Use plan mode to explore the call sites and compare the two approaches, then switch to direct execution to implement the chosen plan.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** A library migration across many files with two valid approaches is a plan mode task. Planning first surfaces how the library is actually used before anything changes, and direct execution then carries out the agreed approach efficiently.
-
-- **A** is wrong because deciding the approach mid-change risks inconsistent call sites and costly rework.
-- **B** is wrong because it commits to an approach before exploring how the library is used, which is the decision plan mode exists to inform.
-- **C** is wrong because per-file tasks without a plan produce inconsistent changes and ignore the cross-file design decision.
-
-</details>
-
-### Item 10
+### Item 5
 
 A CI step runs Claude Code with `-p` to review each pull request and post findings as inline comments. Two problems remain: the posting script often fails because Claude's review comes back as free-form prose, and when developers push fixes, the re-run posts the same comments again on issues already raised. Which two changes address these problems? (Choose two.)
 
@@ -275,6 +175,8 @@ E. Include the prior review's findings in context on re-runs and instruct Claude
 - **D** is wrong because it still re-posts every open finding, wiping comment threads and any discussion on them.
 
 </details>
+
+Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect).
 
 ## Next step
 

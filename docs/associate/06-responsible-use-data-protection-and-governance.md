@@ -61,7 +61,7 @@ Guidance only: the exam gives 120 minutes for 70 items, which is about 1.7 minut
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -85,47 +85,6 @@ A secondary school teacher wants to use Claude to draft first-pass feedback comm
 
 ### Item 2
 
-A benefits administration team proposes using Claude to read applications for hardship support and send automatic approval or rejection decisions to applicants, with no person reviewing them. The team argues that the eligibility rules are clearly written. A rejection can leave an applicant without support for months. How should this proposal be classified?
-
-- A. Inappropriate as proposed, because a consequential decision about individuals would be made with no human review.
-- B. Appropriate with safeguards, provided a manager audits a sample of decisions each quarter.
-- C. Appropriate, because the eligibility rules are objective and clearly written.
-- D. Appropriate, provided the decisions are made in incognito chats.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** The decision has serious consequences for individuals and the proposal removes all human judgment and accountability. The rationale should be documented, and a redesign could still have Claude prepare case summaries for a person who decides.
-
-- **B** is wrong because a quarterly sample audit finds harmful decisions long after applicants have been affected.
-- **C** is wrong because clear rules do not remove the stakes or the need for an accountable decision maker.
-- **D** is wrong because incognito controls what is retained; it has nothing to do with who makes the decision.
-
-</details>
-
-### Item 3
-
-A project manager finds a third-party Skill on a public website that claims to turn meeting notes into project plans. To work, it asks for access to the team's Google Drive. The organization keeps a list of approved Skills and connectors, and this one is not on it. Which two actions should come before anyone uses it? (Choose two.)
-
-- A. Install it, since a large number of people have already downloaded it.
-- B. Check the approved list and, if it is missing, request review through the organization's approval process.
-- C. Install it only in an incognito chat so any data it touches is not kept.
-- D. Test it on a real client folder first to see whether it is useful enough to request approval.
-- E. Find out what the Skill does and exactly what data it can access in Drive.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and E.** Third-party Skills and connectors need to be trusted before use. That means going through the organization's approval process and understanding what the tool does and what data it can reach.
-
-- **A** is wrong because popularity is not approval and says nothing about what the tool does with data.
-- **C** is wrong because incognito does not limit what an unvetted tool can access in Drive.
-- **D** is wrong because testing on real client data exposes it before the tool is trusted.
-
-</details>
-
-### Item 4
-
 A customer insights analyst wants to use code-executed analysis on a large export of support chat transcripts to find common complaint themes. The export comes from a system she has never worked with before, and she does not know how the data is classified. The organization has a data classification policy. What should she do first?
 
 - A. Upload it, because it is internal company data.
@@ -144,47 +103,7 @@ A customer insights analyst wants to use code-executed analysis on a large expor
 
 </details>
 
-### Item 5
-
-A corporate development associate is drafting internal memos about a confidential acquisition that has not been announced. The organization's policy allows AI drafting support for confidential deals only if the parties cannot be identified from what is shared. She needs help structuring the memos and tightening the language. What approach is consistent with the policy?
-
-- A. Use the real company names, since her chats are private to her account.
-- B. Replace the company names and other identifying details with codenames before sharing anything with Claude.
-- C. Use the real names and ask Claude not to remember any of the details.
-- D. Avoid Claude entirely for the whole deal, even for structure and language.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** The policy requires that the parties cannot be identified, so identifying details must be replaced before they are shared. Codenames let her get the drafting help the policy permits.
-
-- **A** is wrong because private chats do not meet a policy that forbids sharing identifiable deal details.
-- **C** is wrong because asking Claude not to remember does not change what was shared.
-- **D** is wrong because the policy allows this help when the parties are not identifiable, so a total ban is more than the policy requires.
-
-</details>
-
-### Item 6
-
-The organization's AI policy clearly states that any AI-assisted content sent to customers must be reviewed by the sender first. An audit finds that several sales reps have been sending Claude-drafted emails to prospects without reading them. When asked, most reps say they did not know about the rule. What is the most appropriate corrective action?
-
-- A. Rewrite the policy to add a rule about reviewing customer-facing content.
-- B. Ban the sales team from using Claude.
-- C. Treat it as a training gap: give the reps targeted training on the existing rule and reinforce the review step.
-- D. Take no action, since the emails were mostly accurate.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** The policy already covers this behavior, and the reps did not know about it. That is a training gap, and targeted training with a reinforced review step closes it.
-
-- **A** is wrong because the rule already exists, so rewriting the policy does not reach the people who did not know it.
-- **B** is wrong because a ban overcorrects when the problem is awareness of an existing rule.
-- **D** is wrong because unreviewed customer content breaches policy whether or not it happened to be accurate.
-
-</details>
-
-### Item 7
+### Item 3
 
 An IT governance lead notices that several staff have connected their personal Gmail accounts to the Projects they use for work. The organization's AI policy covers approved tools and data classification but says nothing about connectors or personal accounts. Staff say they assumed it was allowed. What should the governance lead do?
 
@@ -204,48 +123,7 @@ An IT governance lead notices that several staff have connected their personal G
 
 </details>
 
-### Item 8
-
-A communications team publishes weekly thought-leadership articles under the chief executive's name. The articles are drafted with Claude, and the chief executive has not been reading them before they go out. One recent article contained a statistic nobody could trace to a source. Which two corrective actions best address the problem? (Choose two.)
-
-- A. Stop using Claude for any writing in the communications team.
-- B. Add a note to each article saying it may contain errors and keep publishing as before.
-- C. Require the named author to review and approve each article before it is published.
-- D. Verify every factual claim and statistic against a source before publication.
-- E. Ask Claude to check its own drafts for accuracy before each article goes out.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C and D.** Publishing under someone's name without their review is a transparency failure, and the untraceable statistic is a Diligence lapse. Author approval and independent verification of facts close both gaps.
-
-- **A** is wrong because a ban overcorrects; the problems are missing review and verification.
-- **B** is wrong because a disclaimer leaves unverified content in place under the executive's name.
-- **E** is wrong because Claude checking its own drafts is not independent verification.
-
-</details>
-
-### Item 9
-
-A procurement analyst asked Claude to summarize a supplier contract and pasted the summary into a decision memo without reading the contract. The summary left out an early-termination clause, and the memo's recommendation depended on being able to exit early. The memo has been sent to a manager but no decision has been made yet. What is the right corrective action?
-
-- A. Stop using Claude for contracts and switch to a different tool.
-- B. Ask Claude to summarize the contract again and replace the old summary.
-- C. Add a note to the memo saying it was prepared with AI assistance.
-- D. Check the summary against the contract, correct the memo, and add a key-clause check to the team's memo process.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** This is a Diligence lapse: the analyst stayed accountable but did not verify the summary. Checking against the source fixes this memo, and a process check prevents the same lapse next time.
-
-- **A** is wrong because the failure was a skipped verification step, which would recur with any tool.
-- **B** is wrong because a new summary is still unverified.
-- **C** is wrong because a disclosure note does not correct the missing clause or the recommendation.
-
-</details>
-
-### Item 10
+### Item 4
 
 A recruiting team has been using Claude to rank applicants' résumés for a role, and the hiring manager interviews only the top ten. A recruiter notices that candidates with career breaks are consistently ranked low, even when their experience matches the job requirements. The organization's policy requires fair, job-related hiring criteria. What should the team do?
 
@@ -264,6 +142,8 @@ A recruiting team has been using Claude to rank applicants' résumés for a role
 - **D** is wrong because nothing suggests memory is the cause, and incognito does not address bias in the ranking.
 
 </details>
+
+Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Associate, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate).
 
 ## Next step
 

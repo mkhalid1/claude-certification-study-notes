@@ -63,7 +63,7 @@ Guidance only: the exam gives 120 minutes for 70 items, which is about 1.7 minut
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 4 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -87,47 +87,6 @@ A communications team uses a Project to draft replies to press enquiries. Every 
 
 ### Item 2
 
-A bid team writes responses to formal requests for proposals. Each response follows the same multi-step procedure and must come out in the same document structure with set sections. The team has an approved custom Skill that does this. The Project already has instructions for tone and knowledge with past bids. Where should the procedure and document structure live?
-
-- A. In the approved Skill, attached to the Project.
-- B. Pasted into the start of every chat as a long prompt.
-- C. In memory, so Claude remembers the procedure over time.
-- D. In knowledge, by uploading more past bids and hoping Claude copies the structure.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** A repeatable procedure with a standard output structure is the job of a Skill, and an approved one already exists. Attaching it to the Project makes every response follow the same steps and format.
-
-- **B** is wrong because pasting a long prompt each time is error-prone and depends on each person.
-- **C** is wrong because memory is not a reliable way to hold a defined procedure.
-- **D** is wrong because examples do not guarantee Claude follows a specific structure, and they add noise.
-
-</details>
-
-### Item 3
-
-A team is deciding how to give its Project access to several sources. It can upload files or use connectors such as Google Drive and Gmail. For which two sources is a connector the better choice? (Choose two.)
-
-- A. A single signed contract that is final and will not change.
-- B. A PDF of slides from a conference the team attended last year.
-- C. A shared Drive folder of policies that the policy owner updates every week.
-- D. The team's ongoing Gmail threads with a vendor, needed for summaries of the latest correspondence.
-- E. An archived dataset that has been frozen for a one-time analysis.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C and D.** Both are live sources that change after you would have uploaded them. A connector reads the current version where it is maintained, so Claude works from the latest policies and emails.
-
-- **A** is wrong because a final document does not change, so an upload is simple and stays accurate.
-- **B** is wrong because a past conference deck is fixed and suits an upload.
-- **E** is wrong because a frozen dataset for one analysis does not need live access.
-
-</details>
-
-### Item 4
-
 A Project for answering staff questions about expense rules has 60 knowledge files. They include three drafts of the expense policy, two copies of the final policy and an older version from two years ago. Answers sometimes mix rules from different versions. What should the Project owner do?
 
 - A. Add an instruction telling Claude to always use the most recent version.
@@ -146,47 +105,7 @@ A Project for answering staff questions about expense rules has 60 knowledge fil
 
 </details>
 
-### Item 5
-
-A freelance consultant works for two competing clients. She uses one Project for both, with both clients' documents in its knowledge. In a draft for the first client, Claude referred to a product launch plan that belongs to the second client. She wants to prevent this from happening again. What should she do?
-
-- A. Add a Project instruction telling Claude not to mix up the two clients.
-- B. Use incognito chats for all work for both clients.
-- C. Create a separate Project for each client, each with its own knowledge and memory.
-- D. Delete memory once a week to clear out details from both clients.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** Unrelated work streams should be isolated. Separate Projects mean each client's knowledge and memory are only available when working for that client.
-
-- **A** is wrong because both clients' documents stay in the same knowledge, so the risk remains.
-- **B** is wrong because incognito does not separate the knowledge in the Project, and it loses useful context.
-- **D** is wrong because the shared knowledge is still in one Project, and weekly deletion does not stop mixing in between.
-
-</details>
-
-### Item 6
-
-A team's Project instructions include stable rules about tone and format. Each Monday a team lead edits the instructions to add that week's campaign topic and deadline. Colleagues who use the Project for other campaigns now get outputs about the wrong topic. What is the best fix?
-
-- A. Keep stable rules in the instructions and put each week's topic and deadline in the per-request prompt.
-- B. Ask colleagues to tell Claude to ignore the campaign mentioned in the instructions.
-- C. Create a new Project every week for that week's campaign.
-- D. Move the tone and format rules into a knowledge file and leave only the weekly topic in the instructions.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A.** Persistent instructions should hold what stays the same across requests. Details that change per task belong in the request, so they do not affect everyone else's work.
-
-- **B** is wrong because it makes every colleague work around a misplaced instruction.
-- **C** is wrong because it multiplies setup work and does not fix where the details belong.
-- **D** is wrong because it moves stable rules to the wrong place and keeps the changing detail in the instructions.
-
-</details>
-
-### Item 7
+### Item 3
 
 A recruiting team uses a Project to draft job advertisements. The instructions set the structure and tone, and knowledge holds the benefits summary. When a hiring manager leaves out details such as the work location, Claude writes plausible but invented details to complete the ad. What change to the configuration would best prevent this?
 
@@ -206,48 +125,7 @@ A recruiting team uses a Project to draft job advertisements. The instructions s
 
 </details>
 
-### Item 8
-
-A Project has produced a well-structured weekly newsletter draft for months. For the last two weeks, drafts have dropped the usual section structure. The Project instructions have not been edited, and the knowledge files are refreshed every week as they always have been. Two weeks ago, a colleague installed an updated version of the newsletter Skill the Project uses. Which two actions should the team take first? (Choose two.)
-
-- A. Rewrite the Project instructions with stricter rules about section structure.
-- B. Compare the new Skill version with the previous one for changes to the section structure.
-- C. Delete all of the Project's memories to remove anything that might be interfering.
-- D. Switch to a more capable model and regenerate the last two drafts.
-- E. Run the previous Skill version on the same input to confirm whether the structure returns.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B and E.** The only layer that changed when the problem started is the Skill version. Comparing the versions and testing the previous one on the same input confirms the cause and points to the fix.
-
-- **A** is wrong because the instructions are unchanged and cannot explain the change in output.
-- **C** is wrong because nothing in the symptoms points to memory, and deleting it all throws away useful context.
-- **D** is wrong because a model change does not address a change in the Skill that shapes the format.
-
-</details>
-
-### Item 9
-
-A learning team's Project answers staff questions about the training calendar. The Project holds an uploaded copy of the calendar from January. The calendar owner updates the live document in Google Drive every month, but nobody re-uploads it. Staff are now being told about sessions that were moved or cancelled. What is the best long-term fix?
-
-- A. Re-upload the calendar once a year at the start of the year.
-- B. Add an instruction telling Claude to give only current session dates.
-- C. Rely on memory to track which sessions have changed.
-- D. Replace the uploaded copy with a Google Drive connector to the live calendar.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: D.** The source changes every month and lives in Drive, so a static upload goes stale. A connector to the live document keeps the Project's knowledge current without anyone re-uploading it.
-
-- **A** is wrong because a yearly upload is still stale for eleven months of the year.
-- **B** is wrong because an instruction cannot make Claude aware of changes in a document it does not have.
-- **C** is wrong because memory is not a reliable way to track changes to a source document.
-
-</details>
-
-### Item 10
+### Item 4
 
 A Project produces detailed monthly client reports and short weekly summaries. Last week, a team member added "Keep every response brief" to the Project instructions to make the weekly summaries tighter. Since then, the monthly reports have also become too short. Knowledge, Skills and memory have not changed. What should the team do?
 
@@ -266,6 +144,8 @@ A Project produces detailed monthly client reports and short weekly summaries. L
 - **D** is wrong because the Skill has not changed, and a new version adds a new variable.
 
 </details>
+
+Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Associate, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate).
 
 ## Next step
 

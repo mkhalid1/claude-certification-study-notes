@@ -2,7 +2,7 @@
 
 # Claude Certified Architect, Professional (CCAR-P)
 
-Study notes for Anthropic's Claude Certified Architect, Professional exam, written for the version that takes effect on December 7, 2026. Each domain page explains what the domain measures, how its questions tend to work, a method for answering them, common traps, and 10 original practice items with explanations.
+Study notes for Anthropic's Claude Certified Architect, Professional exam, written for the version that takes effect on December 7, 2026. Each domain page explains what the domain measures, how its questions tend to work, a method for answering them, common traps, and 3 to 4 original practice items with explanations.
 
 ## Exam at a glance
 
@@ -71,7 +71,7 @@ Item counts are approximate: each is the domain weight multiplied by the 60 scor
 7. **Finish with Domains 7 and 6 (8% and 7%).** They are small but quick to score on. For Domain 7, get hands-on with Claude Code permission modes, hooks, subagent definitions, plugins and managed settings. For Domain 6, review SLAs, decision records and handoff packages for gaps.
 8. **Do the hands-on work the guide names.** The guide recommends designing and delivering at least one end-to-end Claude solution in production, covering model and deployment-surface selection, prompt and context engineering, retrieval or tool integration, an evaluation suite, observability and layered guardrails. It also recommends practicing review of artifacts made by others: architecture diagrams, configuration files, logs and traces, evaluation results and code.
 9. **Use the official resources.** The guide says there is no single required course. It points to the blueprint, the Foundations exam guide, official Anthropic documentation and engineering guidance for the Claude Developer Platform, Agent Skills, Claude Code and the Claude Agent SDK, Claude Managed Agents and the Model Context Protocol, the feature-availability and data-handling differences across the Anthropic API, Amazon Bedrock, Google Vertex AI and Microsoft Foundry, and the sample questions in Section 7 of the guide.
-10. **Practice under time pressure.** Work through the 70 items in these notes, then take a timed practice test and review every miss by domain.
+10. **Practice under time pressure.** Work through the 25 items in these notes, then take a timed practice test and review every miss by domain.
 
 ## Rules and policies worth knowing
 

@@ -71,7 +71,7 @@ Guidance only: the exam gives 120 minutes for 60 items, so about 2 minutes per i
 
 ## Practice items
 
-These 10 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
+These 5 items are original, written for these notes. They are not taken from Anthropic's exam or exam guide.
 
 ### Item 1
 
@@ -95,26 +95,6 @@ D. Remove text blocks from responses that also contain tool requests, so the exi
 
 ### Item 2
 
-A market research firm builds a coordinator with the Agent SDK and defines three subagents with AgentDefinition: a news searcher, a filings analyst and a report writer. Each definition has a clear description and its own tool restrictions. In testing, the coordinator never delegates. It tries to answer everything itself with the two tools it has. The coordinator's `allowedTools` is set to `["WebSearch", "Read"]`. What change is needed?
-
-A. Rewrite the subagent descriptions so they state more forcefully when each one must be used.
-B. Set `tool_choice` to `"any"` on the coordinator so it is required to call a tool every turn.
-C. Add `"Task"` to the coordinator's `allowedTools`.
-D. Give each subagent access to the coordinator's conversation history so it can pick up work on its own.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** Subagents are spawned through the Task tool. If `"Task"` is not in the coordinator's `allowedTools`, the coordinator has no way to invoke them, however good the definitions are.
-
-- **A** is wrong because descriptions help the coordinator choose between subagents, but it cannot choose any of them without the Task tool.
-- **B** is wrong because forcing a tool call would only push the coordinator toward WebSearch or Read. Task would still be unavailable.
-- **D** is wrong because subagents do not pick up work by themselves. The coordinator spawns them, and context is passed in their prompt, not by sharing history.
-
-</details>
-
-### Item 3
-
 A due-diligence platform uses a coordinator, a web search subagent, a document analysis subagent and a synthesis subagent. The coordinator calls the synthesis subagent with the prompt "Synthesize the findings from the search and analysis agents into a cited summary." The summaries are vague, and many citations point to sources nobody retrieved. The search and analysis subagents both returned good results to the coordinator. What is the best fix?
 
 A. Enable a shared memory setting so the synthesis subagent can read the other subagents' results directly.
@@ -133,48 +113,7 @@ D. Put the complete findings from both subagents into the synthesis prompt as st
 
 </details>
 
-### Item 4
-
-An insurer's claims agent can call `verify_policyholder`, `get_claim` and `issue_payout`. Two rules must hold on every single claim: no payout before `verify_policyholder` has returned a verified policyholder ID, and any payout above the auto-approval limit must go to a human adjuster instead. An audit found rare cases where both rules were broken even though the system prompt states them clearly. Which two changes give a deterministic guarantee? (Choose two.)
-
-A. Add a hook that intercepts `issue_payout` calls, blocks any above the auto-approval limit, and routes them to the adjuster escalation workflow.
-B. Restate both rules at the top and bottom of the system prompt in capital letters.
-C. Add few-shot examples of the agent refusing large payouts and verifying identity first.
-D. Add a programmatic prerequisite that blocks `issue_payout` until `verify_policyholder` has returned a verified policyholder ID in the current session.
-E. Ask the agent to write a short self-check confirming both rules before each payout call.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: A and D.** Both rules carry financial consequences and must hold every time, so they belong in code. A tool-call interception hook enforces the amount limit and redirects to escalation. A prerequisite gate enforces the order of operations by blocking the payout tool until verification has succeeded.
-
-- **B** is wrong because prompt instructions are probabilistic. The audit already shows a clearly stated prompt has a non-zero failure rate.
-- **C** is wrong because few-shot examples improve the odds of compliance but still rely on the model choosing to comply.
-- **E** is wrong because a self-check is more model output. It can be skipped or be wrong, and it guarantees nothing.
-
-</details>
-
-### Item 5
-
-A travel agency's booking agent pulls data from three community MCP servers that the agency does not control. One returns departure times as Unix timestamps, one as ISO 8601 strings, and one returns booking status as numeric codes such as 3 and 7. The agent sometimes puts itinerary steps in the wrong order and misreports booking status. What is the most effective fix?
-
-A. Add a section to the system prompt explaining each server's formats and what each status code means.
-B. Add a PostToolUse hook that converts all timestamps to one format and maps status codes to readable labels before the agent sees the results.
-C. Ask the agent to convert every timestamp to ISO 8601 in its reasoning before comparing times.
-D. Ask each server's maintainers to standardize their output formats.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** PostToolUse hooks intercept tool results and can transform them before the model processes them. Normalizing formats in code gives the agent consistent data every time, which is exactly the job this hook pattern is for.
-
-- **A** is wrong because it leaves the model to interpret mixed formats on every call, which is the error-prone step already failing.
-- **C** is wrong because it adds work to the model's reasoning and keeps the conversion probabilistic.
-- **D** is wrong because the agency does not control these servers. It may never happen and does not fix the agent now.
-
-</details>
-
-### Item 6
+### Item 3
 
 A telecom support agent receives this message: "I was charged twice for October, my new router still hasn't arrived, and please change my billing address." The agent investigates the double charge, explains it well, and ends the conversation. The customer has to write again about the router and the address. What design change best addresses this?
 
@@ -194,27 +133,7 @@ D. Start a separate agent session for each issue, each with no knowledge of the 
 
 </details>
 
-### Item 7
-
-A platform team has spent an Agent SDK session building a detailed analysis of a payments service: its modules, data flows and test gaps. They now want to compare two refactoring strategies, one that extracts a ledger service and one that keeps a modular monolith. Each strategy should be explored in depth without the other's reasoning leaking into it, and both should start from the same analysis. What should they do?
-
-A. Continue in the same session and explore the two strategies one after the other.
-B. Use `fork_session` to create two independent branches from the current session and explore one strategy in each.
-C. Start two brand-new sessions and have each one re-explore the payments service from scratch.
-D. Resume the session twice with `--resume` and the same session name, one for each strategy.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: B.** `fork_session` creates independent branches from a shared analysis baseline, which is exactly what comparing divergent approaches needs. Each branch keeps the analysis and none of the other branch's reasoning.
-
-- **A** is wrong because the second strategy would be explored with the first one's reasoning already in context, which is the contamination they want to avoid.
-- **C** is wrong because it throws away a valid analysis and repeats costly exploration.
-- **D** is wrong because resuming continues one conversation rather than creating independent branches, so the two explorations would not stay separate.
-
-</details>
-
-### Item 8
+### Item 4
 
 An engineering lead has two workflows to automate. The first is a weekly review of every changed infrastructure config file against the same five-point checklist. The second is investigating why a nightly import intermittently creates duplicate rows, with no known cause yet. Which pairing of decomposition approaches fits best?
 
@@ -234,27 +153,7 @@ D. A fixed prompt chain for the config review, and adaptive decomposition for th
 
 </details>
 
-### Item 9
-
-A developer used a named session, "billing-audit", to analyze a billing codebase over two days. Overnight, a large rebase rewrote most of the modules that session had read, including their interfaces. The developer wants to continue the audit tomorrow with reliable results. What is the best approach?
-
-A. Run `--resume billing-audit` and continue asking questions as before.
-B. Run `--resume billing-audit` and list the rewritten modules so the agent re-reads only those.
-C. Start a new session and inject a structured summary of the audit's conclusions that still hold, then re-explore the rewritten modules.
-D. Use `fork_session` on "billing-audit" so the new work runs on a separate branch.
-
-<details>
-<summary>Answer and explanation</summary>
-
-**Answer: C.** When most prior tool results are stale, a fresh session seeded with a structured summary is more reliable than resuming. The agent keeps the conclusions that are still valid without being misled by outdated file reads.
-
-- **A** is wrong because the resumed context is full of stale file contents, and the agent will reason from code that no longer exists.
-- **B** is wrong because telling a resumed session about changes works when only a few files changed. Here most modules were rewritten, so the stale context outweighs the useful part.
-- **D** is wrong because a fork copies the same stale baseline into the branch, so it inherits the same problem.
-
-</details>
-
-### Item 10
+### Item 5
 
 A consulting firm's research coordinator runs every request through all four subagents (search, document analysis, synthesis, report writing), even simple lookups like "What year was this regulation enacted?" The coordinator's delegation prompts are long step-by-step procedures, and subagents struggle when a source doesn't fit the steps. Which two changes best follow coordinator design guidance? (Choose two.)
 
@@ -274,6 +173,8 @@ E. Let subagents send results directly to each other to cut out coordinator roun
 - **E** is wrong because routing all communication through the coordinator is what gives observability, consistent error handling and controlled information flow.
 
 </details>
+
+Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect).
 
 ## Next step
 
