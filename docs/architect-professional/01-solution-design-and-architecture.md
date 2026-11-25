@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Exam overview: Architect, Professional](README.md) · Next: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Exam overview: Architect, Professional](README.md) · Next: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md)
+<!-- /nav:top -->
 
 # Domain 1: Solution Design and Architecture
 
@@ -161,4 +163,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Exam overview: Architect, Professional](README.md) | Next: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Exam overview: Architect, Professional](README.md) | Next: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

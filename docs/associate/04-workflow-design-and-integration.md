@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) · Next: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) · Next: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md)
+<!-- /nav:top -->
 
 # Domain 4: Workflow Design and Integration
 
@@ -158,4 +160,6 @@ Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) | Next: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) | Next: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

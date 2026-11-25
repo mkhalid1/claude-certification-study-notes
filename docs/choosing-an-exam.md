@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../README.md#contents) · Previous: [Home](../README.md) · Next: [Find your weak domains first](diagnostic.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../README.md#contents) · Previous: [Home](../README.md) · Next: [Find your weak domains first](diagnostic.md)
+<!-- /nav:top -->
 
 # Which exam, and which version
 
@@ -65,4 +67,6 @@ Open the notes for your exam above, or start with the [diagnostic](diagnostic.md
 
 ---
 
-<!-- nav:bottom -->← Previous: [Home](../README.md) | Next: [Find your weak domains first](diagnostic.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Home](../README.md) | Next: [Find your weak domains first](diagnostic.md) → | [Back to contents](../README.md#contents)
+<!-- /nav:bottom -->

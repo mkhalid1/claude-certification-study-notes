@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md) · Next: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md) · Next: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md)
+<!-- /nav:top -->
 
 # Domain 5: Model Selection and Optimization
 
@@ -143,4 +145,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md) | Next: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md) | Next: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../README.md#contents) · Previous: [Exam-day checklist](exam-day-checklist.md) · Next: [Glossary](glossary.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../README.md#contents) · Previous: [Exam-day checklist](exam-day-checklist.md) · Next: [Glossary](glossary.md)
+<!-- /nav:top -->
 
 # Frequently asked questions
 
@@ -86,4 +88,6 @@ They follow the official exam guides' domains, weights and skill statements. The
 
 ---
 
-<!-- nav:bottom -->← Previous: [Exam-day checklist](exam-day-checklist.md) | Next: [Glossary](glossary.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Exam-day checklist](exam-day-checklist.md) | Next: [Glossary](glossary.md) → | [Back to contents](../README.md#contents)
+<!-- /nav:bottom -->

@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) · Next: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) · Next: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md)
+<!-- /nav:top -->
 
 # Domain 3: Claude Code Configuration & Workflows
 
@@ -190,4 +192,6 @@ Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) | Next: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) | Next: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

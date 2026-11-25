@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 3: Claude Code](03-claude-code.md) · Next: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 3: Claude Code](03-claude-code.md) · Next: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md)
+<!-- /nav:top -->
 
 # Domain 4: Eval, Testing, and Debugging
 
@@ -140,4 +142,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 3: Claude Code](03-claude-code.md) | Next: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 3: Claude Code](03-claude-code.md) | Next: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

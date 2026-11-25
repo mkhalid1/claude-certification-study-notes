@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) · Next: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) · Next: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md)
+<!-- /nav:top -->
 
 # Domain 3: Capability, Model, and Context Selection
 
@@ -159,4 +161,6 @@ Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) | Next: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) | Next: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

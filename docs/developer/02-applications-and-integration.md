@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 1: Agents and Workflows](01-agents-and-workflows.md) · Next: [Domain 3: Claude Code](03-claude-code.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 1: Agents and Workflows](01-agents-and-workflows.md) · Next: [Domain 3: Claude Code](03-claude-code.md)
+<!-- /nav:top -->
 
 # Domain 2: Applications and Integration
 
@@ -169,4 +171,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 1: Agents and Workflows](01-agents-and-workflows.md) | Next: [Domain 3: Claude Code](03-claude-code.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 1: Agents and Workflows](01-agents-and-workflows.md) | Next: [Domain 3: Claude Code](03-claude-code.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

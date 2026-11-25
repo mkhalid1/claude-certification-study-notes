@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Exam overview: Developer, Foundations](README.md) · Next: [Domain 2: Applications and Integration](02-applications-and-integration.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Exam overview: Developer, Foundations](README.md) · Next: [Domain 2: Applications and Integration](02-applications-and-integration.md)
+<!-- /nav:top -->
 
 # Domain 1: Agents and Workflows
 
@@ -141,4 +143,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Exam overview: Developer, Foundations](README.md) | Next: [Domain 2: Applications and Integration](02-applications-and-integration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Exam overview: Developer, Foundations](README.md) | Next: [Domain 2: Applications and Integration](02-applications-and-integration.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

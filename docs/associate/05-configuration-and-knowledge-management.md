@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) · Next: [Domain 6: Responsible Use, Data Protection, and Governance](06-responsible-use-data-protection-and-governance.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) · Next: [Domain 6: Responsible Use, Data Protection, and Governance](06-responsible-use-data-protection-and-governance.md)
+<!-- /nav:top -->
 
 # Domain 5: Configuration and Knowledge Management
 
@@ -159,4 +161,6 @@ Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) | Next: [Domain 6: Responsible Use, Data Protection, and Governance](06-responsible-use-data-protection-and-governance.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 4: Workflow Design and Integration](04-workflow-design-and-integration.md) | Next: [Domain 6: Responsible Use, Data Protection, and Governance](06-responsible-use-data-protection-and-governance.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

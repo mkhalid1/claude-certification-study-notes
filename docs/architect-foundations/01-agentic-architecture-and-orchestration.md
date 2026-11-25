@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Exam overview: Architect, Foundations](README.md) · Next: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Exam overview: Architect, Foundations](README.md) · Next: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md)
+<!-- /nav:top -->
 
 # Domain 1: Agentic Architecture & Orchestration
 
@@ -188,4 +190,6 @@ Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Exam overview: Architect, Foundations](README.md) | Next: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Exam overview: Architect, Foundations](README.md) | Next: [Domain 2: Tool Design & MCP Integration](02-tool-design-and-mcp-integration.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

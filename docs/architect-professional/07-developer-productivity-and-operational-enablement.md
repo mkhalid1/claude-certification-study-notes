@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md) · Next: [How scoring works](../scoring.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md) · Next: [How scoring works](../scoring.md)
+<!-- /nav:top -->
 
 # Domain 7: Developer Productivity and Operational Enablement
 
@@ -138,4 +140,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md) | Next: [How scoring works](../scoring.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md) | Next: [How scoring works](../scoring.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

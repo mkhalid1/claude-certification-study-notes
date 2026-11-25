@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md) · Next: [Domain 8: Tools and MCP](08-tools-and-mcp.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md) · Next: [Domain 8: Tools and MCP](08-tools-and-mcp.md)
+<!-- /nav:top -->
 
 # Domain 7: Security and Safety
 
@@ -142,4 +144,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md) | Next: [Domain 8: Tools and MCP](08-tools-and-mcp.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 6: Prompt and Context Engineering](06-prompt-and-context-engineering.md) | Next: [Domain 8: Tools and MCP](08-tools-and-mcp.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

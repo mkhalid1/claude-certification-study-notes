@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md) · Next: [Domain 7: Security and Safety](07-security-and-safety.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md) · Next: [Domain 7: Security and Safety](07-security-and-safety.md)
+<!-- /nav:top -->
 
 # Domain 6: Prompt and Context Engineering
 
@@ -145,4 +147,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md) | Next: [Domain 7: Security and Safety](07-security-and-safety.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 5: Model Selection and Optimization](05-model-selection-and-optimization.md) | Next: [Domain 7: Security and Safety](07-security-and-safety.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

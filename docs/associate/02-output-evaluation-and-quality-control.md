@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 1: Task Definition and Prompting](01-task-definition-and-prompting.md) · Next: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 1: Task Definition and Prompting](01-task-definition-and-prompting.md) · Next: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md)
+<!-- /nav:top -->
 
 # Domain 2: Output Evaluation and Quality Control
 
@@ -181,4 +183,6 @@ Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 1: Task Definition and Prompting](01-task-definition-and-prompting.md) | Next: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 1: Task Definition and Prompting](01-task-definition-and-prompting.md) | Next: [Domain 3: Capability, Model, and Context Selection](03-capability-model-and-context-selection.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

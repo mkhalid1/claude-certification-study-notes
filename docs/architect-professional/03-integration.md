@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md) · Next: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md) · Next: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md)
+<!-- /nav:top -->
 
 # Domain 3: Integration
 
@@ -167,4 +169,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md) | Next: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 2: Claude Models, Prompting, and Context Engineering](02-models-prompting-and-context-engineering.md) | Next: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

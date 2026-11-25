@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 7: Security and Safety](07-security-and-safety.md) · Next: [Exam overview: Architect, Foundations](../architect-foundations/README.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 7: Security and Safety](07-security-and-safety.md) · Next: [Exam overview: Architect, Foundations](../architect-foundations/README.md)
+<!-- /nav:top -->
 
 # Domain 8: Tools and MCP
 
@@ -143,4 +145,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 7: Security and Safety](07-security-and-safety.md) | Next: [Exam overview: Architect, Foundations](../architect-foundations/README.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 7: Security and Safety](07-security-and-safety.md) | Next: [Exam overview: Architect, Foundations](../architect-foundations/README.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

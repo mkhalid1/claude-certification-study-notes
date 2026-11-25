@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../README.md#contents) · Previous: [How scoring works](scoring.md) · Next: [Exam-day checklist](exam-day-checklist.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../README.md#contents) · Previous: [How scoring works](scoring.md) · Next: [Exam-day checklist](exam-day-checklist.md)
+<!-- /nav:top -->
 
 # Study plans
 
@@ -66,4 +68,6 @@ For when the exam is booked and close.
 
 ---
 
-<!-- nav:bottom -->← Previous: [How scoring works](scoring.md) | Next: [Exam-day checklist](exam-day-checklist.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [How scoring works](scoring.md) | Next: [Exam-day checklist](exam-day-checklist.md) → | [Back to contents](../README.md#contents)
+<!-- /nav:bottom -->

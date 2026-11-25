@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 2: Applications and Integration](02-applications-and-integration.md) · Next: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 2: Applications and Integration](02-applications-and-integration.md) · Next: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md)
+<!-- /nav:top -->
 
 # Domain 3: Claude Code
 
@@ -141,4 +143,6 @@ Want more? The free timed Developer, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 2: Applications and Integration](02-applications-and-integration.md) | Next: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 2: Applications and Integration](02-applications-and-integration.md) | Next: [Domain 4: Eval, Testing, and Debugging](04-eval-testing-and-debugging.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

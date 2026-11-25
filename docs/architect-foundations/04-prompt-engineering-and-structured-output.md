@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) · Next: [Domain 5: Context Management & Reliability](05-context-management-and-reliability.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) · Next: [Domain 5: Context Management & Reliability](05-context-management-and-reliability.md)
+<!-- /nav:top -->
 
 # Domain 4: Prompt Engineering & Structured Output
 
@@ -186,4 +188,6 @@ Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) | Next: [Domain 5: Context Management & Reliability](05-context-management-and-reliability.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) | Next: [Domain 5: Context Management & Reliability](05-context-management-and-reliability.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

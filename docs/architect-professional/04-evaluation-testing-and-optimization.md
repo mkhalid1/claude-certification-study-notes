@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 3: Integration](03-integration.md) · Next: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 3: Integration](03-integration.md) · Next: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md)
+<!-- /nav:top -->
 
 # Domain 4: Evaluation, Testing, and Optimization
 
@@ -164,4 +166,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 3: Integration](03-integration.md) | Next: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 3: Integration](03-integration.md) | Next: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

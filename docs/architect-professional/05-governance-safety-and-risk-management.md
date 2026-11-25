@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md) · Next: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md) · Next: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md)
+<!-- /nav:top -->
 
 # Domain 5: Governance, Safety, and Risk Management
 
@@ -162,4 +164,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md) | Next: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 4: Evaluation, Testing, and Optimization](04-evaluation-testing-and-optimization.md) | Next: [Domain 6: Stakeholder Communication and Lifecycle Management](06-stakeholder-communication-and-lifecycle-management.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 1: Solution Design and Architecture](01-solution-design-and-architecture.md) · Next: [Domain 3: Integration](03-integration.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 1: Solution Design and Architecture](01-solution-design-and-architecture.md) · Next: [Domain 3: Integration](03-integration.md)
+<!-- /nav:top -->
 
 # Domain 2: Claude Models, Prompting, and Context Engineering
 
@@ -140,4 +142,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 1: Solution Design and Architecture](01-solution-design-and-architecture.md) | Next: [Domain 3: Integration](03-integration.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 1: Solution Design and Architecture](01-solution-design-and-architecture.md) | Next: [Domain 3: Integration](03-integration.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

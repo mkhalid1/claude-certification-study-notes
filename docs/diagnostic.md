@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../README.md#contents) · Previous: [Which exam, and which version](choosing-an-exam.md) · Next: [Exam overview: Associate, Foundations](associate/README.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../README.md#contents) · Previous: [Which exam, and which version](choosing-an-exam.md) · Next: [Exam overview: Associate, Foundations](associate/README.md)
+<!-- /nav:top -->
 
 # Find your weak domains first
 
@@ -52,4 +54,6 @@ With your weak domains listed, pick a [study plan](study-plans.md): 7 days if yo
 
 ---
 
-<!-- nav:bottom -->← Previous: [Which exam, and which version](choosing-an-exam.md) | Next: [Exam overview: Associate, Foundations](associate/README.md) → | [Back to contents](../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Which exam, and which version](choosing-an-exam.md) | Next: [Exam overview: Associate, Foundations](associate/README.md) → | [Back to contents](../README.md#contents)
+<!-- /nav:bottom -->

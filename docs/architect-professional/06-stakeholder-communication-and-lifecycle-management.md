@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md) · Next: [Domain 7: Developer Productivity and Operational Enablement](07-developer-productivity-and-operational-enablement.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md) · Next: [Domain 7: Developer Productivity and Operational Enablement](07-developer-productivity-and-operational-enablement.md)
+<!-- /nav:top -->
 
 # Domain 6: Stakeholder Communication and Lifecycle Management
 
@@ -136,4 +138,6 @@ Want more? The free timed Architect, Professional diagnostic on PrepClubs has th
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md) | Next: [Domain 7: Developer Productivity and Operational Enablement](07-developer-productivity-and-operational-enablement.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 5: Governance, Safety, and Risk Management](05-governance-safety-and-risk-management.md) | Next: [Domain 7: Developer Productivity and Operational Enablement](07-developer-productivity-and-operational-enablement.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

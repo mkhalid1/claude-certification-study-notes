@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 1: Agentic Architecture & Orchestration](01-agentic-architecture-and-orchestration.md) · Next: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 1: Agentic Architecture & Orchestration](01-agentic-architecture-and-orchestration.md) · Next: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md)
+<!-- /nav:top -->
 
 # Domain 2: Tool Design & MCP Integration
 
@@ -188,4 +190,6 @@ Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 1: Agentic Architecture & Orchestration](01-agentic-architecture-and-orchestration.md) | Next: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 1: Agentic Architecture & Orchestration](01-agentic-architecture-and-orchestration.md) | Next: [Domain 3: Claude Code Configuration & Workflows](03-claude-code-configuration-and-workflows.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

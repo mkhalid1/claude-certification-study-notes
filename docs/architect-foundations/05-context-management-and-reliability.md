@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) · Next: [Exam overview: Architect, Professional](../architect-professional/README.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) · Next: [Exam overview: Architect, Professional](../architect-professional/README.md)
+<!-- /nav:top -->
 
 # Domain 5: Context Management & Reliability
 
@@ -188,4 +190,6 @@ Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) | Next: [Exam overview: Architect, Professional](../architect-professional/README.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 4: Prompt Engineering & Structured Output](04-prompt-engineering-and-structured-output.md) | Next: [Exam overview: Architect, Professional](../architect-professional/README.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

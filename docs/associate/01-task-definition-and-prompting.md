@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Exam overview: Associate, Foundations](README.md) · Next: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Exam overview: Associate, Foundations](README.md) · Next: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md)
+<!-- /nav:top -->
 
 # Domain 1: Task Definition and Prompting
 
@@ -158,4 +160,6 @@ Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Exam overview: Associate, Foundations](README.md) | Next: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Exam overview: Associate, Foundations](README.md) | Next: [Domain 2: Output Evaluation and Quality Control](02-output-evaluation-and-quality-control.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->

@@ -1,4 +1,6 @@
-<!-- nav:top -->[Contents](../../README.md#contents) · Previous: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) · Next: [Exam overview: Developer, Foundations](../developer/README.md)<!-- /nav:top -->
+<!-- nav:top -->
+[Contents](../../README.md#contents) · Previous: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) · Next: [Exam overview: Developer, Foundations](../developer/README.md)
+<!-- /nav:top -->
 
 # Domain 6: Responsible Use, Data Protection, and Governance
 
@@ -157,4 +159,6 @@ Want more? The free timed Associate, Foundations diagnostic on PrepClubs has the
 
 ---
 
-<!-- nav:bottom -->← Previous: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) | Next: [Exam overview: Developer, Foundations](../developer/README.md) → | [Back to contents](../../README.md#contents)<!-- /nav:bottom -->
+<!-- nav:bottom -->
+← Previous: [Domain 5: Configuration and Knowledge Management](05-configuration-and-knowledge-management.md) | Next: [Exam overview: Developer, Foundations](../developer/README.md) → | [Back to contents](../../README.md#contents)
+<!-- /nav:bottom -->
