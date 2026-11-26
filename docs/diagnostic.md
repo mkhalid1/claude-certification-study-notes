@@ -35,10 +35,10 @@ Then weight your plan by the exam blueprint. A gap in a 20% domain costs about t
 
 PrepClubs has a free timed 25-question diagnostic for each exam, with a percent-correct breakdown by domain. As of November 2026 the Associate, Developer and Architect, Professional diagnostics report against the pre-December domain names, so use them for pacing and overall readiness, and use the in-repo diagnostic above for the December 7 domains:
 
-- [Associate, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate)
-- [Developer, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer)
-- [Architect, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect)
-- [Architect, Professional diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-architect-professional?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect-professional)
+- [Associate, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-associate)
+- [Developer, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-developer)
+- [Architect, Foundations diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-architect)
+- [Architect, Professional diagnostic](https://prepclubs.com/free-practice-tests/claude-certified-architect-professional?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-architect-professional)
 
 ## What about the official practice exam?
 

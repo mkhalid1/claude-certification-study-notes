@@ -90,7 +90,7 @@ The guide names the Anthropic Partner Academy as the place to register and to co
 
 ## Practice
 
-When you have worked through the domain pages, test yourself under real timing with this [free timed practice test for the Claude Certified Architect, Foundations exam](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect).
+When you have worked through the domain pages, test yourself under real timing with this [free timed practice test for the Claude Certified Architect, Foundations exam](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-architect).
 
 ---
 

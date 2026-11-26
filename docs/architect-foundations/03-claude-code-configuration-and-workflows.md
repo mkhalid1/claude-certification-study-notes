@@ -178,13 +178,13 @@ E. Include the prior review's findings in context on re-runs and instruct Claude
 
 </details>
 
-Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect).
+Want more? The free timed Architect, Foundations diagnostic on PrepClubs has the full 25 questions, scored by domain: [Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-architect).
 
 ## Next step
 
 1. Redo any item you missed, without opening the explanation, and write the trap you fell for in one line.
 2. Spend 20 minutes doing one skill from "What this domain measures" for real, in Claude or your own project.
-3. Check this domain against the rest of the exam with the [free timed Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-architect), which reports percent correct by domain.
+3. Check this domain against the rest of the exam with the [free timed Architect, Foundations diagnostic on PrepClubs](https://prepclubs.com/free-practice-tests/claude-certified-architect?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-architect), which reports percent correct by domain.
 
 ---
 

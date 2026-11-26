@@ -87,7 +87,7 @@ The guide names no single required course. It points to the blueprint, Anthropic
 
 ## Practice
 
-When you have worked through the domain pages, take this [free timed practice test for the Claude Certified Associate, Foundations exam](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-associate) to check your pacing and find your weak domains.
+When you have worked through the domain pages, take this [free timed practice test for the Claude Certified Associate, Foundations exam](https://prepclubs.com/free-practice-tests/claude-certified-associate?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-associate) to check your pacing and find your weak domains.
 
 ---
 

@@ -89,7 +89,7 @@ The guide names no required course and says no single resource guarantees a pass
 
 ## Practice
 
-When you have worked through the domain pages, test your pacing with this [free timed practice test for the Claude Certified Developer, Foundations exam](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=study-notes&utm_content=claude-certified-developer).
+When you have worked through the domain pages, test your pacing with this [free timed practice test for the Claude Certified Developer, Foundations exam](https://prepclubs.com/free-practice-tests/claude-certified-developer?utm_source=github&utm_medium=referral&utm_campaign=p5gza7&utm_content=claude-certified-developer).
 
 ---
 
